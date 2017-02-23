@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Development efficiency challenges in NoFlo -- A system brought to life</title>
+
+    
+
+    
+    <link href="https://trustmaster.github.io//css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <link href="https://trustmaster.github.io//css/clean-blog.min.css" rel="stylesheet">
+
+    
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    
+    
+    
+
+</head>
+
+<body>
+
+    
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="https://trustmaster.github.io/">A system brought to life</a>
+            </div>
+
+                       
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li>
+                        <a href="https://trustmaster.github.io/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://trustmaster.github.io/post/">Archives</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://trustmaster.github.io/about/author/">About</a>
+                    </li>
+                    
+                  </ul>
+            </div>
+           
+
+        </div>
+        
+    </nav>
+
+
+    
+    
+    <header class="intro-header" style="background-image: url('https://trustmaster.github.io///img/post-bg.jpg')">
+      
+      <div class="container">
+        <div class="row">
+           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+             <div class="post-heading">
+               <h1>Development efficiency challenges in NoFlo</h1>
+               <h2 class="subheading">Obstacles on the way to happy day-to-day life with NoFlo and ways to overcome them</h2>
+               <span class="meta">
+                 
+  A 6 minute read,
+
+Posted by <a href="#">Vladimir Sibirov</a> on Mon, Nov 7, 2016
+<br />
+In <a href="https://trustmaster.github.io/categories/noflo">NoFlo</a>, <a href="https://trustmaster.github.io/categories/flow-based-programming">Flow-Based Programming</a>
+
+<br />
+Tags <a href="https://trustmaster.github.io/tags/noflo">noflo</a>, <a href="https://trustmaster.github.io/tags/fbp">fbp</a>, <a href="https://trustmaster.github.io/tags/development">development</a>
+
+               </span>
+             </div>
+           </div>
+        </div>
+      </div>
+    </header>
+
+    
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  
+
+<h1 id="development-efficiency-challenges-in-noflo">Development efficiency challenges in NoFlo</h1>
+
+<p>Programming with NoFlo is getting more and more smooth with every release. However, if you maintaining a NoFlo application is your day-to-day job you may notice some inconveniences.</p>
+
+<h2 id="defining-new-components-is-slow">Defining new components is slow</h2>
+
+<p>Every time you add a new component you have to define a pretty massive hash map of its ports, their data types and preferably at least descriptions. This is cool as it encourages you to declare as many details as possible but it’s not very friendly to rapid prototyping where you want just to list the ports and get your hands on the code and add details later.</p>
+
+<h3 id="solutions">Solutions</h3>
+
+<ul>
+<li>Reduce minimal boilerplate for new components</li>
+</ul>
+
+<h2 id="wiring-up-all-the-ports-is-slow-fbp">Wiring up all the ports is slow (.FBP)</h2>
+
+<p>OK, maybe it wouldn’t be so slow if it was all done in Flowhub but until those glory days when we could switch all our projects to Flowhub, the problem persists.</p>
+
+<p>Components have many ports. Say there are 8 components in the graph, each of them has 4 ports and there are also 2 inports and 2 outports in the graph. This could make at least 32 connections required for the graph to run. Which is writing 32 lines of code in .FBP, and what’s worse keeping them all and the whole picture in mind. Using <a href="https://noflojs.org/visualize/">NoFlo visualize tool</a> helps a lot here though. But then you close that graph, open it 3 months later to add a new branch and rewire some connection and you can’t do it without a migraine or two.</p>
+
+<p>With Flowhub it’s a bit easier b/c you see the picture, attach and detach connections and rewire it more or less effectively.</p>
+
+<h3 id="solutions-1">Solutions</h3>
+
+<ul>
+<li>Reduce the amount of ports and connections in the graphs</li>
+<li>Use more terse syntax than .FBP</li>
+<li>Switch to Flowhub eventually</li>
+</ul>
+
+<h2 id="can-t-tell-if-a-graph-works-until-everything-is-wired">Can&rsquo;t tell if a graph works until everything is wired</h2>
+
+<p>It’s easier to code something in small iterations one piece at a time: add a component, add tests for it, add another component with tests, wire these two components, make sure they work together, add a third component, etc. then you have the whole graph and tests for it. This requires a lot of rewiring and intermediate tests.</p>
+
+<p>As described above, in .FBP rewiring is expensive. In Flowhub rewiring is cheaper but still requires quite some clicks and drags, but what’s more important Flowhub/NoFlo won’t let you run the program until the graph is all wired up correctly. So what we do in practice is not trying anything until the entire graph is complete with all the components and connections. Which is a lot of headache wiring first (in .FBP) and then lots of bugs when it’s finally wired (both .FBP and Flowhub).</p>
+
+<h3 id="solutions-2">Solutions</h3>
+
+<ul>
+<li>Do write tests for components and subgraphs</li>
+<li>Prefer mid-sized components and subgraphs so that each of them can have a test without too much hassle</li>
+</ul>
+
+<h2 id="doesn-t-show-which-component-failed-stuck">Doesn&rsquo;t show which component failed/stuck</h2>
+
+<p>This is the hardest thing when debugging. So you know that the graph just hangs somewhere, at some component. But you don’t know which one. There is <a href="https://www.npmjs.com/package/flowtrace">Flowtrace</a> at your service but reading a flowtrace of a real application is hell of a job, there can be hundreds of socket events and you have to figure out which ones are actually <em>missing</em> from those hundreds. Replaying a flowtrace in Flowhub with <code>flowtrace-replay</code> is slightly better but the problem persists: you need to find the missing piece of jigsaw.</p>
+
+<p>A less critical but also annoying thing is that when something fails somewhere, you see the error in the output and it maybe even contains a stack trace to some extent but it doesn’t contain the process or component name, which you’d like to know in first place when opening an error output.</p>
+
+<h3 id="solutions-3">Solutions</h3>
+
+<ul>
+<li>Always include component names in stack traces</li>
+<li>Always catch and log errors</li>
+<li>Visual flowtraces in Flowhub</li>
+<li>How could we fix the missing jigsaw problem?</li>
+</ul>
+
+<h2 id="conditionals-branching-is-hard">Conditionals/branching is hard</h2>
+
+<p>There are no simple IFs in FBP. No such thing. If you need to check something, it’s either inside a component or a whole branch of the graph. Usually if you need an IF in the graph, it results into 2 graphs. Which takes time wiring up. And duplicates the code. And duplicates the bugs.</p>
+
+<p>&ldquo;Stop thinking in control flow you idiots, you should think data flow here!&rdquo; - says the Captain FBP. Yes, sir, how do I think such things in data flow, sir?</p>
+
+<h3 id="solutions-4">Solutions</h3>
+
+<ul>
+<li>Simple graphs are easier to add conditionals to</li>
+<li>If you need to duplicate a branch, put it in a subgraph</li>
+<li>Keep control logic inside components</li>
+</ul>
+
+<h2 id="components-flourish-with-promises-callbacks">Components flourish with promises/callbacks</h2>
+
+<p>Look inside a component that does some real job and you find yourself in the land of wild and unharnessed async JS. Callback hell - yes, promises - yes, <code>async/await</code> inside the components - oh yes, coming soon. Dataflow you say? Hardly so.</p>
+
+<p>I suspect that one of the initial syncretic intentions of NoFlo was to split these vertical callback staircases and promise stacks into good old black boxes with wires between them. However, splitting every async call and callback into 2 components is rather expensive, so in practice we rarely do that.</p>
+
+<p>But could NoFlo help us simplify async code so we don’t have to write so many callbacks or promises? Yes, partially.</p>
+
+<h3 id="solutions-5">Solutions</h3>
+
+<ul>
+<li>Thoughtful breakdown of the applications into components</li>
+<li>Use promises inside components</li>
+</ul>
+
+<h2 id="coffee-is-cool-but-it-s-es2015-for-most-people-now">Coffee is cool but it’s ES2015+ for most people now</h2>
+
+<p>CoffeeScript is really cool, it’s write less do more. Some people complain that all the cool kids are using ES6/7+Babel now and that CoffeeScript is completely abandoned. But it’s simply mature and cool and you still write less and do more with Coffee than with ES6+.</p>
+
+<p>However, on a historical scale, CoffeeScript is most probably a stale creek. It’s popularity is not going to grow because of the cool kids and everybody busy watching the changes in ES spec. That means, if NoFlo wants to grow its audience, it has to embrace ES2015+ support. No-no, I don’t mean it should be rewritten in *Script (<code>s/*/(Type/Pure/whatever/</code>), I mean the ecosystem should be very friendly to people coming from ES world. The documents should contain ES examples first and there should be good quality component libraries in ES to be used as reference too.</p>
+
+<h3 id="solutions-6">Solutions</h3>
+
+<ul>
+<li>Documentation should be ES-first, CS-second</li>
+<li>Examples and reference libraries in ES</li>
+</ul>
+
+<h2 id="what-s-next">What&rsquo;s next?</h2>
+
+<p>I&rsquo;ve been addressing these problems and a few more while maintaining backends in NoFlo. Just like I created <code>WirePattern</code> back in the days of <code>noflo@0.5.*</code> (which is going for good with <code>noflo@0.8.*</code> and the <a href="http://bergie.iki.fi/blog/noflo-process-api/">Process API</a>), I&rsquo;ve created <a href="https://github.com/trustmaster/noflo-assembly">NoFlo Assembly Line</a> which is a combination of design patterns, best practices and a ES6 library that works on top of NoFlo. It&rsquo;s not yet fully released and I plan to do so after NoFlo <code>0.8.0</code> is officially out.</p>
+
+                  
+   
+
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+    
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  <ul class="list-inline text-center">
+                    
+                    
+                    <li>
+                      <a href="https://twitter.com/sibiroff">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://github.com/trustmaster">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://www.facebook.com/trustmaster">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                  </ul>
+                  <p class="copyright text-muted">© Vladimir Sibirov. Code released under the MIT license.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script src="https://trustmaster.github.io//js/jquery.min.js"></script>
+
+    
+    <script src="https://trustmaster.github.io//js/bootstrap.min.js"></script>
+
+    
+    <script src="https://trustmaster.github.io//js/clean-blog.js"></script>
+
+    
+
+</body>
+
+</html>
+

@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dataflow on A system brought to life</title>
+    <link>https://trustmaster.github.io/tags/dataflow/index.xml</link>
+    <description>Recent content in Dataflow on A system brought to life</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© Vladimir Sibirov. Code released under the MIT license.</copyright>
+    <atom:link href="https://trustmaster.github.io/tags/dataflow/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Comparison of dataflow models</title>
+      <link>https://trustmaster.github.io/post/dataflow-model-comparison/</link>
+      <pubDate>Sun, 03 Jun 2012 15:56:29 +0100</pubDate>
+      
+      <guid>https://trustmaster.github.io/post/dataflow-model-comparison/</guid>
+      <description>
+
+&lt;h1 id=&#34;comparison-of-dataflow-models&#34;&gt;Comparison of dataflow models&lt;/h1&gt;
+
+&lt;h2 id=&#34;mathematical-model-of-choice&#34;&gt;Mathematical model of choice&lt;/h2&gt;
+
+&lt;p&gt;Comparison criteria and analysis methods should be chosen before performing actual analysis.&lt;/p&gt;
+
+&lt;p&gt;We will solve the task of parallel computation model evaluation as a multiple criteria choice. In order to do this, a set of particular criteria is outlined and for each of them a mapping to the real numbers set is defined:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;k(x):i(x)→R(1)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;where &lt;code&gt;x&lt;/code&gt; - is alternative choice (model);
+&lt;code&gt;i(x)&lt;/code&gt; - is a particular factor value;
+&lt;code&gt;R&lt;/code&gt; - is the set of real numbers;
+&lt;code&gt;k&lt;/code&gt; - is the particular criterion number, &lt;code&gt;k∈[1,K]&lt;/code&gt;;
+&lt;code&gt;K&lt;/code&gt; - total number of particular criteria.&lt;/p&gt;
+
+&lt;p&gt;The following relations between possible particular criterion values &lt;code&gt;yi&lt;/code&gt; are used:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;yi≈yj&lt;/code&gt; - equivalence relation. Two values are equivalent if none of them is more preferable than the other. Every value is equivalent to itself.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;yi&amp;lt;yj,i≠j&lt;/code&gt; - preference relation. Value &lt;code&gt;yj&lt;/code&gt; is more preferable than &lt;code&gt;yi&lt;/code&gt; if it has benefits over it for a decision maker.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;yi≪yj,i≠j&lt;/code&gt; - strong preference relation. Value &lt;code&gt;yj&lt;/code&gt; is a lot more preferable than &lt;code&gt;yi&lt;/code&gt; if it has benefits of new quality over it for a decision maker. Strong preference is a type of preference relation.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;yi≤yj&lt;/code&gt; -  non-strict preference relation. Value &lt;code&gt;yj&lt;/code&gt; is more preferable or equivalent to &lt;code&gt;yi&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Then &lt;code&gt;k&lt;/code&gt;&amp;lsquo;th criterion numeric evaluation function (1) can be written as the following recursive formula:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;k(yi)=0,∀j:yi≤yjk(yj)+P,yj&amp;lt;yik(yj)+Q,yj≪yi(2)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here &lt;code&gt;P&lt;/code&gt; and &lt;code&gt;Q&lt;/code&gt; — are constant weights set by a decision-maker which determine the extent of difference between particular choices. The most trivial example is &lt;code&gt;P=1, Q=2&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;For multi-criteria decision making we will use a simple &lt;em&gt;weighted sum model&lt;/em&gt; (WSM).  We will use &lt;em&gt;linear convolution method&lt;/em&gt; to get a scalar quality estimate &lt;code&gt;Y&lt;/code&gt; of a model &lt;code&gt;x&lt;/code&gt; because the importance of each of the particular criteria is defined by a decision maker. Then generalized quality factor looks like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Y(x)=∑i=1Kαi⋅i(x)→max(3)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;where &lt;code&gt;αi&amp;gt;0&lt;/code&gt;  is the &lt;code&gt;i&lt;/code&gt;&amp;lsquo;th criterion significance (weight) defined by a decision maker. If a normalized estimate is being calculated, the following limitation takes place:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;∑i=1Kαi=1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We will group particular criteria into several semantic groups. Then we can calculate values for denormalized factors for each group and then sum up all particular sums to get the generalized factor as shown in formula (4):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Y(x)=∑m=1Mβm⋅Ym(x)(4)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;where &lt;code&gt;M&lt;/code&gt; — is the quantity of semantic groups of criteria;
+&lt;code&gt;βm&amp;gt;0&lt;/code&gt; - significance (weight) of the &lt;code&gt;m&lt;/code&gt;&amp;lsquo;th group.&lt;/p&gt;
+
+&lt;h2 id=&#34;particular-model-evaluation-factors&#34;&gt;Particular model evaluation factors&lt;/h2&gt;
+
+&lt;p&gt;Below there is a multilevel list of evaluated properties of the dataflow models. At the top level there are groups of criteria, then there are factors themselves nested and lists of possible values inside them. Numeric scale constants calculated using formula (2) are given in parenthesis.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Ease of development — these factors are related to how easy, quickly and convenient application development is.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Structure decomposition&lt;/em&gt; — means explicit application structure definition as a graph, which allows the use of methods and utilities of structural analysis and significantly simplifies perception of the model by both specialists and non-specialists:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;not emphasized (0)&lt;/em&gt; — means that structure is not emphasized explicitly which is usual for models supporting text notation only;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;2-3 levels (P)&lt;/em&gt; — models with a fixed number of decomposition levels are relatively simple but they are not so powerful in terms of complex systems design as multilevel models;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;multilevel (Q)&lt;/em&gt; — especially effective to design large and complex software systems.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Notation support&lt;/em&gt; — determines which kind of a language the structure and behavior of the system can be defined in:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;text (0)&lt;/em&gt; — textual languages are usually effective for behavior definition but it is not so for application structure definition and message routing;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;visual (0)&lt;/em&gt; — visual notation is very convenient for structural analysis and drawing of communication graphs but may be too cumbersome for behavior definition;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;double (Q)&lt;/em&gt; — usually means that the structure is represented visually while behavior of particular components is defined with a textual algorithmic language which is the most practical solution.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Iteration facilities&lt;/em&gt; — presence of special elements and tools to implement iteration and recursion which simplifies application development:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;not emphasized (0)&lt;/em&gt; — iteration is implemented manually using complex constructs with back-coupling loops;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;recursion&lt;/em&gt; (P) — iteration can only be implemented using recursion;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;control structures&lt;/em&gt; (P) — iteration can be implemented using control structures within component blocks;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;specific elements (Q)&lt;/em&gt; — the language has specific elements to implement iteration easily as well as recursion and built-in control structures.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Performance and resource consumption — this group of factors affects application scalability, response time, throughput, CPU time consumption, RAM consumption and other performance characteristics.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Message passing&lt;/em&gt; — depending on whether a handshake from both sides is required to finish the message transfer successfully:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;synchronous (0)&lt;/em&gt; — in this case the sender waits until the receiver receives the whole message or until the message is buffered. This mode is easier to control but it may result into higher latency;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;asynchronous (P)&lt;/em&gt; — the sender does not wait until the message is received in full and proceeds to its further actions. This mode tends to use CPU time more effectively especially in presence of long input/output operations.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Message buffering&lt;/em&gt; — defines whether the runtime buffers the messages:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;none (0)&lt;/em&gt; — if the message is passed from the sender to the receiver directly and both processes are blocked during message transfer;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;limited (P)&lt;/em&gt; — if non-blocking message passing is supported using bounded buffers; if the queue length reaches the buffer capacity limit, then the sender is blocked;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;unlimited (Q)&lt;/em&gt; — if the system provides unbounded buffer size in an explicit or an implicit way. This may result into higher memory consumption but guarantees that the message is eventually delivered while the sender can act without being blocked.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Process persistence&lt;/em&gt; — this aspect is related to a fact whether application components are resident in memory during its lifetime or not:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;non-resident&lt;/em&gt; (0) — in such systems processes are spawned to process a new incoming portion of data and terminated when the result of processing is sent along the communication channel. It preserves from memory leaks and saves memory for otherwise rarely used subnets;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;resident&lt;/em&gt; (0) — such processes reside in memory for all the time that application runs which lets them respond faster (they don&amp;rsquo;t need to spend time for initialization) but this increases memory consumption and leak risk (if a garbage collector is not used);&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;by choice&lt;/em&gt; (P) — the paradigm and the framework allows a user to develop programs consisting either from resident or from non-resident components depending on what the particular application requires;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;combined&lt;/em&gt; (Q) — in this case some of the components can be made resident  (e.g. if a fast response is required from them) while some of the components within the same network can be non-resident (for example if it is rarely used and its resources can be effectively allocated on demand).&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Parallelism facilities&lt;/em&gt; — which mechanism of parallelism is used on operating system (OS) level:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;processes (0)&lt;/em&gt; — if there are multiple OS processes using interprocess communication (IPC) signals;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;threads (0)&lt;/em&gt; — OS threads communicating via shared memory;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;coroutines (0)&lt;/em&gt; — lightweight processes, &amp;ldquo;green&amp;rdquo; threads or coroutines are effectively multiplexed within one OS thread/process;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;combined (Q) —&lt;/em&gt; a combination of facilities from a) to c) are used, e.g. threads + lightweight processes.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Flexibility and extensibility — these factors affect the variety of tasks that can be covered by a particular model and how easily the existing programs which have been built using that model can be extended in future.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Structure changes&lt;/em&gt; — means the possibility to create and modify subnets in application graph during runtime:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;static&lt;/em&gt; (0) — such a structure is defined by an engineer once during design/implementation stage and requires the application to be recompiled and restarted in case of a change;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;dynamic&lt;/em&gt; (Q) — such a structure allows the system to change during runtime, up to continuous evolution of the system.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Feedback loops&lt;/em&gt; — defines whether the model supports feedback loops, i.e. signals can be passed from ports down the data stream to the ports up the regular data stream:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;no&lt;/em&gt; (0) — some models forbid feedback loops explicitly to avoid possible deadlocks a priori. This results into a smaller application domain and complicates implementation of iterative algorithms;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;yes&lt;/em&gt; (P) — feedback loops may cause deadlocks in some cases but allow an engineer to solve a wider variety of problems in a more simple way.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Control signals&lt;/em&gt; — represents the emphasis of control signals as a separate type of signals:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;not emphasized&lt;/em&gt; (0) — in this case control parameter values are passed directly to regular input and a component should distinguish them and ensure a correct response itself;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;initial&lt;/em&gt; (0) — in this case control parameter values are entered only once during application initialization which allows a developer to modify system&amp;rsquo;s behavior from one run to another;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;dynamic&lt;/em&gt; (P) — in this case control signals can arrive to a component from both system&amp;rsquo;s environment and other higher-level components during runtime which provides a higher level of flexibility and parametrization.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Non-determinism&lt;/em&gt; — on the one hand it affects the spectrum of solvable tasks and on the other it affects system&amp;rsquo;s reliability ambiguously [32]:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;deterministic&lt;/em&gt; (0) — deterministic systems are simple and easy to detect errors but they don&amp;rsquo;t ensure guaranteed service and refuse requests more often;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;bounded nondeterminism&lt;/em&gt; (P) — systems with bounded nondeterminism solve a wider spectrum of tasks and have a lower fault probability (usually by means of message queues);&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;unbounded nondeterminism&lt;/em&gt; (Q) — models supporting unbounded nondeterminism in theory solve the widest variety of tasks possible while being able to guarantee that a request will be served even if the system load continues to grow.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;comparison-analysis-of-interaction-models-based-on-data-flows&#34;&gt;Comparison analysis of interaction models based on data flows&lt;/h2&gt;
+
+&lt;p&gt;Below there are tables representing the results of comparison of Flow-Based Programming (FBP), Actor model (Actor) and Communicating Sequential Processes (CSP) as theoretic component interaction models and practical frameworks. The &amp;ldquo;Ideal&amp;rdquo; column is somewhat what a perfect hypothetical model would provide.&lt;/p&gt;
+
+&lt;p&gt;The marks specified  in parenthesis are the points values of the scale:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;0 (not specified) -  no certain advantage;&lt;/li&gt;
+&lt;li&gt;P – definite advantage;&lt;/li&gt;
+&lt;li&gt;Q – higher order advantage which gives a more possibilities than 0 and P.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;FBP is considered as Morrison&amp;rsquo;s JavaFBP/C#FBP in first place, Actor model is mostly analyzed from its Erlang implementation, CSP example is the default Go language&amp;rsquo;s runtime.&lt;/p&gt;
+
+&lt;h3 id=&#34;table-1-comparison-by-ease-of-development-criteria&#34;&gt;Table 1 — Comparison by ease of development criteria&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Factor&lt;/td&gt;
+    &lt;td&gt;Wt.&lt;/td&gt;
+    &lt;td&gt;FBP&lt;/td&gt;
+    &lt;td&gt;Actor&lt;/td&gt;
+    &lt;td&gt;CSP&lt;/td&gt;
+    &lt;td&gt;Ideal&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Structure decomposition&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;Multilevel (Q)&lt;/td&gt;
+    &lt;td&gt;Not emphasized&lt;/td&gt;
+    &lt;td&gt;Not emphasized&lt;/td&gt;
+    &lt;td&gt;Multilevel (Q)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Notation support&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;Double(Q)&lt;/td&gt;
+    &lt;td&gt;Text&lt;/td&gt;
+    &lt;td&gt;Text&lt;/td&gt;
+    &lt;td&gt;Double (Q)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Iteration facilities&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;Not emphasized&lt;/td&gt;
+    &lt;td&gt;Recursion (P)&lt;/td&gt;
+    &lt;td&gt;Control structures (P)&lt;/td&gt;
+    &lt;td&gt;Specific elements (Q)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Total&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;2Q&lt;/td&gt;
+    &lt;td&gt;P&lt;/td&gt;
+    &lt;td&gt;P&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;table-2-performance-and-resource-consumption-related-factors-comparison&#34;&gt;Table 2 — Performance and resource consumption related factors comparison&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Factor&lt;/td&gt;
+    &lt;td&gt;Wt.&lt;/td&gt;
+    &lt;td&gt;FBP&lt;/td&gt;
+    &lt;td&gt;Actor&lt;/td&gt;
+    &lt;td&gt;CSP&lt;/td&gt;
+    &lt;td&gt;Ideal&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Message passing&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;Synchronous&lt;/td&gt;
+    &lt;td&gt;Asynchronous (P)&lt;/td&gt;
+    &lt;td&gt;Synchronous&lt;/td&gt;
+    &lt;td&gt;Asynchronous (P)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Message buffering&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;Limited (P)&lt;/td&gt;
+    &lt;td&gt;Unlimited (Q)&lt;/td&gt;
+    &lt;td&gt;Limited (P)&lt;/td&gt;
+    &lt;td&gt;Unlimited (Q)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Process persistence&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;By choice (P)&lt;/td&gt;
+    &lt;td&gt;Non-resident&lt;/td&gt;
+    &lt;td&gt;Combined (Q)&lt;/td&gt;
+    &lt;td&gt;Combined (Q)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Parallelism facilities&lt;/td&gt;
+    &lt;td&gt;0&lt;/td&gt;
+    &lt;td&gt;Threads&lt;/td&gt;
+    &lt;td&gt;Combined (Q)&lt;/td&gt;
+    &lt;td&gt;Combined (Q)&lt;/td&gt;
+    &lt;td&gt;Combined (Q)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Total&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;2P&lt;/td&gt;
+    &lt;td&gt;P+Q&lt;/td&gt;
+    &lt;td&gt;P+Q&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;table-3-flexibility-and-extensibility-criteria-comparison&#34;&gt;Table 3 — Flexibility and extensibility criteria comparison&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Factor&lt;/td&gt;
+    &lt;td&gt;Wt.&lt;/td&gt;
+    &lt;td&gt;FBP&lt;/td&gt;
+    &lt;td&gt;Actor&lt;/td&gt;
+    &lt;td&gt;CSP&lt;/td&gt;
+    &lt;td&gt;Ideal&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Structure changes&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;Static&lt;/td&gt;
+    &lt;td&gt;Dynamic (Q)&lt;/td&gt;
+    &lt;td&gt;Dynamic (Q)&lt;/td&gt;
+    &lt;td&gt;Dynamic (Q)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Feedback loops&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;Yes (P)&lt;/td&gt;
+    &lt;td&gt;Yes (P)&lt;/td&gt;
+    &lt;td&gt;Yes (P)&lt;/td&gt;
+    &lt;td&gt;Yes (P)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Control signals&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;Initial (P)&lt;/td&gt;
+    &lt;td&gt;Not emphasized&lt;/td&gt;
+    &lt;td&gt;Not emphasized&lt;/td&gt;
+    &lt;td&gt;Dynamic (Q)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Non-determinism&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;Bounded (P)&lt;/td&gt;
+    &lt;td&gt;Unbounded (Q)&lt;/td&gt;
+    &lt;td&gt;Unbounded (Q)&lt;/td&gt;
+    &lt;td&gt;Unbounded (Q)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Total&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;3P&lt;/td&gt;
+    &lt;td&gt;P+2Q&lt;/td&gt;
+    &lt;td&gt;P+2Q&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Note that Parallel facilities is implementation-specific, so we exclude them from the Total sums. Most of the other criteria are model-specific.&lt;/p&gt;
+
+&lt;p&gt;Now we can sum the group values and get the final scalar estimates. In order to get them as simple integers we can specify P and Q scale constants. In this simple example we set all Weights (Wt.) to 1, &lt;code&gt;P = 1&lt;/code&gt; and &lt;code&gt;Q = 2&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;table-4-consolidated-comparison-results-table&#34;&gt;Table 4 — Consolidated comparison results table&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Group of factors&lt;/td&gt;
+    &lt;td&gt;Wt.&lt;/td&gt;
+    &lt;td&gt;FBP&lt;/td&gt;
+    &lt;td&gt;Actor&lt;/td&gt;
+    &lt;td&gt;CSP&lt;/td&gt;
+    &lt;td&gt;Ideal&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Ease of development&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;2Q (4)&lt;/td&gt;
+    &lt;td&gt;P (1)&lt;/td&gt;
+    &lt;td&gt;P (1)&lt;/td&gt;
+    &lt;td&gt;3Q (6)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Performance and resources&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;2P (2)&lt;/td&gt;
+    &lt;td&gt;P+Q (3)&lt;/td&gt;
+    &lt;td&gt;P+Q (3)&lt;/td&gt;
+    &lt;td&gt;P+2Q (5)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Flexibility and extensibility&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;3P (3)&lt;/td&gt;
+    &lt;td&gt;P+2Q (3)&lt;/td&gt;
+    &lt;td&gt;P+2Q (3)&lt;/td&gt;
+    &lt;td&gt;P+3Q (7)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Total&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;5P+2Q (9)&lt;/td&gt;
+    &lt;td&gt;3P+3Q (9)&lt;/td&gt;
+    &lt;td&gt;3P+3Q (9)&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;By customizing Weight values, P and Q constants you can get different estimates which match your own priorities better.&lt;/p&gt;
+
+&lt;p&gt;There is no actual &amp;ldquo;best&amp;rdquo; model, all these models are in the Pareto set.&lt;/p&gt;
+
+&lt;p&gt;The FBP model is the most comfortable to use at software design stage and then during implementation because it supports structure analysis and decomposition, double notation (textual description of component behavior and graphical representation of overall application). But actor and CSP models, which are very close to each other, can handle a wider class of tasks and support dynamic restructuring at run-time up to unbounded nondeterminism. The difference between CSP and Actor models is in message passing semantics details, but they are almost identical when using large buffers in CSP.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s outline the weak points and the ways that each of these models or platforms can be improved.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;FBP&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Static structure. For the model to be really flexible and universal, it needs to support dynamic restructuring so that an application would be capable of changing entire subnets at run-time. Another major problem is that it is hard to display such dynamic structure (especially if changes are frequent and of variable structure themselves)  on graphical diagrams, which are the strongest points of this model.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;As a consequence, this model supports bounded nondeterminism. Shortly, this means that the system cannot guarantee normal functioning behind the boundaries where its behavior is determined.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Facilities for recursion and iteration handling would also improve this model, so that it would make it clear and easy how to implement cyclic and iterative structures.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Actor model:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The main disadvantage of most existing actor model implementation is that the only notation supported is textual. Historically this model has been utilized in functional programming languages which rarely have a visual presentation. This makes it hard to apply structure decomposition techniques and maintain the system. A possible solution is to split the system into 2 levels using different notations: high level coordination language (visual or textual) and low level textual component behavior description.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;CSP&lt;/strong&gt; has the same problems as the actor model in general. But another thing a CSP developer has to care about is capacity of each buffer in communication channels, which in reality depends on an exact application and current inbound data intensity.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

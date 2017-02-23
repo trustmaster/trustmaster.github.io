@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Comparison of dataflow models -- A system brought to life</title>
+
+    
+
+    
+    <link href="https://trustmaster.github.io//css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <link href="https://trustmaster.github.io//css/clean-blog.min.css" rel="stylesheet">
+
+    
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    
+    
+    
+
+</head>
+
+<body>
+
+    
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="https://trustmaster.github.io/">A system brought to life</a>
+            </div>
+
+                       
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li>
+                        <a href="https://trustmaster.github.io/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://trustmaster.github.io/post/">Archives</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://trustmaster.github.io/about/author/">About</a>
+                    </li>
+                    
+                  </ul>
+            </div>
+           
+
+        </div>
+        
+    </nav>
+
+
+    
+    
+    <header class="intro-header" style="background-image: url('https://trustmaster.github.io///img/post-bg.jpg')">
+      
+      <div class="container">
+        <div class="row">
+           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+             <div class="post-heading">
+               <h1>Comparison of dataflow models</h1>
+               <h2 class="subheading">Comparison of Flow-based programming, Actor model and Communicating Sequential Processes in a scientific manner</h2>
+               <span class="meta">
+                 
+  A 12 minute read,
+
+Posted by <a href="#">Vladimir Sibirov</a> on Sun, Jun 3, 2012
+<br />
+In <a href="https://trustmaster.github.io/categories/flow-based-programming">Flow-Based Programming</a>, <a href="https://trustmaster.github.io/categories/computer-science">Computer Science</a>
+
+<br />
+Tags <a href="https://trustmaster.github.io/tags/fbp">fbp</a>, <a href="https://trustmaster.github.io/tags/dataflow">dataflow</a>, <a href="https://trustmaster.github.io/tags/development">development</a>
+
+               </span>
+             </div>
+           </div>
+        </div>
+      </div>
+    </header>
+
+    
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  
+
+<h1 id="comparison-of-dataflow-models">Comparison of dataflow models</h1>
+
+<h2 id="mathematical-model-of-choice">Mathematical model of choice</h2>
+
+<p>Comparison criteria and analysis methods should be chosen before performing actual analysis.</p>
+
+<p>We will solve the task of parallel computation model evaluation as a multiple criteria choice. In order to do this, a set of particular criteria is outlined and for each of them a mapping to the real numbers set is defined:</p>
+
+<pre><code>k(x):i(x)→R(1)
+</code></pre>
+
+<p>where <code>x</code> - is alternative choice (model);
+<code>i(x)</code> - is a particular factor value;
+<code>R</code> - is the set of real numbers;
+<code>k</code> - is the particular criterion number, <code>k∈[1,K]</code>;
+<code>K</code> - total number of particular criteria.</p>
+
+<p>The following relations between possible particular criterion values <code>yi</code> are used:</p>
+
+<ol>
+<li><code>yi≈yj</code> - equivalence relation. Two values are equivalent if none of them is more preferable than the other. Every value is equivalent to itself.</li>
+<li><code>yi&lt;yj,i≠j</code> - preference relation. Value <code>yj</code> is more preferable than <code>yi</code> if it has benefits over it for a decision maker.</li>
+<li><code>yi≪yj,i≠j</code> - strong preference relation. Value <code>yj</code> is a lot more preferable than <code>yi</code> if it has benefits of new quality over it for a decision maker. Strong preference is a type of preference relation.</li>
+<li><code>yi≤yj</code> -  non-strict preference relation. Value <code>yj</code> is more preferable or equivalent to <code>yi</code>.</li>
+</ol>
+
+<p>Then <code>k</code>&lsquo;th criterion numeric evaluation function (1) can be written as the following recursive formula:</p>
+
+<pre><code>k(yi)=0,∀j:yi≤yjk(yj)+P,yj&lt;yik(yj)+Q,yj≪yi(2)
+</code></pre>
+
+<p>Here <code>P</code> and <code>Q</code> — are constant weights set by a decision-maker which determine the extent of difference between particular choices. The most trivial example is <code>P=1, Q=2</code>.</p>
+
+<p>For multi-criteria decision making we will use a simple <em>weighted sum model</em> (WSM).  We will use <em>linear convolution method</em> to get a scalar quality estimate <code>Y</code> of a model <code>x</code> because the importance of each of the particular criteria is defined by a decision maker. Then generalized quality factor looks like:</p>
+
+<pre><code>Y(x)=∑i=1Kαi⋅i(x)→max(3)
+</code></pre>
+
+<p>where <code>αi&gt;0</code>  is the <code>i</code>&lsquo;th criterion significance (weight) defined by a decision maker. If a normalized estimate is being calculated, the following limitation takes place:</p>
+
+<pre><code>∑i=1Kαi=1
+</code></pre>
+
+<p>We will group particular criteria into several semantic groups. Then we can calculate values for denormalized factors for each group and then sum up all particular sums to get the generalized factor as shown in formula (4):</p>
+
+<pre><code>Y(x)=∑m=1Mβm⋅Ym(x)(4)
+</code></pre>
+
+<p>where <code>M</code> — is the quantity of semantic groups of criteria;
+<code>βm&gt;0</code> - significance (weight) of the <code>m</code>&lsquo;th group.</p>
+
+<h2 id="particular-model-evaluation-factors">Particular model evaluation factors</h2>
+
+<p>Below there is a multilevel list of evaluated properties of the dataflow models. At the top level there are groups of criteria, then there are factors themselves nested and lists of possible values inside them. Numeric scale constants calculated using formula (2) are given in parenthesis.</p>
+
+<ol>
+<li><p>Ease of development — these factors are related to how easy, quickly and convenient application development is.</p>
+
+<ol>
+<li><p><em>Structure decomposition</em> — means explicit application structure definition as a graph, which allows the use of methods and utilities of structural analysis and significantly simplifies perception of the model by both specialists and non-specialists:</p>
+
+<ol>
+<li><p><em>not emphasized (0)</em> — means that structure is not emphasized explicitly which is usual for models supporting text notation only;</p></li>
+
+<li><p><em>2-3 levels (P)</em> — models with a fixed number of decomposition levels are relatively simple but they are not so powerful in terms of complex systems design as multilevel models;</p></li>
+
+<li><p><em>multilevel (Q)</em> — especially effective to design large and complex software systems.</p></li>
+</ol></li>
+
+<li><p><em>Notation support</em> — determines which kind of a language the structure and behavior of the system can be defined in:</p>
+
+<ol>
+<li><p><em>text (0)</em> — textual languages are usually effective for behavior definition but it is not so for application structure definition and message routing;</p></li>
+
+<li><p><em>visual (0)</em> — visual notation is very convenient for structural analysis and drawing of communication graphs but may be too cumbersome for behavior definition;</p></li>
+
+<li><p><em>double (Q)</em> — usually means that the structure is represented visually while behavior of particular components is defined with a textual algorithmic language which is the most practical solution.</p></li>
+</ol></li>
+
+<li><p><em>Iteration facilities</em> — presence of special elements and tools to implement iteration and recursion which simplifies application development:</p>
+
+<ol>
+<li><p><em>not emphasized (0)</em> — iteration is implemented manually using complex constructs with back-coupling loops;</p></li>
+
+<li><p><em>recursion</em> (P) — iteration can only be implemented using recursion;</p></li>
+
+<li><p><em>control structures</em> (P) — iteration can be implemented using control structures within component blocks;</p></li>
+
+<li><p><em>specific elements (Q)</em> — the language has specific elements to implement iteration easily as well as recursion and built-in control structures.</p></li>
+</ol></li>
+</ol></li>
+
+<li><p>Performance and resource consumption — this group of factors affects application scalability, response time, throughput, CPU time consumption, RAM consumption and other performance characteristics.</p>
+
+<ol>
+<li><p><em>Message passing</em> — depending on whether a handshake from both sides is required to finish the message transfer successfully:</p>
+
+<ol>
+<li><p><em>synchronous (0)</em> — in this case the sender waits until the receiver receives the whole message or until the message is buffered. This mode is easier to control but it may result into higher latency;</p></li>
+
+<li><p><em>asynchronous (P)</em> — the sender does not wait until the message is received in full and proceeds to its further actions. This mode tends to use CPU time more effectively especially in presence of long input/output operations.</p></li>
+</ol></li>
+
+<li><p><em>Message buffering</em> — defines whether the runtime buffers the messages:</p>
+
+<ol>
+<li><p><em>none (0)</em> — if the message is passed from the sender to the receiver directly and both processes are blocked during message transfer;</p></li>
+
+<li><p><em>limited (P)</em> — if non-blocking message passing is supported using bounded buffers; if the queue length reaches the buffer capacity limit, then the sender is blocked;</p></li>
+
+<li><p><em>unlimited (Q)</em> — if the system provides unbounded buffer size in an explicit or an implicit way. This may result into higher memory consumption but guarantees that the message is eventually delivered while the sender can act without being blocked.</p></li>
+</ol></li>
+
+<li><p><em>Process persistence</em> — this aspect is related to a fact whether application components are resident in memory during its lifetime or not:</p>
+
+<ol>
+<li><p><em>non-resident</em> (0) — in such systems processes are spawned to process a new incoming portion of data and terminated when the result of processing is sent along the communication channel. It preserves from memory leaks and saves memory for otherwise rarely used subnets;</p></li>
+
+<li><p><em>resident</em> (0) — such processes reside in memory for all the time that application runs which lets them respond faster (they don&rsquo;t need to spend time for initialization) but this increases memory consumption and leak risk (if a garbage collector is not used);</p></li>
+
+<li><p><em>by choice</em> (P) — the paradigm and the framework allows a user to develop programs consisting either from resident or from non-resident components depending on what the particular application requires;</p></li>
+
+<li><p><em>combined</em> (Q) — in this case some of the components can be made resident  (e.g. if a fast response is required from them) while some of the components within the same network can be non-resident (for example if it is rarely used and its resources can be effectively allocated on demand).</p></li>
+</ol></li>
+
+<li><p><em>Parallelism facilities</em> — which mechanism of parallelism is used on operating system (OS) level:</p>
+
+<ol>
+<li><p><em>processes (0)</em> — if there are multiple OS processes using interprocess communication (IPC) signals;</p></li>
+
+<li><p><em>threads (0)</em> — OS threads communicating via shared memory;</p></li>
+
+<li><p><em>coroutines (0)</em> — lightweight processes, &ldquo;green&rdquo; threads or coroutines are effectively multiplexed within one OS thread/process;</p></li>
+
+<li><p><em>combined (Q) —</em> a combination of facilities from a) to c) are used, e.g. threads + lightweight processes.</p></li>
+</ol></li>
+</ol></li>
+
+<li><p>Flexibility and extensibility — these factors affect the variety of tasks that can be covered by a particular model and how easily the existing programs which have been built using that model can be extended in future.</p>
+
+<ol>
+<li><p><em>Structure changes</em> — means the possibility to create and modify subnets in application graph during runtime:</p>
+
+<ol>
+<li><p><em>static</em> (0) — such a structure is defined by an engineer once during design/implementation stage and requires the application to be recompiled and restarted in case of a change;</p></li>
+
+<li><p><em>dynamic</em> (Q) — such a structure allows the system to change during runtime, up to continuous evolution of the system.</p></li>
+</ol></li>
+
+<li><p><em>Feedback loops</em> — defines whether the model supports feedback loops, i.e. signals can be passed from ports down the data stream to the ports up the regular data stream:</p>
+
+<ol>
+<li><p><em>no</em> (0) — some models forbid feedback loops explicitly to avoid possible deadlocks a priori. This results into a smaller application domain and complicates implementation of iterative algorithms;</p></li>
+
+<li><p><em>yes</em> (P) — feedback loops may cause deadlocks in some cases but allow an engineer to solve a wider variety of problems in a more simple way.</p></li>
+</ol></li>
+
+<li><p><em>Control signals</em> — represents the emphasis of control signals as a separate type of signals:</p>
+
+<ol>
+<li><p><em>not emphasized</em> (0) — in this case control parameter values are passed directly to regular input and a component should distinguish them and ensure a correct response itself;</p></li>
+
+<li><p><em>initial</em> (0) — in this case control parameter values are entered only once during application initialization which allows a developer to modify system&rsquo;s behavior from one run to another;</p></li>
+
+<li><p><em>dynamic</em> (P) — in this case control signals can arrive to a component from both system&rsquo;s environment and other higher-level components during runtime which provides a higher level of flexibility and parametrization.</p></li>
+</ol></li>
+
+<li><p><em>Non-determinism</em> — on the one hand it affects the spectrum of solvable tasks and on the other it affects system&rsquo;s reliability ambiguously [32]:</p>
+
+<ol>
+<li><p><em>deterministic</em> (0) — deterministic systems are simple and easy to detect errors but they don&rsquo;t ensure guaranteed service and refuse requests more often;</p></li>
+
+<li><p><em>bounded nondeterminism</em> (P) — systems with bounded nondeterminism solve a wider spectrum of tasks and have a lower fault probability (usually by means of message queues);</p></li>
+
+<li><p><em>unbounded nondeterminism</em> (Q) — models supporting unbounded nondeterminism in theory solve the widest variety of tasks possible while being able to guarantee that a request will be served even if the system load continues to grow.</p></li>
+</ol></li>
+</ol></li>
+</ol>
+
+<h2 id="comparison-analysis-of-interaction-models-based-on-data-flows">Comparison analysis of interaction models based on data flows</h2>
+
+<p>Below there are tables representing the results of comparison of Flow-Based Programming (FBP), Actor model (Actor) and Communicating Sequential Processes (CSP) as theoretic component interaction models and practical frameworks. The &ldquo;Ideal&rdquo; column is somewhat what a perfect hypothetical model would provide.</p>
+
+<p>The marks specified  in parenthesis are the points values of the scale:</p>
+
+<ul>
+<li>0 (not specified) -  no certain advantage;</li>
+<li>P – definite advantage;</li>
+<li>Q – higher order advantage which gives a more possibilities than 0 and P.</li>
+</ul>
+
+<p>FBP is considered as Morrison&rsquo;s JavaFBP/C#FBP in first place, Actor model is mostly analyzed from its Erlang implementation, CSP example is the default Go language&rsquo;s runtime.</p>
+
+<h3 id="table-1-comparison-by-ease-of-development-criteria">Table 1 — Comparison by ease of development criteria</h3>
+
+<table>
+  <tr>
+    <td>Factor</td>
+    <td>Wt.</td>
+    <td>FBP</td>
+    <td>Actor</td>
+    <td>CSP</td>
+    <td>Ideal</td>
+  </tr>
+  <tr>
+    <td>Structure decomposition</td>
+    <td>1</td>
+    <td>Multilevel (Q)</td>
+    <td>Not emphasized</td>
+    <td>Not emphasized</td>
+    <td>Multilevel (Q)</td>
+  </tr>
+  <tr>
+    <td>Notation support</td>
+    <td>1</td>
+    <td>Double(Q)</td>
+    <td>Text</td>
+    <td>Text</td>
+    <td>Double (Q)</td>
+  </tr>
+  <tr>
+    <td>Iteration facilities</td>
+    <td>1</td>
+    <td>Not emphasized</td>
+    <td>Recursion (P)</td>
+    <td>Control structures (P)</td>
+    <td>Specific elements (Q)</td>
+  </tr>
+  <tr>
+    <td>Total</td>
+    <td></td>
+    <td></td>
+    <td>2Q</td>
+    <td>P</td>
+    <td>P</td>
+  </tr>
+</table>
+
+<h3 id="table-2-performance-and-resource-consumption-related-factors-comparison">Table 2 — Performance and resource consumption related factors comparison</h3>
+
+<table>
+  <tr>
+    <td>Factor</td>
+    <td>Wt.</td>
+    <td>FBP</td>
+    <td>Actor</td>
+    <td>CSP</td>
+    <td>Ideal</td>
+  </tr>
+  <tr>
+    <td>Message passing</td>
+    <td>1</td>
+    <td>Synchronous</td>
+    <td>Asynchronous (P)</td>
+    <td>Synchronous</td>
+    <td>Asynchronous (P)</td>
+  </tr>
+  <tr>
+    <td>Message buffering</td>
+    <td>1</td>
+    <td>Limited (P)</td>
+    <td>Unlimited (Q)</td>
+    <td>Limited (P)</td>
+    <td>Unlimited (Q)</td>
+  </tr>
+  <tr>
+    <td>Process persistence</td>
+    <td>1</td>
+    <td>By choice (P)</td>
+    <td>Non-resident</td>
+    <td>Combined (Q)</td>
+    <td>Combined (Q)</td>
+  </tr>
+  <tr>
+    <td>Parallelism facilities</td>
+    <td>0</td>
+    <td>Threads</td>
+    <td>Combined (Q)</td>
+    <td>Combined (Q)</td>
+    <td>Combined (Q)</td>
+  </tr>
+  <tr>
+    <td>Total</td>
+    <td></td>
+    <td></td>
+    <td>2P</td>
+    <td>P+Q</td>
+    <td>P+Q</td>
+  </tr>
+</table>
+
+<h3 id="table-3-flexibility-and-extensibility-criteria-comparison">Table 3 — Flexibility and extensibility criteria comparison</h3>
+
+<table>
+  <tr>
+    <td>Factor</td>
+    <td>Wt.</td>
+    <td>FBP</td>
+    <td>Actor</td>
+    <td>CSP</td>
+    <td>Ideal</td>
+  </tr>
+  <tr>
+    <td>Structure changes</td>
+    <td>1</td>
+    <td>Static</td>
+    <td>Dynamic (Q)</td>
+    <td>Dynamic (Q)</td>
+    <td>Dynamic (Q)</td>
+  </tr>
+  <tr>
+    <td>Feedback loops</td>
+    <td>1</td>
+    <td>Yes (P)</td>
+    <td>Yes (P)</td>
+    <td>Yes (P)</td>
+    <td>Yes (P)</td>
+  </tr>
+  <tr>
+    <td>Control signals</td>
+    <td>1</td>
+    <td>Initial (P)</td>
+    <td>Not emphasized</td>
+    <td>Not emphasized</td>
+    <td>Dynamic (Q)</td>
+  </tr>
+  <tr>
+    <td>Non-determinism</td>
+    <td>1</td>
+    <td>Bounded (P)</td>
+    <td>Unbounded (Q)</td>
+    <td>Unbounded (Q)</td>
+    <td>Unbounded (Q)</td>
+  </tr>
+  <tr>
+    <td>Total</td>
+    <td></td>
+    <td></td>
+    <td>3P</td>
+    <td>P+2Q</td>
+    <td>P+2Q</td>
+  </tr>
+</table>
+
+<p>Note that Parallel facilities is implementation-specific, so we exclude them from the Total sums. Most of the other criteria are model-specific.</p>
+
+<p>Now we can sum the group values and get the final scalar estimates. In order to get them as simple integers we can specify P and Q scale constants. In this simple example we set all Weights (Wt.) to 1, <code>P = 1</code> and <code>Q = 2</code>.</p>
+
+<h3 id="table-4-consolidated-comparison-results-table">Table 4 — Consolidated comparison results table</h3>
+
+<table>
+  <tr>
+    <td>Group of factors</td>
+    <td>Wt.</td>
+    <td>FBP</td>
+    <td>Actor</td>
+    <td>CSP</td>
+    <td>Ideal</td>
+  </tr>
+  <tr>
+    <td>Ease of development</td>
+    <td>1</td>
+    <td>2Q (4)</td>
+    <td>P (1)</td>
+    <td>P (1)</td>
+    <td>3Q (6)</td>
+  </tr>
+  <tr>
+    <td>Performance and resources</td>
+    <td>1</td>
+    <td>2P (2)</td>
+    <td>P+Q (3)</td>
+    <td>P+Q (3)</td>
+    <td>P+2Q (5)</td>
+  </tr>
+  <tr>
+    <td>Flexibility and extensibility</td>
+    <td>1</td>
+    <td>3P (3)</td>
+    <td>P+2Q (3)</td>
+    <td>P+2Q (3)</td>
+    <td>P+3Q (7)</td>
+  </tr>
+  <tr>
+    <td>Total</td>
+    <td></td>
+    <td></td>
+    <td>5P+2Q (9)</td>
+    <td>3P+3Q (9)</td>
+    <td>3P+3Q (9)</td>
+  </tr>
+</table>
+
+<p>By customizing Weight values, P and Q constants you can get different estimates which match your own priorities better.</p>
+
+<p>There is no actual &ldquo;best&rdquo; model, all these models are in the Pareto set.</p>
+
+<p>The FBP model is the most comfortable to use at software design stage and then during implementation because it supports structure analysis and decomposition, double notation (textual description of component behavior and graphical representation of overall application). But actor and CSP models, which are very close to each other, can handle a wider class of tasks and support dynamic restructuring at run-time up to unbounded nondeterminism. The difference between CSP and Actor models is in message passing semantics details, but they are almost identical when using large buffers in CSP.</p>
+
+<p>Let&rsquo;s outline the weak points and the ways that each of these models or platforms can be improved.</p>
+
+<p><strong>FBP</strong>:</p>
+
+<ul>
+<li><p>Static structure. For the model to be really flexible and universal, it needs to support dynamic restructuring so that an application would be capable of changing entire subnets at run-time. Another major problem is that it is hard to display such dynamic structure (especially if changes are frequent and of variable structure themselves)  on graphical diagrams, which are the strongest points of this model.</p></li>
+
+<li><p>As a consequence, this model supports bounded nondeterminism. Shortly, this means that the system cannot guarantee normal functioning behind the boundaries where its behavior is determined.</p></li>
+
+<li><p>Facilities for recursion and iteration handling would also improve this model, so that it would make it clear and easy how to implement cyclic and iterative structures.</p></li>
+</ul>
+
+<p><strong>Actor model:</strong></p>
+
+<ul>
+<li>The main disadvantage of most existing actor model implementation is that the only notation supported is textual. Historically this model has been utilized in functional programming languages which rarely have a visual presentation. This makes it hard to apply structure decomposition techniques and maintain the system. A possible solution is to split the system into 2 levels using different notations: high level coordination language (visual or textual) and low level textual component behavior description.</li>
+</ul>
+
+<p><strong>CSP</strong> has the same problems as the actor model in general. But another thing a CSP developer has to care about is capacity of each buffer in communication channels, which in reality depends on an exact application and current inbound data intensity.</p>
+
+                  
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+    
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  <ul class="list-inline text-center">
+                    
+                    
+                    <li>
+                      <a href="https://twitter.com/sibiroff">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://github.com/trustmaster">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://www.facebook.com/trustmaster">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                  </ul>
+                  <p class="copyright text-muted">© Vladimir Sibirov. Code released under the MIT license.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script src="https://trustmaster.github.io//js/jquery.min.js"></script>
+
+    
+    <script src="https://trustmaster.github.io//js/bootstrap.min.js"></script>
+
+    
+    <script src="https://trustmaster.github.io//js/clean-blog.js"></script>
+
+    
+
+</body>
+
+</html>
+

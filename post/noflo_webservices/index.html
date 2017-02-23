@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Running web services as NoFlo graphs -- A system brought to life</title>
+
+    
+
+    
+    <link href="https://trustmaster.github.io//css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <link href="https://trustmaster.github.io//css/clean-blog.min.css" rel="stylesheet">
+
+    
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    
+    
+    
+
+</head>
+
+<body>
+
+    
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="https://trustmaster.github.io/">A system brought to life</a>
+            </div>
+
+                       
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li>
+                        <a href="https://trustmaster.github.io/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://trustmaster.github.io/post/">Archives</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://trustmaster.github.io/about/author/">About</a>
+                    </li>
+                    
+                  </ul>
+            </div>
+           
+
+        </div>
+        
+    </nav>
+
+
+    
+    
+    <header class="intro-header" style="background-image: url('https://trustmaster.github.io///img/post-bg.jpg')">
+      
+      <div class="container">
+        <div class="row">
+           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+             <div class="post-heading">
+               <h1>Running web services as NoFlo graphs</h1>
+               <h2 class="subheading">Some problems that occur when trying to run entire web services as NoFlo graphs and some (radical) ways to solve them</h2>
+               <span class="meta">
+                 
+  A 6 minute read,
+
+Posted by <a href="#">Vladimir Sibirov</a> on Fri, Jan 23, 2015
+<br />
+In <a href="https://trustmaster.github.io/categories/noflo">NoFlo</a>, <a href="https://trustmaster.github.io/categories/flow-based-programming">Flow-Based Programming</a>
+
+<br />
+Tags <a href="https://trustmaster.github.io/tags/noflo">noflo</a>, <a href="https://trustmaster.github.io/tags/fbp">fbp</a>, <a href="https://trustmaster.github.io/tags/development">development</a>
+
+               </span>
+             </div>
+           </div>
+        </div>
+      </div>
+    </header>
+
+    
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  
+
+<h1 id="getting-all-things-noflo">Getting All Things NoFlo</h1>
+
+<p>This article describes things which are yet TODO to get the entire server architecture running on NoFlo (and in Flowhub), problems related to them and potential solutions.</p>
+
+<p><img src="https://trustmaster.github.io/img/post/noflo_all_the_things.png" alt="NoFlo all the things!" /></p>
+
+<h2 id="request-isolation">Request Isolation</h2>
+
+<p>By default there is no isolation between IPs belonging to different user requests in NoFlo networks.</p>
+
+<h3 id="solution-1-current-a-new-network-instance-per-request">Solution 1 (current): a new Network instance per request</h3>
+
+<p>Express does its job conventionally, while request handlers instantiate NoFlo networks on demand.</p>
+
+<p><strong>Pros</strong>:</p>
+
+<ul>
+<li>Easy to implement</li>
+<li>Good level of isolation without much effort</li>
+</ul>
+
+<p><strong>Cons</strong>:</p>
+
+<ul>
+<li>Doesn’t let us run the whole app as a NoFlo network</li>
+<li>Waste of resources</li>
+</ul>
+
+<p><strong>Conclusion</strong>:</p>
+
+<ul>
+<li>We need to move forward from it!</li>
+</ul>
+
+<h3 id="solution-2-group-based-synchronization">Solution 2: group-based synchronization</h3>
+
+<p>Use the outmost (first in, last out) NoFlo group packet as request identifier. The entire app is a NoFlo graph, requests are born in noflo-xpress components and tagged with UUIDs, then all downstream components need to handle the outmost group carefully to synchronize data belonging to the same request.</p>
+
+<p><strong>Pros</strong>:</p>
+
+<ul>
+<li>Possible with current NoFlo and WirePattern</li>
+<li>Doesn’t hide all the magic under the hood, you see what makes synchronization happen and can override it</li>
+</ul>
+
+<p><strong>Cons</strong>:</p>
+
+<ul>
+<li>If any component of any subnet omits the outmost group or changes group order -&gt; crash! boom! bang!</li>
+<li>Error handling is tricky (see chapter below)</li>
+<li>You still need to keep synchronization details in mind</li>
+</ul>
+
+<h4 id="use-cases-for-groups">Use cases for groups</h4>
+
+<p>Summarizing here what groups have been (reasonably) used for so far in NoFlo:</p>
+
+<ol>
+<li>Passing request/job IDs the data belongs to.</li>
+<li>Passing XML-like data structures, splitting them into parts and composing back.</li>
+<li>Grouping UI events (<graph><event>data</event></graph>).</li>
+<li>Tagging data with its source URL.</li>
+</ol>
+
+<h4 id="groups-in-component-libraries">Groups in component libraries</h4>
+
+<p>Most of component libraries were written in NoFlo 0.3 and 0.4 days. Most of them disrespect groups and some of them even have synchronization bugs (e.g. core/Kick is race-prone in some cases).</p>
+
+<p>Our original plan about it was to run a campaign porting all the libraries to 0.5 and using WirePattern when necessary.</p>
+
+<p>With group forwarding required in every single component and with synchronization required in every 3rd or 5th, this is going to lead into a huge WirePattern spaghetti dish. The average NoFlo component won’t look elegant anymore.</p>
+
+<p>My proposal consists of the following:</p>
+
+<ul>
+<li>Build WirePattern into noflo.Component instead of noflo.Helpers.</li>
+<li>Use port attributes to define some of the synchronization properties.</li>
+<li>Enable group forwarding by default.</li>
+<li>Introduce one or multiple &ldquo;process&rdquo; functions per component. Each function has its own “firing pattern” (a constraint on inport events that triggers the function).</li>
+<li>Release these changes in NoFlo 0.6 and then run the library updating hackathon.</li>
+</ul>
+
+<h3 id="solution-3-request-tokens-as-1st-class-term">Solution 3: request tokens as 1st class term</h3>
+
+<p>Application architecture is similar to Solution 2, but implementation is different. Instead of using outmost groups, add a concept of optional &ldquo;request identifiers&rdquo; or “context tokens” to NoFlo itself. Once a context token is attached to a substream, it sticks to each of its IP. Every component isolates data (input, output and internal state) using context tokens as scope keys and forwards context information downstream automatically. By default no context keys are used, so all data is in the same scope just like they didn’t exist. Context tokens are only used in applications which require request isolation.</p>
+
+<p><em>Footnote: contexts are mentioned in Matt Carkci’s Dataflow book, so this idea is not just crazy, it’s known to work.</em></p>
+
+<p><strong>Pros:</strong></p>
+
+<ul>
+<li>Fixes the group consistency problem of Solution 2.</li>
+<li>This would require minimal to no changes to existing components and subnets as most of context handling is done by NoFlo runtime itself.</li>
+</ul>
+
+<p><strong>Cons:</strong></p>
+
+<ul>
+<li>One more keyword in NoFlo language, and yet it’s not in &ldquo;classical FBP&rdquo; language either.</li>
+<li>Despite keeping the current NoFlo 0.5 API, it requires heavy changes to WirePattern and other parts of the runtime.</li>
+</ul>
+
+<h2 id="error-handling-and-synchronization">Error handling and Synchronization</h2>
+
+<p>Correct error tracking is tricky in a divergent-convergent graph because an error may happen at any node while other parts of the request may be hanging in other parts of the graph. They have to be pulled together somehow and forwarded back to the client properly.</p>
+
+<p>To make things more complicated, there are different kinds of errors which need to be handled differently:</p>
+
+<ul>
+<li>Warnings (e.g., input validation errors): it is better to check for as many of these as possible and collect them in a list before sending a response to user.</li>
+<li>Errors (e.g. database record not found, third party service time-out): such errors stop further processing of the request immediately with an error message, but they are considered as a normal part of the application flow.</li>
+<li>Fatals (e.g. undefined variable or database connection is down): such errors not only stop further processing of the request but also raise a kind of notification to a developer that something is going really wrong and most probably human’s attention is needed.</li>
+</ul>
+
+<p>Handling these errors is most likely out of scope of NoFlo itself, but is rather a matter of architecture patterns.</p>
+
+<h3 id="solution-1-string-of-pearls">Solution 1: &ldquo;String of pearls&rdquo;</h3>
+
+<p>J. Paul Morrison suggests using &ldquo;string of pearls&rdquo; FBP pattern in all applications dealing with requests. In this pattern, all the data for the request is collected within a single substream. The substream floats from one pearl in the string to another (just like on a pipeline). Each pearl on a string may pass the substream to its side processes (e.g. to load missing data, etc.) before forwarding it to the next pearl. Side processes return substreams back to pearls. At the same moment of time the request (and all the data associated with it) belongs to a single process, so if an error occurs, the current pearl just finishes the request without having to gather it from a branchy graph.</p>
+
+<p><strong>Pros:</strong></p>
+
+<ul>
+<li>Reliability of this pattern has been proved by time and real banking applications. (and JPM :-))</li>
+</ul>
+
+<p><strong>Cons:</strong></p>
+
+<ul>
+<li>It encourages concurrent processing of different requests but restricts concurrent processing of the same request. While in some applications parallel tasks would really reduce response time and make users happier.</li>
+</ul>
+
+<h3 id="solution-2-request-processors">Solution 2: Request processors</h3>
+
+<p>This pattern is very similar to &ldquo;String of pearls&rdquo; but allows a certain level of divergence-convergence to do parallel processing.</p>
+
+<p>It introduces Request processors - a special type of processes which own the requests, scatter data to subgraphs and gather them back for a response.</p>
+
+<p>Request processors make up a &ldquo;backbone&rdquo; of the application. Similar to string of pearls, requests float down the backbone of processors. But when a processor needs some side work to be done for a request, it doesn’t pass it with all the data to a single side process, but rather holds the request and sends the data to its workers with request ID attached. The workers do their job and return the results (and/or errors) to their master. The master then gathers the results and decides either to pass the request to the next processor in the backbone, or to finish it with a response immediately.</p>
+
+<p><strong>Pros:</strong></p>
+
+<ul>
+<li>Maintains request consistency just like &ldquo;string of pearls&rdquo;.</li>
+<li>Allows parallel computations for the same request.</li>
+</ul>
+
+<p><strong>Cons:</strong></p>
+
+<ul>
+<li>Synchronization code of Request processors is reusable, but its implementation is non-trivial.#</li>
+<li>Caution: thin ice! We don’t know how it will behave in real world.</li>
+</ul>
+
+<h2 id="programming-motherfucker">Programming, Motherfucker</h2>
+
+<p>OK, we are done with theory and fundamental problems. All the rest is just <a href="http://programming-motherfucker.com">http://programming-motherfucker.com</a></p>
+
+<ol>
+<li>Implement component libraries (e.g., forms, templates, DB queries, etc.)</li>
+<li>Wrap everything in components</li>
+<li>Connect components into graphs</li>
+<li>Convert old graphs from FBP to JSON</li>
+<li>Make sure it runs in Flowhub</li>
+</ol>
+
+                  
+   
+
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+    
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  <ul class="list-inline text-center">
+                    
+                    
+                    <li>
+                      <a href="https://twitter.com/sibiroff">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://github.com/trustmaster">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://www.facebook.com/trustmaster">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                  </ul>
+                  <p class="copyright text-muted">© Vladimir Sibirov. Code released under the MIT license.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script src="https://trustmaster.github.io//js/jquery.min.js"></script>
+
+    
+    <script src="https://trustmaster.github.io//js/bootstrap.min.js"></script>
+
+    
+    <script src="https://trustmaster.github.io//js/clean-blog.js"></script>
+
+    
+
+</body>
+
+</html>
+

@@ -1,0 +1,831 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>A system brought to life</title>
+    <link>https://trustmaster.github.io/index.xml</link>
+    <description>Recent content on A system brought to life</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© Vladimir Sibirov. Code released under the MIT license.</copyright>
+    <lastBuildDate>Tue, 21 Feb 2017 22:24:47 +0100</lastBuildDate>
+    <atom:link href="https://trustmaster.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>About</title>
+      <link>https://trustmaster.github.io/about/author/</link>
+      <pubDate>Tue, 21 Feb 2017 22:24:47 +0100</pubDate>
+      
+      <guid>https://trustmaster.github.io/about/author/</guid>
+      <description>
+
+&lt;h1 id=&#34;about-the-author&#34;&gt;About the author&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://trustmaster.github.io/img/photo_together.jpg&#34; alt=&#34;Photo with wife&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Hello world! My name is Vladimir and I&amp;rsquo;m a software engineer with a Master degree in Computer Science and background in Content Management Systems.&lt;/p&gt;
+
+&lt;h2 id=&#34;relevant-topics&#34;&gt;Relevant topics&lt;/h2&gt;
+
+&lt;p&gt;My most recent experience covers these topics:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Building and maintaining backends with Node.js and NoFlo&lt;/li&gt;
+&lt;li&gt;Practical use of Flow-based Programming in software architecture and implementation in Go and JavaScript&lt;/li&gt;
+&lt;li&gt;Technical leadership in small teams and keeping agile projects on full sail&lt;/li&gt;
+&lt;li&gt;Full-stack web application engineering (earlier with PHP/Laravel and AngularJS, etc.)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;history&#34;&gt;History&lt;/h2&gt;
+
+&lt;p&gt;I started to program back in 2001 and was captivated by the process of creating something out of thin air. Nowadays I still find this exact feeling the most precious about programming, except for solving real people needs of course.&lt;/p&gt;
+
+&lt;p&gt;My initial coding experience was highly inspired by DemoScene and included programing graphics, but in 2002 I released a CGI web programming library for FreePascal as my first Open Source project and built a small community around it.&lt;/p&gt;
+
+&lt;p&gt;In 2003 I switched to Linux/Apache/PHP/MySQL stack and continued with it as well as HTML/CSS/JavaScript for more than a decade.&lt;/p&gt;
+
+&lt;p&gt;My amusements at the University (from 2005 to 2011) consisted of many things including C/C++, C#, Prolog, Go, UML, hardware design, machine learning and what not. But the most affecting was FPGA hardware design put together with Systems Analysis models and applied to software engineering - this is what my Master Thesis was about.&lt;/p&gt;
+
+&lt;p&gt;Open Source has always played a big role in my life and in 2007 I joined &lt;a href=&#34;https://www.cotonti.com/&#34;&gt;Cotonti&lt;/a&gt; Content Management system and framework to lead its development and support the community.&lt;/p&gt;
+
+&lt;p&gt;Meanwhile I continued to earn money as a freelance LAMP specialist and around 2008 gathered a team of like-minded people to found my own development agency called &lt;a href=&#34;http://kodigy.com/&#34;&gt;Kodigy&lt;/a&gt;. Sometimes things at the agency went well, sometimes they didn&amp;rsquo;t. By 2013 I realized that I lack knowledge and skill in acquainting bigger customers and selling my work, and changed for a full-time technical position in Advertisement and Digital Production business.&lt;/p&gt;
+
+&lt;p&gt;I grew from a freelance contractor to a CTO in digital production industry, but then I realized that while I was mostly busy making the company run and grow smoothly, my technical expertise was becoming irrelevant. Something I thought too early to happen at the age of 25. So I left the advertisement market and went for a product company.&lt;/p&gt;
+
+&lt;p&gt;This is how I joined &lt;a href=&#34;https://thegrid.io&#34;&gt;The Grid&lt;/a&gt; - a pioneer in AI-designed websites. For me it has been a rare opportunity to run Flow-based systems in production and be a part of bright international team.&lt;/p&gt;
+
+&lt;h2 id=&#34;offtopic&#34;&gt;Offtopic&lt;/h2&gt;
+
+&lt;p&gt;Besides the scenes, I&amp;rsquo;m a family guy who loves his wife (she&amp;rsquo;s on the photo above) and little daughter.&lt;/p&gt;
+
+&lt;p&gt;I enjoy cooking, good food and good music (adjust the comma in this sentence to your taste). In winter my sport is skiing, in summer it&amp;rsquo;s fun to ride a bicycle. Below there&amp;rsquo;s a photo of my daughter looking to be not so pleased with it, but in fact she likes riding as much as I do :-)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://trustmaster.github.io/img/photo_onbike.jpg&#34; alt=&#34;Photo with bicycle and baby&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;All cover photos on this website are also by my own, including the shot of my lovely cat on the cover of this page =(^.^)=&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Development efficiency challenges in NoFlo</title>
+      <link>https://trustmaster.github.io/post/noflo_development_efficiency/</link>
+      <pubDate>Mon, 07 Nov 2016 17:39:26 +0100</pubDate>
+      
+      <guid>https://trustmaster.github.io/post/noflo_development_efficiency/</guid>
+      <description>
+
+&lt;h1 id=&#34;development-efficiency-challenges-in-noflo&#34;&gt;Development efficiency challenges in NoFlo&lt;/h1&gt;
+
+&lt;p&gt;Programming with NoFlo is getting more and more smooth with every release. However, if you maintaining a NoFlo application is your day-to-day job you may notice some inconveniences.&lt;/p&gt;
+
+&lt;h2 id=&#34;defining-new-components-is-slow&#34;&gt;Defining new components is slow&lt;/h2&gt;
+
+&lt;p&gt;Every time you add a new component you have to define a pretty massive hash map of its ports, their data types and preferably at least descriptions. This is cool as it encourages you to declare as many details as possible but it’s not very friendly to rapid prototyping where you want just to list the ports and get your hands on the code and add details later.&lt;/p&gt;
+
+&lt;h3 id=&#34;solutions&#34;&gt;Solutions&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Reduce minimal boilerplate for new components&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;wiring-up-all-the-ports-is-slow-fbp&#34;&gt;Wiring up all the ports is slow (.FBP)&lt;/h2&gt;
+
+&lt;p&gt;OK, maybe it wouldn’t be so slow if it was all done in Flowhub but until those glory days when we could switch all our projects to Flowhub, the problem persists.&lt;/p&gt;
+
+&lt;p&gt;Components have many ports. Say there are 8 components in the graph, each of them has 4 ports and there are also 2 inports and 2 outports in the graph. This could make at least 32 connections required for the graph to run. Which is writing 32 lines of code in .FBP, and what’s worse keeping them all and the whole picture in mind. Using &lt;a href=&#34;https://noflojs.org/visualize/&#34;&gt;NoFlo visualize tool&lt;/a&gt; helps a lot here though. But then you close that graph, open it 3 months later to add a new branch and rewire some connection and you can’t do it without a migraine or two.&lt;/p&gt;
+
+&lt;p&gt;With Flowhub it’s a bit easier b/c you see the picture, attach and detach connections and rewire it more or less effectively.&lt;/p&gt;
+
+&lt;h3 id=&#34;solutions-1&#34;&gt;Solutions&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Reduce the amount of ports and connections in the graphs&lt;/li&gt;
+&lt;li&gt;Use more terse syntax than .FBP&lt;/li&gt;
+&lt;li&gt;Switch to Flowhub eventually&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;can-t-tell-if-a-graph-works-until-everything-is-wired&#34;&gt;Can&amp;rsquo;t tell if a graph works until everything is wired&lt;/h2&gt;
+
+&lt;p&gt;It’s easier to code something in small iterations one piece at a time: add a component, add tests for it, add another component with tests, wire these two components, make sure they work together, add a third component, etc. then you have the whole graph and tests for it. This requires a lot of rewiring and intermediate tests.&lt;/p&gt;
+
+&lt;p&gt;As described above, in .FBP rewiring is expensive. In Flowhub rewiring is cheaper but still requires quite some clicks and drags, but what’s more important Flowhub/NoFlo won’t let you run the program until the graph is all wired up correctly. So what we do in practice is not trying anything until the entire graph is complete with all the components and connections. Which is a lot of headache wiring first (in .FBP) and then lots of bugs when it’s finally wired (both .FBP and Flowhub).&lt;/p&gt;
+
+&lt;h3 id=&#34;solutions-2&#34;&gt;Solutions&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Do write tests for components and subgraphs&lt;/li&gt;
+&lt;li&gt;Prefer mid-sized components and subgraphs so that each of them can have a test without too much hassle&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;doesn-t-show-which-component-failed-stuck&#34;&gt;Doesn&amp;rsquo;t show which component failed/stuck&lt;/h2&gt;
+
+&lt;p&gt;This is the hardest thing when debugging. So you know that the graph just hangs somewhere, at some component. But you don’t know which one. There is &lt;a href=&#34;https://www.npmjs.com/package/flowtrace&#34;&gt;Flowtrace&lt;/a&gt; at your service but reading a flowtrace of a real application is hell of a job, there can be hundreds of socket events and you have to figure out which ones are actually &lt;em&gt;missing&lt;/em&gt; from those hundreds. Replaying a flowtrace in Flowhub with &lt;code&gt;flowtrace-replay&lt;/code&gt; is slightly better but the problem persists: you need to find the missing piece of jigsaw.&lt;/p&gt;
+
+&lt;p&gt;A less critical but also annoying thing is that when something fails somewhere, you see the error in the output and it maybe even contains a stack trace to some extent but it doesn’t contain the process or component name, which you’d like to know in first place when opening an error output.&lt;/p&gt;
+
+&lt;h3 id=&#34;solutions-3&#34;&gt;Solutions&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Always include component names in stack traces&lt;/li&gt;
+&lt;li&gt;Always catch and log errors&lt;/li&gt;
+&lt;li&gt;Visual flowtraces in Flowhub&lt;/li&gt;
+&lt;li&gt;How could we fix the missing jigsaw problem?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;conditionals-branching-is-hard&#34;&gt;Conditionals/branching is hard&lt;/h2&gt;
+
+&lt;p&gt;There are no simple IFs in FBP. No such thing. If you need to check something, it’s either inside a component or a whole branch of the graph. Usually if you need an IF in the graph, it results into 2 graphs. Which takes time wiring up. And duplicates the code. And duplicates the bugs.&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;Stop thinking in control flow you idiots, you should think data flow here!&amp;rdquo; - says the Captain FBP. Yes, sir, how do I think such things in data flow, sir?&lt;/p&gt;
+
+&lt;h3 id=&#34;solutions-4&#34;&gt;Solutions&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Simple graphs are easier to add conditionals to&lt;/li&gt;
+&lt;li&gt;If you need to duplicate a branch, put it in a subgraph&lt;/li&gt;
+&lt;li&gt;Keep control logic inside components&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;components-flourish-with-promises-callbacks&#34;&gt;Components flourish with promises/callbacks&lt;/h2&gt;
+
+&lt;p&gt;Look inside a component that does some real job and you find yourself in the land of wild and unharnessed async JS. Callback hell - yes, promises - yes, &lt;code&gt;async/await&lt;/code&gt; inside the components - oh yes, coming soon. Dataflow you say? Hardly so.&lt;/p&gt;
+
+&lt;p&gt;I suspect that one of the initial syncretic intentions of NoFlo was to split these vertical callback staircases and promise stacks into good old black boxes with wires between them. However, splitting every async call and callback into 2 components is rather expensive, so in practice we rarely do that.&lt;/p&gt;
+
+&lt;p&gt;But could NoFlo help us simplify async code so we don’t have to write so many callbacks or promises? Yes, partially.&lt;/p&gt;
+
+&lt;h3 id=&#34;solutions-5&#34;&gt;Solutions&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Thoughtful breakdown of the applications into components&lt;/li&gt;
+&lt;li&gt;Use promises inside components&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;coffee-is-cool-but-it-s-es2015-for-most-people-now&#34;&gt;Coffee is cool but it’s ES2015+ for most people now&lt;/h2&gt;
+
+&lt;p&gt;CoffeeScript is really cool, it’s write less do more. Some people complain that all the cool kids are using ES6/7+Babel now and that CoffeeScript is completely abandoned. But it’s simply mature and cool and you still write less and do more with Coffee than with ES6+.&lt;/p&gt;
+
+&lt;p&gt;However, on a historical scale, CoffeeScript is most probably a stale creek. It’s popularity is not going to grow because of the cool kids and everybody busy watching the changes in ES spec. That means, if NoFlo wants to grow its audience, it has to embrace ES2015+ support. No-no, I don’t mean it should be rewritten in *Script (&lt;code&gt;s/*/(Type/Pure/whatever/&lt;/code&gt;), I mean the ecosystem should be very friendly to people coming from ES world. The documents should contain ES examples first and there should be good quality component libraries in ES to be used as reference too.&lt;/p&gt;
+
+&lt;h3 id=&#34;solutions-6&#34;&gt;Solutions&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Documentation should be ES-first, CS-second&lt;/li&gt;
+&lt;li&gt;Examples and reference libraries in ES&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;what-s-next&#34;&gt;What&amp;rsquo;s next?&lt;/h2&gt;
+
+&lt;p&gt;I&amp;rsquo;ve been addressing these problems and a few more while maintaining backends in NoFlo. Just like I created &lt;code&gt;WirePattern&lt;/code&gt; back in the days of &lt;code&gt;noflo@0.5.*&lt;/code&gt; (which is going for good with &lt;code&gt;noflo@0.8.*&lt;/code&gt; and the &lt;a href=&#34;http://bergie.iki.fi/blog/noflo-process-api/&#34;&gt;Process API&lt;/a&gt;), I&amp;rsquo;ve created &lt;a href=&#34;https://github.com/trustmaster/noflo-assembly&#34;&gt;NoFlo Assembly Line&lt;/a&gt; which is a combination of design patterns, best practices and a ES6 library that works on top of NoFlo. It&amp;rsquo;s not yet fully released and I plan to do so after NoFlo &lt;code&gt;0.8.0&lt;/code&gt; is officially out.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>On NoFlo database applications</title>
+      <link>https://trustmaster.github.io/post/on_noflo_db_apps/</link>
+      <pubDate>Wed, 27 Jul 2016 14:25:04 +0100</pubDate>
+      
+      <guid>https://trustmaster.github.io/post/on_noflo_db_apps/</guid>
+      <description>
+
+&lt;h1 id=&#34;on-noflo-database-applications&#34;&gt;On NoFlo Database Applications&lt;/h1&gt;
+
+&lt;p&gt;Thinking over common parts of database applications&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://trustmaster.github.io/img/post/on_noflo_db_apps.jpg&#34; alt=&#34;Scrappy notes&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;… I came to some conclusions below&lt;/p&gt;
+
+&lt;h2 id=&#34;common-application-architecture&#34;&gt;Common application architecture&lt;/h2&gt;
+
+&lt;h3 id=&#34;steps-common-to-all-route-graphs&#34;&gt;Steps common to all route graphs&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The only processing step that is often present and easy to decompose is Validate &lt;em&gt;(fig. I and II)&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;string-of-pearls-or-pipeline-or-request-backbone&#34;&gt;String of pearls or Pipeline or Request backbone&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Request flow should be serial, it simplifies synchronization and understanding of the flow.&lt;/li&gt;
+&lt;li&gt;Each bone in the spine of the graph or step on the pipeline can process some data in parallel. But as the flow should be unidirectional, scatter-gather topology &lt;em&gt;(fig. IV)&lt;/em&gt; is preferred over side jobs &lt;em&gt;(fig. III)&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;database-operations&#34;&gt;Database operations&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Database queries are all different across the application. Input data needs to be extracted/filtered first, then inserted into specific parts of the query, then the result rowset needs to be filtered too &lt;em&gt;(fig. V)&lt;/em&gt; to be used down the stream.&lt;/li&gt;
+&lt;li&gt;FBP-SQL would need either a lot of components to cover every specific query configuration, or a rather bushy query builder to compose complex queries in the graph.&lt;/li&gt;
+&lt;li&gt;Database operations are very granular in the app and appear in any domain of the app, so Flux Store makes no sense.&lt;/li&gt;
+&lt;li&gt;Using a single Database component in the graph makes too many wires.&lt;/li&gt;
+&lt;li&gt;Using one instance per query uses more memory.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Running web services as NoFlo graphs</title>
+      <link>https://trustmaster.github.io/post/noflo_webservices/</link>
+      <pubDate>Fri, 23 Jan 2015 14:38:41 +0100</pubDate>
+      
+      <guid>https://trustmaster.github.io/post/noflo_webservices/</guid>
+      <description>
+
+&lt;h1 id=&#34;getting-all-things-noflo&#34;&gt;Getting All Things NoFlo&lt;/h1&gt;
+
+&lt;p&gt;This article describes things which are yet TODO to get the entire server architecture running on NoFlo (and in Flowhub), problems related to them and potential solutions.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://trustmaster.github.io/img/post/noflo_all_the_things.png&#34; alt=&#34;NoFlo all the things!&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;request-isolation&#34;&gt;Request Isolation&lt;/h2&gt;
+
+&lt;p&gt;By default there is no isolation between IPs belonging to different user requests in NoFlo networks.&lt;/p&gt;
+
+&lt;h3 id=&#34;solution-1-current-a-new-network-instance-per-request&#34;&gt;Solution 1 (current): a new Network instance per request&lt;/h3&gt;
+
+&lt;p&gt;Express does its job conventionally, while request handlers instantiate NoFlo networks on demand.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Pros&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Easy to implement&lt;/li&gt;
+&lt;li&gt;Good level of isolation without much effort&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cons&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Doesn’t let us run the whole app as a NoFlo network&lt;/li&gt;
+&lt;li&gt;Waste of resources&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Conclusion&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;We need to move forward from it!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;solution-2-group-based-synchronization&#34;&gt;Solution 2: group-based synchronization&lt;/h3&gt;
+
+&lt;p&gt;Use the outmost (first in, last out) NoFlo group packet as request identifier. The entire app is a NoFlo graph, requests are born in noflo-xpress components and tagged with UUIDs, then all downstream components need to handle the outmost group carefully to synchronize data belonging to the same request.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Pros&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Possible with current NoFlo and WirePattern&lt;/li&gt;
+&lt;li&gt;Doesn’t hide all the magic under the hood, you see what makes synchronization happen and can override it&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cons&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;If any component of any subnet omits the outmost group or changes group order -&amp;gt; crash! boom! bang!&lt;/li&gt;
+&lt;li&gt;Error handling is tricky (see chapter below)&lt;/li&gt;
+&lt;li&gt;You still need to keep synchronization details in mind&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;use-cases-for-groups&#34;&gt;Use cases for groups&lt;/h4&gt;
+
+&lt;p&gt;Summarizing here what groups have been (reasonably) used for so far in NoFlo:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Passing request/job IDs the data belongs to.&lt;/li&gt;
+&lt;li&gt;Passing XML-like data structures, splitting them into parts and composing back.&lt;/li&gt;
+&lt;li&gt;Grouping UI events (&lt;graph&gt;&lt;event&gt;data&lt;/event&gt;&lt;/graph&gt;).&lt;/li&gt;
+&lt;li&gt;Tagging data with its source URL.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;groups-in-component-libraries&#34;&gt;Groups in component libraries&lt;/h4&gt;
+
+&lt;p&gt;Most of component libraries were written in NoFlo 0.3 and 0.4 days. Most of them disrespect groups and some of them even have synchronization bugs (e.g. core/Kick is race-prone in some cases).&lt;/p&gt;
+
+&lt;p&gt;Our original plan about it was to run a campaign porting all the libraries to 0.5 and using WirePattern when necessary.&lt;/p&gt;
+
+&lt;p&gt;With group forwarding required in every single component and with synchronization required in every 3rd or 5th, this is going to lead into a huge WirePattern spaghetti dish. The average NoFlo component won’t look elegant anymore.&lt;/p&gt;
+
+&lt;p&gt;My proposal consists of the following:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Build WirePattern into noflo.Component instead of noflo.Helpers.&lt;/li&gt;
+&lt;li&gt;Use port attributes to define some of the synchronization properties.&lt;/li&gt;
+&lt;li&gt;Enable group forwarding by default.&lt;/li&gt;
+&lt;li&gt;Introduce one or multiple &amp;ldquo;process&amp;rdquo; functions per component. Each function has its own “firing pattern” (a constraint on inport events that triggers the function).&lt;/li&gt;
+&lt;li&gt;Release these changes in NoFlo 0.6 and then run the library updating hackathon.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;solution-3-request-tokens-as-1st-class-term&#34;&gt;Solution 3: request tokens as 1st class term&lt;/h3&gt;
+
+&lt;p&gt;Application architecture is similar to Solution 2, but implementation is different. Instead of using outmost groups, add a concept of optional &amp;ldquo;request identifiers&amp;rdquo; or “context tokens” to NoFlo itself. Once a context token is attached to a substream, it sticks to each of its IP. Every component isolates data (input, output and internal state) using context tokens as scope keys and forwards context information downstream automatically. By default no context keys are used, so all data is in the same scope just like they didn’t exist. Context tokens are only used in applications which require request isolation.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Footnote: contexts are mentioned in Matt Carkci’s Dataflow book, so this idea is not just crazy, it’s known to work.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Pros:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Fixes the group consistency problem of Solution 2.&lt;/li&gt;
+&lt;li&gt;This would require minimal to no changes to existing components and subnets as most of context handling is done by NoFlo runtime itself.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cons:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;One more keyword in NoFlo language, and yet it’s not in &amp;ldquo;classical FBP&amp;rdquo; language either.&lt;/li&gt;
+&lt;li&gt;Despite keeping the current NoFlo 0.5 API, it requires heavy changes to WirePattern and other parts of the runtime.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;error-handling-and-synchronization&#34;&gt;Error handling and Synchronization&lt;/h2&gt;
+
+&lt;p&gt;Correct error tracking is tricky in a divergent-convergent graph because an error may happen at any node while other parts of the request may be hanging in other parts of the graph. They have to be pulled together somehow and forwarded back to the client properly.&lt;/p&gt;
+
+&lt;p&gt;To make things more complicated, there are different kinds of errors which need to be handled differently:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Warnings (e.g., input validation errors): it is better to check for as many of these as possible and collect them in a list before sending a response to user.&lt;/li&gt;
+&lt;li&gt;Errors (e.g. database record not found, third party service time-out): such errors stop further processing of the request immediately with an error message, but they are considered as a normal part of the application flow.&lt;/li&gt;
+&lt;li&gt;Fatals (e.g. undefined variable or database connection is down): such errors not only stop further processing of the request but also raise a kind of notification to a developer that something is going really wrong and most probably human’s attention is needed.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Handling these errors is most likely out of scope of NoFlo itself, but is rather a matter of architecture patterns.&lt;/p&gt;
+
+&lt;h3 id=&#34;solution-1-string-of-pearls&#34;&gt;Solution 1: &amp;ldquo;String of pearls&amp;rdquo;&lt;/h3&gt;
+
+&lt;p&gt;J. Paul Morrison suggests using &amp;ldquo;string of pearls&amp;rdquo; FBP pattern in all applications dealing with requests. In this pattern, all the data for the request is collected within a single substream. The substream floats from one pearl in the string to another (just like on a pipeline). Each pearl on a string may pass the substream to its side processes (e.g. to load missing data, etc.) before forwarding it to the next pearl. Side processes return substreams back to pearls. At the same moment of time the request (and all the data associated with it) belongs to a single process, so if an error occurs, the current pearl just finishes the request without having to gather it from a branchy graph.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Pros:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Reliability of this pattern has been proved by time and real banking applications. (and JPM :-))&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cons:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;It encourages concurrent processing of different requests but restricts concurrent processing of the same request. While in some applications parallel tasks would really reduce response time and make users happier.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;solution-2-request-processors&#34;&gt;Solution 2: Request processors&lt;/h3&gt;
+
+&lt;p&gt;This pattern is very similar to &amp;ldquo;String of pearls&amp;rdquo; but allows a certain level of divergence-convergence to do parallel processing.&lt;/p&gt;
+
+&lt;p&gt;It introduces Request processors - a special type of processes which own the requests, scatter data to subgraphs and gather them back for a response.&lt;/p&gt;
+
+&lt;p&gt;Request processors make up a &amp;ldquo;backbone&amp;rdquo; of the application. Similar to string of pearls, requests float down the backbone of processors. But when a processor needs some side work to be done for a request, it doesn’t pass it with all the data to a single side process, but rather holds the request and sends the data to its workers with request ID attached. The workers do their job and return the results (and/or errors) to their master. The master then gathers the results and decides either to pass the request to the next processor in the backbone, or to finish it with a response immediately.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Pros:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Maintains request consistency just like &amp;ldquo;string of pearls&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Allows parallel computations for the same request.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cons:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Synchronization code of Request processors is reusable, but its implementation is non-trivial.#&lt;/li&gt;
+&lt;li&gt;Caution: thin ice! We don’t know how it will behave in real world.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;programming-motherfucker&#34;&gt;Programming, Motherfucker&lt;/h2&gt;
+
+&lt;p&gt;OK, we are done with theory and fundamental problems. All the rest is just &lt;a href=&#34;http://programming-motherfucker.com&#34;&gt;http://programming-motherfucker.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Implement component libraries (e.g., forms, templates, DB queries, etc.)&lt;/li&gt;
+&lt;li&gt;Wrap everything in components&lt;/li&gt;
+&lt;li&gt;Connect components into graphs&lt;/li&gt;
+&lt;li&gt;Convert old graphs from FBP to JSON&lt;/li&gt;
+&lt;li&gt;Make sure it runs in Flowhub&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Comparison of dataflow models</title>
+      <link>https://trustmaster.github.io/post/dataflow-model-comparison/</link>
+      <pubDate>Sun, 03 Jun 2012 15:56:29 +0100</pubDate>
+      
+      <guid>https://trustmaster.github.io/post/dataflow-model-comparison/</guid>
+      <description>
+
+&lt;h1 id=&#34;comparison-of-dataflow-models&#34;&gt;Comparison of dataflow models&lt;/h1&gt;
+
+&lt;h2 id=&#34;mathematical-model-of-choice&#34;&gt;Mathematical model of choice&lt;/h2&gt;
+
+&lt;p&gt;Comparison criteria and analysis methods should be chosen before performing actual analysis.&lt;/p&gt;
+
+&lt;p&gt;We will solve the task of parallel computation model evaluation as a multiple criteria choice. In order to do this, a set of particular criteria is outlined and for each of them a mapping to the real numbers set is defined:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;k(x):i(x)→R(1)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;where &lt;code&gt;x&lt;/code&gt; - is alternative choice (model);
+&lt;code&gt;i(x)&lt;/code&gt; - is a particular factor value;
+&lt;code&gt;R&lt;/code&gt; - is the set of real numbers;
+&lt;code&gt;k&lt;/code&gt; - is the particular criterion number, &lt;code&gt;k∈[1,K]&lt;/code&gt;;
+&lt;code&gt;K&lt;/code&gt; - total number of particular criteria.&lt;/p&gt;
+
+&lt;p&gt;The following relations between possible particular criterion values &lt;code&gt;yi&lt;/code&gt; are used:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;yi≈yj&lt;/code&gt; - equivalence relation. Two values are equivalent if none of them is more preferable than the other. Every value is equivalent to itself.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;yi&amp;lt;yj,i≠j&lt;/code&gt; - preference relation. Value &lt;code&gt;yj&lt;/code&gt; is more preferable than &lt;code&gt;yi&lt;/code&gt; if it has benefits over it for a decision maker.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;yi≪yj,i≠j&lt;/code&gt; - strong preference relation. Value &lt;code&gt;yj&lt;/code&gt; is a lot more preferable than &lt;code&gt;yi&lt;/code&gt; if it has benefits of new quality over it for a decision maker. Strong preference is a type of preference relation.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;yi≤yj&lt;/code&gt; -  non-strict preference relation. Value &lt;code&gt;yj&lt;/code&gt; is more preferable or equivalent to &lt;code&gt;yi&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Then &lt;code&gt;k&lt;/code&gt;&amp;lsquo;th criterion numeric evaluation function (1) can be written as the following recursive formula:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;k(yi)=0,∀j:yi≤yjk(yj)+P,yj&amp;lt;yik(yj)+Q,yj≪yi(2)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here &lt;code&gt;P&lt;/code&gt; and &lt;code&gt;Q&lt;/code&gt; — are constant weights set by a decision-maker which determine the extent of difference between particular choices. The most trivial example is &lt;code&gt;P=1, Q=2&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;For multi-criteria decision making we will use a simple &lt;em&gt;weighted sum model&lt;/em&gt; (WSM).  We will use &lt;em&gt;linear convolution method&lt;/em&gt; to get a scalar quality estimate &lt;code&gt;Y&lt;/code&gt; of a model &lt;code&gt;x&lt;/code&gt; because the importance of each of the particular criteria is defined by a decision maker. Then generalized quality factor looks like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Y(x)=∑i=1Kαi⋅i(x)→max(3)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;where &lt;code&gt;αi&amp;gt;0&lt;/code&gt;  is the &lt;code&gt;i&lt;/code&gt;&amp;lsquo;th criterion significance (weight) defined by a decision maker. If a normalized estimate is being calculated, the following limitation takes place:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;∑i=1Kαi=1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We will group particular criteria into several semantic groups. Then we can calculate values for denormalized factors for each group and then sum up all particular sums to get the generalized factor as shown in formula (4):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Y(x)=∑m=1Mβm⋅Ym(x)(4)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;where &lt;code&gt;M&lt;/code&gt; — is the quantity of semantic groups of criteria;
+&lt;code&gt;βm&amp;gt;0&lt;/code&gt; - significance (weight) of the &lt;code&gt;m&lt;/code&gt;&amp;lsquo;th group.&lt;/p&gt;
+
+&lt;h2 id=&#34;particular-model-evaluation-factors&#34;&gt;Particular model evaluation factors&lt;/h2&gt;
+
+&lt;p&gt;Below there is a multilevel list of evaluated properties of the dataflow models. At the top level there are groups of criteria, then there are factors themselves nested and lists of possible values inside them. Numeric scale constants calculated using formula (2) are given in parenthesis.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Ease of development — these factors are related to how easy, quickly and convenient application development is.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Structure decomposition&lt;/em&gt; — means explicit application structure definition as a graph, which allows the use of methods and utilities of structural analysis and significantly simplifies perception of the model by both specialists and non-specialists:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;not emphasized (0)&lt;/em&gt; — means that structure is not emphasized explicitly which is usual for models supporting text notation only;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;2-3 levels (P)&lt;/em&gt; — models with a fixed number of decomposition levels are relatively simple but they are not so powerful in terms of complex systems design as multilevel models;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;multilevel (Q)&lt;/em&gt; — especially effective to design large and complex software systems.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Notation support&lt;/em&gt; — determines which kind of a language the structure and behavior of the system can be defined in:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;text (0)&lt;/em&gt; — textual languages are usually effective for behavior definition but it is not so for application structure definition and message routing;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;visual (0)&lt;/em&gt; — visual notation is very convenient for structural analysis and drawing of communication graphs but may be too cumbersome for behavior definition;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;double (Q)&lt;/em&gt; — usually means that the structure is represented visually while behavior of particular components is defined with a textual algorithmic language which is the most practical solution.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Iteration facilities&lt;/em&gt; — presence of special elements and tools to implement iteration and recursion which simplifies application development:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;not emphasized (0)&lt;/em&gt; — iteration is implemented manually using complex constructs with back-coupling loops;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;recursion&lt;/em&gt; (P) — iteration can only be implemented using recursion;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;control structures&lt;/em&gt; (P) — iteration can be implemented using control structures within component blocks;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;specific elements (Q)&lt;/em&gt; — the language has specific elements to implement iteration easily as well as recursion and built-in control structures.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Performance and resource consumption — this group of factors affects application scalability, response time, throughput, CPU time consumption, RAM consumption and other performance characteristics.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Message passing&lt;/em&gt; — depending on whether a handshake from both sides is required to finish the message transfer successfully:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;synchronous (0)&lt;/em&gt; — in this case the sender waits until the receiver receives the whole message or until the message is buffered. This mode is easier to control but it may result into higher latency;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;asynchronous (P)&lt;/em&gt; — the sender does not wait until the message is received in full and proceeds to its further actions. This mode tends to use CPU time more effectively especially in presence of long input/output operations.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Message buffering&lt;/em&gt; — defines whether the runtime buffers the messages:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;none (0)&lt;/em&gt; — if the message is passed from the sender to the receiver directly and both processes are blocked during message transfer;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;limited (P)&lt;/em&gt; — if non-blocking message passing is supported using bounded buffers; if the queue length reaches the buffer capacity limit, then the sender is blocked;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;unlimited (Q)&lt;/em&gt; — if the system provides unbounded buffer size in an explicit or an implicit way. This may result into higher memory consumption but guarantees that the message is eventually delivered while the sender can act without being blocked.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Process persistence&lt;/em&gt; — this aspect is related to a fact whether application components are resident in memory during its lifetime or not:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;non-resident&lt;/em&gt; (0) — in such systems processes are spawned to process a new incoming portion of data and terminated when the result of processing is sent along the communication channel. It preserves from memory leaks and saves memory for otherwise rarely used subnets;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;resident&lt;/em&gt; (0) — such processes reside in memory for all the time that application runs which lets them respond faster (they don&amp;rsquo;t need to spend time for initialization) but this increases memory consumption and leak risk (if a garbage collector is not used);&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;by choice&lt;/em&gt; (P) — the paradigm and the framework allows a user to develop programs consisting either from resident or from non-resident components depending on what the particular application requires;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;combined&lt;/em&gt; (Q) — in this case some of the components can be made resident  (e.g. if a fast response is required from them) while some of the components within the same network can be non-resident (for example if it is rarely used and its resources can be effectively allocated on demand).&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Parallelism facilities&lt;/em&gt; — which mechanism of parallelism is used on operating system (OS) level:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;processes (0)&lt;/em&gt; — if there are multiple OS processes using interprocess communication (IPC) signals;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;threads (0)&lt;/em&gt; — OS threads communicating via shared memory;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;coroutines (0)&lt;/em&gt; — lightweight processes, &amp;ldquo;green&amp;rdquo; threads or coroutines are effectively multiplexed within one OS thread/process;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;combined (Q) —&lt;/em&gt; a combination of facilities from a) to c) are used, e.g. threads + lightweight processes.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Flexibility and extensibility — these factors affect the variety of tasks that can be covered by a particular model and how easily the existing programs which have been built using that model can be extended in future.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Structure changes&lt;/em&gt; — means the possibility to create and modify subnets in application graph during runtime:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;static&lt;/em&gt; (0) — such a structure is defined by an engineer once during design/implementation stage and requires the application to be recompiled and restarted in case of a change;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;dynamic&lt;/em&gt; (Q) — such a structure allows the system to change during runtime, up to continuous evolution of the system.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Feedback loops&lt;/em&gt; — defines whether the model supports feedback loops, i.e. signals can be passed from ports down the data stream to the ports up the regular data stream:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;no&lt;/em&gt; (0) — some models forbid feedback loops explicitly to avoid possible deadlocks a priori. This results into a smaller application domain and complicates implementation of iterative algorithms;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;yes&lt;/em&gt; (P) — feedback loops may cause deadlocks in some cases but allow an engineer to solve a wider variety of problems in a more simple way.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Control signals&lt;/em&gt; — represents the emphasis of control signals as a separate type of signals:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;not emphasized&lt;/em&gt; (0) — in this case control parameter values are passed directly to regular input and a component should distinguish them and ensure a correct response itself;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;initial&lt;/em&gt; (0) — in this case control parameter values are entered only once during application initialization which allows a developer to modify system&amp;rsquo;s behavior from one run to another;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;dynamic&lt;/em&gt; (P) — in this case control signals can arrive to a component from both system&amp;rsquo;s environment and other higher-level components during runtime which provides a higher level of flexibility and parametrization.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Non-determinism&lt;/em&gt; — on the one hand it affects the spectrum of solvable tasks and on the other it affects system&amp;rsquo;s reliability ambiguously [32]:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;deterministic&lt;/em&gt; (0) — deterministic systems are simple and easy to detect errors but they don&amp;rsquo;t ensure guaranteed service and refuse requests more often;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;bounded nondeterminism&lt;/em&gt; (P) — systems with bounded nondeterminism solve a wider spectrum of tasks and have a lower fault probability (usually by means of message queues);&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;em&gt;unbounded nondeterminism&lt;/em&gt; (Q) — models supporting unbounded nondeterminism in theory solve the widest variety of tasks possible while being able to guarantee that a request will be served even if the system load continues to grow.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;comparison-analysis-of-interaction-models-based-on-data-flows&#34;&gt;Comparison analysis of interaction models based on data flows&lt;/h2&gt;
+
+&lt;p&gt;Below there are tables representing the results of comparison of Flow-Based Programming (FBP), Actor model (Actor) and Communicating Sequential Processes (CSP) as theoretic component interaction models and practical frameworks. The &amp;ldquo;Ideal&amp;rdquo; column is somewhat what a perfect hypothetical model would provide.&lt;/p&gt;
+
+&lt;p&gt;The marks specified  in parenthesis are the points values of the scale:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;0 (not specified) -  no certain advantage;&lt;/li&gt;
+&lt;li&gt;P – definite advantage;&lt;/li&gt;
+&lt;li&gt;Q – higher order advantage which gives a more possibilities than 0 and P.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;FBP is considered as Morrison&amp;rsquo;s JavaFBP/C#FBP in first place, Actor model is mostly analyzed from its Erlang implementation, CSP example is the default Go language&amp;rsquo;s runtime.&lt;/p&gt;
+
+&lt;h3 id=&#34;table-1-comparison-by-ease-of-development-criteria&#34;&gt;Table 1 — Comparison by ease of development criteria&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Factor&lt;/td&gt;
+    &lt;td&gt;Wt.&lt;/td&gt;
+    &lt;td&gt;FBP&lt;/td&gt;
+    &lt;td&gt;Actor&lt;/td&gt;
+    &lt;td&gt;CSP&lt;/td&gt;
+    &lt;td&gt;Ideal&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Structure decomposition&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;Multilevel (Q)&lt;/td&gt;
+    &lt;td&gt;Not emphasized&lt;/td&gt;
+    &lt;td&gt;Not emphasized&lt;/td&gt;
+    &lt;td&gt;Multilevel (Q)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Notation support&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;Double(Q)&lt;/td&gt;
+    &lt;td&gt;Text&lt;/td&gt;
+    &lt;td&gt;Text&lt;/td&gt;
+    &lt;td&gt;Double (Q)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Iteration facilities&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;Not emphasized&lt;/td&gt;
+    &lt;td&gt;Recursion (P)&lt;/td&gt;
+    &lt;td&gt;Control structures (P)&lt;/td&gt;
+    &lt;td&gt;Specific elements (Q)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Total&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;2Q&lt;/td&gt;
+    &lt;td&gt;P&lt;/td&gt;
+    &lt;td&gt;P&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;table-2-performance-and-resource-consumption-related-factors-comparison&#34;&gt;Table 2 — Performance and resource consumption related factors comparison&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Factor&lt;/td&gt;
+    &lt;td&gt;Wt.&lt;/td&gt;
+    &lt;td&gt;FBP&lt;/td&gt;
+    &lt;td&gt;Actor&lt;/td&gt;
+    &lt;td&gt;CSP&lt;/td&gt;
+    &lt;td&gt;Ideal&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Message passing&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;Synchronous&lt;/td&gt;
+    &lt;td&gt;Asynchronous (P)&lt;/td&gt;
+    &lt;td&gt;Synchronous&lt;/td&gt;
+    &lt;td&gt;Asynchronous (P)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Message buffering&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;Limited (P)&lt;/td&gt;
+    &lt;td&gt;Unlimited (Q)&lt;/td&gt;
+    &lt;td&gt;Limited (P)&lt;/td&gt;
+    &lt;td&gt;Unlimited (Q)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Process persistence&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;By choice (P)&lt;/td&gt;
+    &lt;td&gt;Non-resident&lt;/td&gt;
+    &lt;td&gt;Combined (Q)&lt;/td&gt;
+    &lt;td&gt;Combined (Q)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Parallelism facilities&lt;/td&gt;
+    &lt;td&gt;0&lt;/td&gt;
+    &lt;td&gt;Threads&lt;/td&gt;
+    &lt;td&gt;Combined (Q)&lt;/td&gt;
+    &lt;td&gt;Combined (Q)&lt;/td&gt;
+    &lt;td&gt;Combined (Q)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Total&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;2P&lt;/td&gt;
+    &lt;td&gt;P+Q&lt;/td&gt;
+    &lt;td&gt;P+Q&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;table-3-flexibility-and-extensibility-criteria-comparison&#34;&gt;Table 3 — Flexibility and extensibility criteria comparison&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Factor&lt;/td&gt;
+    &lt;td&gt;Wt.&lt;/td&gt;
+    &lt;td&gt;FBP&lt;/td&gt;
+    &lt;td&gt;Actor&lt;/td&gt;
+    &lt;td&gt;CSP&lt;/td&gt;
+    &lt;td&gt;Ideal&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Structure changes&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;Static&lt;/td&gt;
+    &lt;td&gt;Dynamic (Q)&lt;/td&gt;
+    &lt;td&gt;Dynamic (Q)&lt;/td&gt;
+    &lt;td&gt;Dynamic (Q)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Feedback loops&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;Yes (P)&lt;/td&gt;
+    &lt;td&gt;Yes (P)&lt;/td&gt;
+    &lt;td&gt;Yes (P)&lt;/td&gt;
+    &lt;td&gt;Yes (P)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Control signals&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;Initial (P)&lt;/td&gt;
+    &lt;td&gt;Not emphasized&lt;/td&gt;
+    &lt;td&gt;Not emphasized&lt;/td&gt;
+    &lt;td&gt;Dynamic (Q)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Non-determinism&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;Bounded (P)&lt;/td&gt;
+    &lt;td&gt;Unbounded (Q)&lt;/td&gt;
+    &lt;td&gt;Unbounded (Q)&lt;/td&gt;
+    &lt;td&gt;Unbounded (Q)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Total&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;3P&lt;/td&gt;
+    &lt;td&gt;P+2Q&lt;/td&gt;
+    &lt;td&gt;P+2Q&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Note that Parallel facilities is implementation-specific, so we exclude them from the Total sums. Most of the other criteria are model-specific.&lt;/p&gt;
+
+&lt;p&gt;Now we can sum the group values and get the final scalar estimates. In order to get them as simple integers we can specify P and Q scale constants. In this simple example we set all Weights (Wt.) to 1, &lt;code&gt;P = 1&lt;/code&gt; and &lt;code&gt;Q = 2&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;table-4-consolidated-comparison-results-table&#34;&gt;Table 4 — Consolidated comparison results table&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Group of factors&lt;/td&gt;
+    &lt;td&gt;Wt.&lt;/td&gt;
+    &lt;td&gt;FBP&lt;/td&gt;
+    &lt;td&gt;Actor&lt;/td&gt;
+    &lt;td&gt;CSP&lt;/td&gt;
+    &lt;td&gt;Ideal&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Ease of development&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;2Q (4)&lt;/td&gt;
+    &lt;td&gt;P (1)&lt;/td&gt;
+    &lt;td&gt;P (1)&lt;/td&gt;
+    &lt;td&gt;3Q (6)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Performance and resources&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;2P (2)&lt;/td&gt;
+    &lt;td&gt;P+Q (3)&lt;/td&gt;
+    &lt;td&gt;P+Q (3)&lt;/td&gt;
+    &lt;td&gt;P+2Q (5)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Flexibility and extensibility&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;3P (3)&lt;/td&gt;
+    &lt;td&gt;P+2Q (3)&lt;/td&gt;
+    &lt;td&gt;P+2Q (3)&lt;/td&gt;
+    &lt;td&gt;P+3Q (7)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Total&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;5P+2Q (9)&lt;/td&gt;
+    &lt;td&gt;3P+3Q (9)&lt;/td&gt;
+    &lt;td&gt;3P+3Q (9)&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;By customizing Weight values, P and Q constants you can get different estimates which match your own priorities better.&lt;/p&gt;
+
+&lt;p&gt;There is no actual &amp;ldquo;best&amp;rdquo; model, all these models are in the Pareto set.&lt;/p&gt;
+
+&lt;p&gt;The FBP model is the most comfortable to use at software design stage and then during implementation because it supports structure analysis and decomposition, double notation (textual description of component behavior and graphical representation of overall application). But actor and CSP models, which are very close to each other, can handle a wider class of tasks and support dynamic restructuring at run-time up to unbounded nondeterminism. The difference between CSP and Actor models is in message passing semantics details, but they are almost identical when using large buffers in CSP.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s outline the weak points and the ways that each of these models or platforms can be improved.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;FBP&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Static structure. For the model to be really flexible and universal, it needs to support dynamic restructuring so that an application would be capable of changing entire subnets at run-time. Another major problem is that it is hard to display such dynamic structure (especially if changes are frequent and of variable structure themselves)  on graphical diagrams, which are the strongest points of this model.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;As a consequence, this model supports bounded nondeterminism. Shortly, this means that the system cannot guarantee normal functioning behind the boundaries where its behavior is determined.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Facilities for recursion and iteration handling would also improve this model, so that it would make it clear and easy how to implement cyclic and iterative structures.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Actor model:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The main disadvantage of most existing actor model implementation is that the only notation supported is textual. Historically this model has been utilized in functional programming languages which rarely have a visual presentation. This makes it hard to apply structure decomposition techniques and maintain the system. A possible solution is to split the system into 2 levels using different notations: high level coordination language (visual or textual) and low level textual component behavior description.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;CSP&lt;/strong&gt; has the same problems as the actor model in general. But another thing a CSP developer has to care about is capacity of each buffer in communication channels, which in reality depends on an exact application and current inbound data intensity.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

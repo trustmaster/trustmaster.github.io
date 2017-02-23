@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>On NoFlo database applications -- A system brought to life</title>
+
+    
+
+    
+    <link href="https://trustmaster.github.io//css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <link href="https://trustmaster.github.io//css/clean-blog.min.css" rel="stylesheet">
+
+    
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    
+    
+    
+
+</head>
+
+<body>
+
+    
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="https://trustmaster.github.io/">A system brought to life</a>
+            </div>
+
+                       
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li>
+                        <a href="https://trustmaster.github.io/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://trustmaster.github.io/post/">Archives</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://trustmaster.github.io/about/author/">About</a>
+                    </li>
+                    
+                  </ul>
+            </div>
+           
+
+        </div>
+        
+    </nav>
+
+
+    
+    
+    <header class="intro-header" style="background-image: url('https://trustmaster.github.io///img/post-bg.jpg')">
+      
+      <div class="container">
+        <div class="row">
+           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+             <div class="post-heading">
+               <h1>On NoFlo database applications</h1>
+               <h2 class="subheading">A few thoughts on design of NoFlo backends frequently talking to a RDBMS</h2>
+               <span class="meta">
+                 
+  A 2 minute read,
+
+Posted by <a href="#">Vladimir Sibirov</a> on Wed, Jul 27, 2016
+<br />
+In <a href="https://trustmaster.github.io/categories/flow-based-programming">Flow-Based Programming</a>, <a href="https://trustmaster.github.io/categories/noflo">NoFlo</a>
+
+<br />
+Tags <a href="https://trustmaster.github.io/tags/noflo">noflo</a>, <a href="https://trustmaster.github.io/tags/fbp">fbp</a>, <a href="https://trustmaster.github.io/tags/development">development</a>
+
+               </span>
+             </div>
+           </div>
+        </div>
+      </div>
+    </header>
+
+    
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  
+
+<h1 id="on-noflo-database-applications">On NoFlo Database Applications</h1>
+
+<p>Thinking over common parts of database applications&hellip;</p>
+
+<p><img src="https://trustmaster.github.io/img/post/on_noflo_db_apps.jpg" alt="Scrappy notes" /></p>
+
+<p>… I came to some conclusions below</p>
+
+<h2 id="common-application-architecture">Common application architecture</h2>
+
+<h3 id="steps-common-to-all-route-graphs">Steps common to all route graphs</h3>
+
+<ul>
+<li>The only processing step that is often present and easy to decompose is Validate <em>(fig. I and II)</em>.</li>
+</ul>
+
+<h3 id="string-of-pearls-or-pipeline-or-request-backbone">String of pearls or Pipeline or Request backbone</h3>
+
+<ul>
+<li>Request flow should be serial, it simplifies synchronization and understanding of the flow.</li>
+<li>Each bone in the spine of the graph or step on the pipeline can process some data in parallel. But as the flow should be unidirectional, scatter-gather topology <em>(fig. IV)</em> is preferred over side jobs <em>(fig. III)</em>.</li>
+</ul>
+
+<h2 id="database-operations">Database operations</h2>
+
+<ul>
+<li>Database queries are all different across the application. Input data needs to be extracted/filtered first, then inserted into specific parts of the query, then the result rowset needs to be filtered too <em>(fig. V)</em> to be used down the stream.</li>
+<li>FBP-SQL would need either a lot of components to cover every specific query configuration, or a rather bushy query builder to compose complex queries in the graph.</li>
+<li>Database operations are very granular in the app and appear in any domain of the app, so Flux Store makes no sense.</li>
+<li>Using a single Database component in the graph makes too many wires.</li>
+<li>Using one instance per query uses more memory.</li>
+</ul>
+
+                  
+   
+
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+    
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  <ul class="list-inline text-center">
+                    
+                    
+                    <li>
+                      <a href="https://twitter.com/sibiroff">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://github.com/trustmaster">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://www.facebook.com/trustmaster">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                  </ul>
+                  <p class="copyright text-muted">© Vladimir Sibirov. Code released under the MIT license.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script src="https://trustmaster.github.io//js/jquery.min.js"></script>
+
+    
+    <script src="https://trustmaster.github.io//js/bootstrap.min.js"></script>
+
+    
+    <script src="https://trustmaster.github.io//js/clean-blog.js"></script>
+
+    
+
+</body>
+
+</html>
+

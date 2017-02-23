@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://trustmaster.github.io/about/author/</loc>
+    <lastmod>2017-02-21T22:24:47+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://trustmaster.github.io/post/noflo_development_efficiency/</loc>
+    <lastmod>2016-11-07T17:39:26+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://trustmaster.github.io/post/on_noflo_db_apps/</loc>
+    <lastmod>2016-07-27T14:25:04+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://trustmaster.github.io/post/noflo_webservices/</loc>
+    <lastmod>2015-01-23T14:38:41+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://trustmaster.github.io/post/dataflow-model-comparison/</loc>
+    <lastmod>2012-06-03T15:56:29+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://trustmaster.github.io/</loc>
+    <lastmod>2017-02-21T22:24:47+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://trustmaster.github.io/about/</loc>
+    <lastmod>2017-02-21T22:24:47+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://trustmaster.github.io/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://trustmaster.github.io/categories/computer-science/</loc>
+    <lastmod>2012-06-03T15:56:29+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://trustmaster.github.io/tags/dataflow/</loc>
+    <lastmod>2012-06-03T15:56:29+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://trustmaster.github.io/tags/development/</loc>
+    <lastmod>2016-11-07T17:39:26+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://trustmaster.github.io/tags/fbp/</loc>
+    <lastmod>2016-11-07T17:39:26+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://trustmaster.github.io/categories/flow-based-programming/</loc>
+    <lastmod>2016-11-07T17:39:26+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://trustmaster.github.io/tags/noflo/</loc>
+    <lastmod>2016-11-07T17:39:26+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://trustmaster.github.io/categories/noflo/</loc>
+    <lastmod>2016-11-07T17:39:26+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://trustmaster.github.io/post/</loc>
+    <lastmod>2016-11-07T17:39:26+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://trustmaster.github.io/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>
