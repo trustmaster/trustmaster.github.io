@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Noflo on A system brought to life</title>
-    <link>https://trustmaster.github.io/tags/noflo/index.xml</link>
+    <link>http://blog.kodigy.com/tags/noflo/index.xml</link>
     <description>Recent content in Noflo on A system brought to life</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Vladimir Sibirov. Code released under the MIT license.</copyright>
-    <atom:link href="https://trustmaster.github.io/tags/noflo/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.kodigy.com/tags/noflo/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Development efficiency challenges in NoFlo</title>
-      <link>https://trustmaster.github.io/post/noflo_development_efficiency/</link>
+      <link>http://blog.kodigy.com/post/noflo_development_efficiency/</link>
       <pubDate>Mon, 07 Nov 2016 17:39:26 +0100</pubDate>
       
-      <guid>https://trustmaster.github.io/post/noflo_development_efficiency/</guid>
+      <guid>http://blog.kodigy.com/post/noflo_development_efficiency/</guid>
       <description>
 
 &lt;h1 id=&#34;development-efficiency-challenges-in-noflo&#34;&gt;Development efficiency challenges in NoFlo&lt;/h1&gt;
@@ -125,17 +125,17 @@
     
     <item>
       <title>On NoFlo database applications</title>
-      <link>https://trustmaster.github.io/post/on_noflo_db_apps/</link>
+      <link>http://blog.kodigy.com/post/on_noflo_db_apps/</link>
       <pubDate>Wed, 27 Jul 2016 14:25:04 +0100</pubDate>
       
-      <guid>https://trustmaster.github.io/post/on_noflo_db_apps/</guid>
+      <guid>http://blog.kodigy.com/post/on_noflo_db_apps/</guid>
       <description>
 
 &lt;h1 id=&#34;on-noflo-database-applications&#34;&gt;On NoFlo Database Applications&lt;/h1&gt;
 
 &lt;p&gt;Thinking over common parts of database applications&amp;hellip;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://trustmaster.github.io/img/post/on_noflo_db_apps.jpg&#34; alt=&#34;Scrappy notes&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.kodigy.com/img/post/on_noflo_db_apps.jpg&#34; alt=&#34;Scrappy notes&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;… I came to some conclusions below&lt;/p&gt;
 
@@ -168,17 +168,17 @@
     
     <item>
       <title>Running web services as NoFlo graphs</title>
-      <link>https://trustmaster.github.io/post/noflo_webservices/</link>
+      <link>http://blog.kodigy.com/post/noflo_webservices/</link>
       <pubDate>Fri, 23 Jan 2015 14:38:41 +0100</pubDate>
       
-      <guid>https://trustmaster.github.io/post/noflo_webservices/</guid>
+      <guid>http://blog.kodigy.com/post/noflo_webservices/</guid>
       <description>
 
 &lt;h1 id=&#34;getting-all-things-noflo&#34;&gt;Getting All Things NoFlo&lt;/h1&gt;
 
 &lt;p&gt;This article describes things which are yet TODO to get the entire server architecture running on NoFlo (and in Flowhub), problems related to them and potential solutions.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://trustmaster.github.io/img/post/noflo_all_the_things.png&#34; alt=&#34;NoFlo all the things!&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.kodigy.com/img/post/noflo_all_the_things.png&#34; alt=&#34;NoFlo all the things!&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;request-isolation&#34;&gt;Request Isolation&lt;/h2&gt;
 

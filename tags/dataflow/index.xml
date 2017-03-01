@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dataflow on A system brought to life</title>
-    <link>https://trustmaster.github.io/tags/dataflow/index.xml</link>
+    <link>http://blog.kodigy.com/tags/dataflow/index.xml</link>
     <description>Recent content in Dataflow on A system brought to life</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Vladimir Sibirov. Code released under the MIT license.</copyright>
-    <atom:link href="https://trustmaster.github.io/tags/dataflow/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.kodigy.com/tags/dataflow/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Comparison of dataflow models</title>
-      <link>https://trustmaster.github.io/post/dataflow-model-comparison/</link>
+      <link>http://blog.kodigy.com/post/dataflow-model-comparison/</link>
       <pubDate>Sun, 03 Jun 2012 15:56:29 +0100</pubDate>
       
-      <guid>https://trustmaster.github.io/post/dataflow-model-comparison/</guid>
+      <guid>http://blog.kodigy.com/post/dataflow-model-comparison/</guid>
       <description>
 
 &lt;h1 id=&#34;comparison-of-dataflow-models&#34;&gt;Comparison of dataflow models&lt;/h1&gt;

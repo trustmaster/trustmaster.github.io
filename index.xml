@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>A system brought to life</title>
-    <link>https://trustmaster.github.io/index.xml</link>
+    <link>http://blog.kodigy.com/index.xml</link>
     <description>Recent content on A system brought to life</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Vladimir Sibirov. Code released under the MIT license.</copyright>
     <lastBuildDate>Tue, 21 Feb 2017 22:24:47 +0100</lastBuildDate>
-    <atom:link href="https://trustmaster.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.kodigy.com/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>About</title>
-      <link>https://trustmaster.github.io/about/author/</link>
+      <link>http://blog.kodigy.com/about/author/</link>
       <pubDate>Tue, 21 Feb 2017 22:24:47 +0100</pubDate>
       
-      <guid>https://trustmaster.github.io/about/author/</guid>
+      <guid>http://blog.kodigy.com/about/author/</guid>
       <description>
 
 &lt;h1 id=&#34;about-the-author&#34;&gt;About the author&lt;/h1&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://trustmaster.github.io/img/photo_together.jpg&#34; alt=&#34;Photo with wife&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.kodigy.com/img/photo_together.jpg&#34; alt=&#34;Photo with wife&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Hello world! My name is Vladimir and I&amp;rsquo;m a software engineer with a Master degree in Computer Science and background in Content Management Systems.&lt;/p&gt;
 
@@ -59,7 +59,7 @@
 
 &lt;p&gt;I enjoy cooking, good food and good music. In winter my sport is skiing, in summer it&amp;rsquo;s fun to ride a bicycle. Below there&amp;rsquo;s a photo of my daughter looking to be not so pleased with it, but in fact she likes riding as much as I do :-)&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://trustmaster.github.io/img/photo_onbike.jpg&#34; alt=&#34;Photo with bicycle and baby&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.kodigy.com/img/photo_onbike.jpg&#34; alt=&#34;Photo with bicycle and baby&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;All cover photos on this website are also by my own, including the shot of my lovely cat on the cover of this page =(^.^)=&lt;/p&gt;
 </description>
@@ -67,10 +67,10 @@
     
     <item>
       <title>Development efficiency challenges in NoFlo</title>
-      <link>https://trustmaster.github.io/post/noflo_development_efficiency/</link>
+      <link>http://blog.kodigy.com/post/noflo_development_efficiency/</link>
       <pubDate>Mon, 07 Nov 2016 17:39:26 +0100</pubDate>
       
-      <guid>https://trustmaster.github.io/post/noflo_development_efficiency/</guid>
+      <guid>http://blog.kodigy.com/post/noflo_development_efficiency/</guid>
       <description>
 
 &lt;h1 id=&#34;development-efficiency-challenges-in-noflo&#34;&gt;Development efficiency challenges in NoFlo&lt;/h1&gt;
@@ -181,17 +181,17 @@
     
     <item>
       <title>On NoFlo database applications</title>
-      <link>https://trustmaster.github.io/post/on_noflo_db_apps/</link>
+      <link>http://blog.kodigy.com/post/on_noflo_db_apps/</link>
       <pubDate>Wed, 27 Jul 2016 14:25:04 +0100</pubDate>
       
-      <guid>https://trustmaster.github.io/post/on_noflo_db_apps/</guid>
+      <guid>http://blog.kodigy.com/post/on_noflo_db_apps/</guid>
       <description>
 
 &lt;h1 id=&#34;on-noflo-database-applications&#34;&gt;On NoFlo Database Applications&lt;/h1&gt;
 
 &lt;p&gt;Thinking over common parts of database applications&amp;hellip;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://trustmaster.github.io/img/post/on_noflo_db_apps.jpg&#34; alt=&#34;Scrappy notes&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.kodigy.com/img/post/on_noflo_db_apps.jpg&#34; alt=&#34;Scrappy notes&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;… I came to some conclusions below&lt;/p&gt;
 
@@ -224,17 +224,17 @@
     
     <item>
       <title>Running web services as NoFlo graphs</title>
-      <link>https://trustmaster.github.io/post/noflo_webservices/</link>
+      <link>http://blog.kodigy.com/post/noflo_webservices/</link>
       <pubDate>Fri, 23 Jan 2015 14:38:41 +0100</pubDate>
       
-      <guid>https://trustmaster.github.io/post/noflo_webservices/</guid>
+      <guid>http://blog.kodigy.com/post/noflo_webservices/</guid>
       <description>
 
 &lt;h1 id=&#34;getting-all-things-noflo&#34;&gt;Getting All Things NoFlo&lt;/h1&gt;
 
 &lt;p&gt;This article describes things which are yet TODO to get the entire server architecture running on NoFlo (and in Flowhub), problems related to them and potential solutions.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://trustmaster.github.io/img/post/noflo_all_the_things.png&#34; alt=&#34;NoFlo all the things!&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.kodigy.com/img/post/noflo_all_the_things.png&#34; alt=&#34;NoFlo all the things!&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;request-isolation&#34;&gt;Request Isolation&lt;/h2&gt;
 
@@ -400,10 +400,10 @@
     
     <item>
       <title>Comparison of dataflow models</title>
-      <link>https://trustmaster.github.io/post/dataflow-model-comparison/</link>
+      <link>http://blog.kodigy.com/post/dataflow-model-comparison/</link>
       <pubDate>Sun, 03 Jun 2012 15:56:29 +0100</pubDate>
       
-      <guid>https://trustmaster.github.io/post/dataflow-model-comparison/</guid>
+      <guid>http://blog.kodigy.com/post/dataflow-model-comparison/</guid>
       <description>
 
 &lt;h1 id=&#34;comparison-of-dataflow-models&#34;&gt;Comparison of dataflow models&lt;/h1&gt;

@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Abouts on A system brought to life</title>
-    <link>https://trustmaster.github.io/about/index.xml</link>
+    <link>http://blog.kodigy.com/about/index.xml</link>
     <description>Recent content in Abouts on A system brought to life</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Vladimir Sibirov. Code released under the MIT license.</copyright>
     <lastBuildDate>Tue, 21 Feb 2017 22:24:47 +0100</lastBuildDate>
-    <atom:link href="https://trustmaster.github.io/about/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.kodigy.com/about/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>About</title>
-      <link>https://trustmaster.github.io/about/author/</link>
+      <link>http://blog.kodigy.com/about/author/</link>
       <pubDate>Tue, 21 Feb 2017 22:24:47 +0100</pubDate>
       
-      <guid>https://trustmaster.github.io/about/author/</guid>
+      <guid>http://blog.kodigy.com/about/author/</guid>
       <description>
 
 &lt;h1 id=&#34;about-the-author&#34;&gt;About the author&lt;/h1&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://trustmaster.github.io/img/photo_together.jpg&#34; alt=&#34;Photo with wife&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.kodigy.com/img/photo_together.jpg&#34; alt=&#34;Photo with wife&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Hello world! My name is Vladimir and I&amp;rsquo;m a software engineer with a Master degree in Computer Science and background in Content Management Systems.&lt;/p&gt;
 
@@ -59,7 +59,7 @@
 
 &lt;p&gt;I enjoy cooking, good food and good music. In winter my sport is skiing, in summer it&amp;rsquo;s fun to ride a bicycle. Below there&amp;rsquo;s a photo of my daughter looking to be not so pleased with it, but in fact she likes riding as much as I do :-)&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://trustmaster.github.io/img/photo_onbike.jpg&#34; alt=&#34;Photo with bicycle and baby&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.kodigy.com/img/photo_onbike.jpg&#34; alt=&#34;Photo with bicycle and baby&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;All cover photos on this website are also by my own, including the shot of my lovely cat on the cover of this page =(^.^)=&lt;/p&gt;
 </description>
