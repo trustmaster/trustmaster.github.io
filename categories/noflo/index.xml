@@ -19,7 +19,7 @@
 
 &lt;h1 id=&#34;development-efficiency-challenges-in-noflo&#34;&gt;Development efficiency challenges in NoFlo&lt;/h1&gt;
 
-&lt;p&gt;Programming with NoFlo is getting more and more smooth with every release. However, if you maintaining a NoFlo application is your day-to-day job you may notice some inconveniences.&lt;/p&gt;
+&lt;p&gt;Programming with NoFlo is getting more and more smooth with every release. However, if maintaining a NoFlo application is your day-to-day job you may notice some inconveniences.&lt;/p&gt;
 
 &lt;h2 id=&#34;defining-new-components-is-slow&#34;&gt;Defining new components is slow&lt;/h2&gt;
 
