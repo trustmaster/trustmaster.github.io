@@ -10,6 +10,60 @@
     <atom:link href="http://blog.kodigy.com/categories/flow-based-programming/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Forcing a specific NoFlo version for all dependencies</title>
+      <link>http://blog.kodigy.com/post/noflo_08_npm_shrinkwrap/</link>
+      <pubDate>Mon, 13 Mar 2017 18:25:04 +0300</pubDate>
+      
+      <guid>http://blog.kodigy.com/post/noflo_08_npm_shrinkwrap/</guid>
+      <description>
+
+&lt;h1 id=&#34;using-npm-shrinkwrap-to-force-noflo-0-8&#34;&gt;Using NPM Shrinkwrap to force NoFlo 0.8&lt;/h1&gt;
+
+&lt;p&gt;Recently released 0.8 branch of NoFlo introduces several fundamental changes as well as a backwards compatibility layer for long-existing applications. However, the backwards compatibility layer is only capable of doing its job if all NPM dependencies in a project use &lt;code&gt;noflo@0.8.*&lt;/code&gt;. Which means that if a project uses an old library that depends on something like &lt;code&gt;noflo@0.5.22&lt;/code&gt;, the compatibility layer may work incorrectly.&lt;/p&gt;
+
+&lt;p&gt;The best solution would be to upgrade all the dependencies and make use of the &lt;a href=&#34;https://noflojs.org/documentation/components/#component-api&#34;&gt;Process API&lt;/a&gt; which is well worth it. However, an immediate solution is available via &lt;a href=&#34;https://docs.npmjs.com/cli/shrinkwrap&#34;&gt;NPM Shrinkwrap&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;installing-noflo-0-8-for-all-dependencies&#34;&gt;Installing noflo-0.8 for all dependencies&lt;/h2&gt;
+
+&lt;p&gt;Given a project with legacy dependencies and a target NoFlo version you want to enforce (e.g. &lt;code&gt;0.8.3&lt;/code&gt;), here is the step-by-step enforcement process:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;npm install&lt;/code&gt; latest dependency tree&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;npm shrinkwrap&lt;/code&gt; to generate initial &lt;code&gt;npmshrinkwrap.json&lt;/code&gt; file&lt;/li&gt;
+&lt;li&gt;In &lt;code&gt;npmshrinkwrap.json&lt;/code&gt; find all occurances of &lt;code&gt;&amp;quot;noflo&amp;quot;&lt;/code&gt; and replace the contents with e.g.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;    &lt;span style=&#34;color: #aa5500&#34;&gt;&amp;quot;noflo&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #FF0000; background-color: #FFAAAA&#34;&gt;:&lt;/span&gt; {
+      &lt;span style=&#34;color: #1e90ff; font-weight: bold&#34;&gt;&amp;quot;version&amp;quot;&lt;/span&gt;: &lt;span style=&#34;color: #aa5500&#34;&gt;&amp;quot;0.8.3&amp;quot;&lt;/span&gt;,
+      &lt;span style=&#34;color: #1e90ff; font-weight: bold&#34;&gt;&amp;quot;from&amp;quot;&lt;/span&gt;: &lt;span style=&#34;color: #aa5500&#34;&gt;&amp;quot;noflo@0.8.3&amp;quot;&lt;/span&gt;,
+      &lt;span style=&#34;color: #1e90ff; font-weight: bold&#34;&gt;&amp;quot;resolved&amp;quot;&lt;/span&gt;: &lt;span style=&#34;color: #aa5500&#34;&gt;&amp;quot;https://registry.npmjs.org/noflo/-/noflo-0.8.3.tgz&amp;quot;&lt;/span&gt;
+    }
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;npm install&lt;/code&gt; again, which will use &lt;code&gt;npmshrinkwrap.json&lt;/code&gt; instead of &lt;code&gt;package.json&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Then try testing your project to see if everything is OK.&lt;/p&gt;
+
+&lt;h2 id=&#34;updating-a-dependency&#34;&gt;Updating a dependency&lt;/h2&gt;
+
+&lt;p&gt;Say &lt;code&gt;noflo&lt;/code&gt; has released a new version and you need to update it in your shrinkwrapped project. This is how it can be achieved:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;npm update&lt;/code&gt; to update all dependencies from &lt;code&gt;package.json&lt;/code&gt; rather than &lt;code&gt;npmshrinkwrap.json&lt;/code&gt; (optional)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;npm prune&lt;/code&gt; to remove &amp;ldquo;extraneous&amp;rdquo; packages&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;npm shrinkwrap&lt;/code&gt; to generate a new &lt;code&gt;npmshrinkwrap.json&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Edit &lt;code&gt;npmshrinkwrap.json&lt;/code&gt; again like you did in step 3 in previous section&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;npm install&lt;/code&gt; based on shrinkwrapped tree&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Maintaining a project with shrinkwrapped dependencies is quite tedious, thus it is recommended to update all the legacy dependencies to use NoFlo 0.8+. In the meantime, the above trick will help you find out if a project will run fine with the latest NoFlo or not.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Development efficiency challenges in NoFlo</title>
       <link>http://blog.kodigy.com/post/noflo_development_efficiency/</link>
       <pubDate>Mon, 07 Nov 2016 17:39:26 +0100</pubDate>

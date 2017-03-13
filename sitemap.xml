@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.kodigy.com/post/noflo_08_npm_shrinkwrap/</loc>
+    <lastmod>2017-03-13T18:25:04+03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.kodigy.com/about/author/</loc>
     <lastmod>2017-02-21T22:24:47+01:00</lastmod>
   </url>
@@ -28,7 +33,7 @@
   
   <url>
     <loc>http://blog.kodigy.com/</loc>
-    <lastmod>2017-02-21T22:24:47+01:00</lastmod>
+    <lastmod>2017-03-13T18:25:04+03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -57,37 +62,37 @@
   
   <url>
     <loc>http://blog.kodigy.com/tags/development/</loc>
-    <lastmod>2016-11-07T17:39:26+01:00</lastmod>
+    <lastmod>2017-03-13T18:25:04+03:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://blog.kodigy.com/tags/fbp/</loc>
-    <lastmod>2016-11-07T17:39:26+01:00</lastmod>
+    <lastmod>2017-03-13T18:25:04+03:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://blog.kodigy.com/categories/flow-based-programming/</loc>
-    <lastmod>2016-11-07T17:39:26+01:00</lastmod>
+    <lastmod>2017-03-13T18:25:04+03:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://blog.kodigy.com/tags/noflo/</loc>
-    <lastmod>2016-11-07T17:39:26+01:00</lastmod>
+    <lastmod>2017-03-13T18:25:04+03:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://blog.kodigy.com/categories/noflo/</loc>
-    <lastmod>2016-11-07T17:39:26+01:00</lastmod>
+    <lastmod>2017-03-13T18:25:04+03:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://blog.kodigy.com/post/</loc>
-    <lastmod>2016-11-07T17:39:26+01:00</lastmod>
+    <lastmod>2017-03-13T18:25:04+03:00</lastmod>
     <priority>0</priority>
   </url>
   
