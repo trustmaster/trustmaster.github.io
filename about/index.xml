@@ -2,13 +2,15 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Abouts on A system brought to life</title>
-    <link>http://blog.kodigy.com/about/index.xml</link>
+    <link>http://blog.kodigy.com/about/</link>
     <description>Recent content in Abouts on A system brought to life</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Vladimir Sibirov. Code released under the MIT license.</copyright>
     <lastBuildDate>Tue, 21 Feb 2017 22:24:47 +0100</lastBuildDate>
-    <atom:link href="http://blog.kodigy.com/about/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://blog.kodigy.com/about/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>About</title>
@@ -16,53 +18,9 @@
       <pubDate>Tue, 21 Feb 2017 22:24:47 +0100</pubDate>
       
       <guid>http://blog.kodigy.com/about/author/</guid>
-      <description>
-
-&lt;h1 id=&#34;about-the-author&#34;&gt;About the author&lt;/h1&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.kodigy.com/img/photo_together.jpg&#34; alt=&#34;Photo with wife&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Hello world! My name is Vladimir and I&amp;rsquo;m a software engineer with a Master degree in Computer Science and background in Content Management Systems.&lt;/p&gt;
-
-&lt;h2 id=&#34;relevant-topics&#34;&gt;Relevant topics&lt;/h2&gt;
-
-&lt;p&gt;My most recent experience covers these topics:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Building and maintaining backends with Node.js and NoFlo&lt;/li&gt;
-&lt;li&gt;Practical use of Flow-based Programming in software architecture and implementation in Go and JavaScript&lt;/li&gt;
-&lt;li&gt;Technical leadership in small teams and keeping agile projects on full sail&lt;/li&gt;
-&lt;li&gt;Full-stack web application engineering (earlier with PHP/Laravel and AngularJS, etc.)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;history&#34;&gt;History&lt;/h2&gt;
-
-&lt;p&gt;I started to program back in 2001 and was captivated by the process of creating something out of thin air. Nowadays I still find this exact feeling the most precious about programming, except for solving real people needs of course.&lt;/p&gt;
-
-&lt;p&gt;My initial coding experience was highly inspired by DemoScene and included programing graphics, but in 2002 I released a CGI web programming library for FreePascal as my first Open Source project and built a small community around it.&lt;/p&gt;
-
-&lt;p&gt;In 2003 I switched to Linux/Apache/PHP/MySQL stack and continued with it as well as HTML/CSS/JavaScript for more than a decade.&lt;/p&gt;
-
-&lt;p&gt;My amusements at the University (from 2005 to 2011) consisted of many things including C/C++, C#, Prolog, Go, UML, hardware design, machine learning and what not. But the most affecting was FPGA hardware design put together with Systems Analysis models and applied to software engineering - this is what my Master Thesis was about.&lt;/p&gt;
-
-&lt;p&gt;Open Source has always played a big role in my life and in 2007 I joined &lt;a href=&#34;https://www.cotonti.com/&#34;&gt;Cotonti&lt;/a&gt; Content Management system and framework to lead its development and support the community.&lt;/p&gt;
-
-&lt;p&gt;Meanwhile I continued to earn money as a freelance LAMP specialist and around 2008 gathered a team of like-minded people to found my own development agency called &lt;a href=&#34;http://kodigy.com/&#34;&gt;Kodigy&lt;/a&gt;. Sometimes things at the agency went well, sometimes they didn&amp;rsquo;t. By 2013 I realized that I lack knowledge and skill in acquainting bigger customers and selling my work, and changed for a full-time technical position in Advertisement and Digital Production business.&lt;/p&gt;
-
-&lt;p&gt;I grew from a freelance contractor to a CTO in digital production industry, but then I realized that while I was mostly busy making the company run and grow smoothly, my technical expertise was becoming irrelevant. Something I thought too early to happen at the age of 25. So I left the advertisement market and went for a product company.&lt;/p&gt;
-
-&lt;p&gt;This is how I joined &lt;a href=&#34;https://thegrid.io&#34;&gt;The Grid&lt;/a&gt; - a pioneer in AI-designed websites. For me it has been a rare opportunity to run Flow-based systems in production and be a part of bright international team.&lt;/p&gt;
-
-&lt;h2 id=&#34;offtopic&#34;&gt;Offtopic&lt;/h2&gt;
-
-&lt;p&gt;Besides the scenes, I&amp;rsquo;m a family guy who loves his wife (she&amp;rsquo;s on the photo above) and little daughter.&lt;/p&gt;
-
-&lt;p&gt;I enjoy cooking, good food and good music. In winter my sport is skiing, in summer it&amp;rsquo;s fun to ride a bicycle. Below there&amp;rsquo;s a photo of my daughter looking to be not so pleased with it, but in fact she likes riding as much as I do :-)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://blog.kodigy.com/img/photo_onbike.jpg&#34; alt=&#34;Photo with bicycle and baby&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;All cover photos on this website are also by my own, including the shot of my lovely cat on the cover of this page =(^.^)=&lt;/p&gt;
-</description>
+      <description>About the author Hello world! My name is Vladimir and I&amp;rsquo;m a software engineer with a Master degree in Computer Science and background in Content Management Systems.
+Relevant topics My most recent experience covers these topics:
+ Building and maintaining backends with Node.js and NoFlo Practical use of Flow-based Programming in software architecture and implementation in Go and JavaScript Technical leadership in small teams and keeping agile projects on full sail Full-stack web application engineering (earlier with PHP/Laravel and AngularJS, etc.</description>
     </item>
     
   </channel>

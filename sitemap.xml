@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://blog.kodigy.com/post/typescript_to_go/</loc>
+    <lastmod>2017-07-26T14:48:53+03:00</lastmod>
+  </url>
   
   <url>
     <loc>http://blog.kodigy.com/post/noflo_08_npm_shrinkwrap/</loc>
@@ -33,7 +39,7 @@
   
   <url>
     <loc>http://blog.kodigy.com/</loc>
-    <lastmod>2017-03-13T18:25:04+03:00</lastmod>
+    <lastmod>2017-07-26T14:48:53+03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -62,7 +68,13 @@
   
   <url>
     <loc>http://blog.kodigy.com/tags/development/</loc>
-    <lastmod>2017-03-13T18:25:04+03:00</lastmod>
+    <lastmod>2017-07-26T14:48:53+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.kodigy.com/categories/development/</loc>
+    <lastmod>2017-07-26T14:48:53+03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -75,6 +87,12 @@
   <url>
     <loc>http://blog.kodigy.com/categories/flow-based-programming/</loc>
     <lastmod>2017-03-13T18:25:04+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.kodigy.com/tags/js/</loc>
+    <lastmod>2017-07-26T14:48:53+03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -92,12 +110,19 @@
   
   <url>
     <loc>http://blog.kodigy.com/post/</loc>
-    <lastmod>2017-03-13T18:25:04+03:00</lastmod>
+    <lastmod>2017-07-26T14:48:53+03:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://blog.kodigy.com/tags/</loc>
+    <lastmod>2012-06-03T15:56:29+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.kodigy.com/tags/typescript/</loc>
+    <lastmod>2017-07-26T14:48:53+03:00</lastmod>
     <priority>0</priority>
   </url>
   
