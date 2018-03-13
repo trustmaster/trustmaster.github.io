@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="An entertaining summary of SOLID design principles, with common sense shortcuts and simple poetry" property="og:description">
+    <meta name="author" content="Vladimir Sibirov">
+
+    <title>SOLID design principles in short poems - A system brought to life</title>
+
+    
+
+    
+    <link href="http://blog.kodigy.com//css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <link href="http://blog.kodigy.com//css/clean-blog.min.css" rel="stylesheet">
+
+    
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    
+    
+    
+
+</head>
+
+<body>
+
+    
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://blog.kodigy.com/">A system brought to life</a>
+            </div>
+
+                       
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li>
+                        <a href="http://blog.kodigy.com/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="http://blog.kodigy.com/post/">Archives</a>
+                    </li>
+                    
+                    <li>
+                        <a href="http://blog.kodigy.com/about/author/">About</a>
+                    </li>
+                    
+                  </ul>
+            </div>
+           
+
+        </div>
+        
+    </nav>
+
+
+    
+    
+    <header class="intro-header" style="background-image: url('http://blog.kodigy.com///img/post-bg.jpg')">
+      
+      <div class="container">
+        <div class="row">
+           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+             <div class="post-heading">
+               <h1>SOLID design principles in short poems</h1>
+               <h2 class="subheading">An entertaining summary of SOLID design principles, with common sense shortcuts and simple poetry</h2>
+               <span class="meta">
+                 
+  A 11 minute read,
+
+Posted by <a href="#">Vladimir Sibirov</a> on Mon, Mar 12, 2018
+<br />
+In <a href="http://blog.kodigy.com/categories/software-design">Software Design</a>
+
+<br />
+Tags <a href="http://blog.kodigy.com/tags/design">design</a>, <a href="http://blog.kodigy.com/tags/architecture">architecture</a>, <a href="http://blog.kodigy.com/tags/patterns">patterns</a>
+
+               </span>
+             </div>
+           </div>
+        </div>
+      </div>
+    </header>
+
+    
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  
+
+<p>Software Design is hard. It is complicated, it takes years to learn (in a sense that you really know what you are doing and why, compared to just copying and pasting something that you read somewhere) and sometimes it is counter-intuitive.</p>
+
+<p>I started making these notes to better understand SOLID design principles myself while reading the <a href="https://www.amazon.com/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164">&ldquo;Clean Architecture&rdquo; by Robert C. Martin</a>. The book points to common misunderstandings of these principles, but the explanations given are far from being easily memorable.</p>
+
+<p>To make Software Design a bit more entertaining, I decided to write a short funny poem for each of the five SOLID principles, complemented with examples from real life that ideally even non-engineers can understand.</p>
+
+<h2 id="solid-responsibility-principle-srp">Solid Responsibility Principle (SRP)</h2>
+
+<pre><code>A servant serves a single stew
+To eaten be by only you.
+Whenever master's mind is changed,
+The stew is promptly rearranged.
+</code></pre>
+
+<p>This principle is usually (mis)understood as <em>&ldquo;A class should only do one thing&rdquo;</em> or even <em>&ldquo;A class should only have one public method&rdquo;</em>. But the actual definition is:</p>
+
+<blockquote>
+<p>A module should be responsible to one, and only one, actor.</p>
+</blockquote>
+
+<p>The difference is easy to illustrate with an example. Consider a software model of a small <code>DigitalAgency</code>. It has 3 departments: <code>FinanceDepartment</code>, <code>DesignDepartment</code> and <code>TechDepartment</code>. And there is one <code>Printer</code> that serves all the needs in this small company: Finance employees print their reports, graphical Designers print previews of their work, and the Tech geeks print their online bookings, xkcd comics and what not:</p>
+
+<p><img src="http://blog.kodigy.com/img/post/solid/srp_example.svg" alt="Example class diagram" /></p>
+
+<p>So far so good: the <code>Printer</code> has only one method <code>print()</code> which does something relatively simple (i.e. just prints whatever it&rsquo;s sent). But there are three actors depending on it (no matter if they inherit it, call it directly or call it via shared <code>interface</code>). Thus, it violates SRP. Indeed, let&rsquo;s say that the <code>DesignDepartment</code> is doing well in graphical design and now they need a much better <code>Printer</code> to print full-color A0-sized posters on glossy paper. What do you do? Add another method <code>printA0()</code> or make the <code>print()</code> method print full-color A0s by default? <code>TechDepartment</code> is amused by the idea of using that printer to make wall-sized comics! But <code>FinanceDepartment</code> is angry, because the geeks would be wasting the ink, the time of everybody waiting in the printer queue, and of course company $$$s. Thus, the obvious solution is to have not 1 but 3 different Printers, each one fitted for the needs its actor:</p>
+
+<p><img src="http://blog.kodigy.com/img/post/solid/srp_example_2.svg" alt="SRP in action" /></p>
+
+<p>That brings a temptation of explaining SRP as &ldquo;Each class should have only one class dependent on it&rdquo;, but in reality this would mean tons of merely duplicated code:</p>
+
+<p>To deduplicate our effort we could make a reasonable violation to the SRP principle. For example, <code>FinanceDepartment</code> and <code>TechDepartment</code> could still use printers of the same cheap model, while <code>DesignDepartment</code> would be using its shiny <code>GraphicPrinter</code>:</p>
+
+<p><img src="http://blog.kodigy.com/img/post/solid/srp_example_3.svg" alt="Optimized printer diagram" /></p>
+
+<p>In simple words, the SRP principle can be rephrased as:</p>
+
+<p><em>A component reports to only one boss.</em></p>
+
+<h2 id="open-closed-principle-ocp">Open-Closed Principle (OCP)</h2>
+
+<pre><code>The book is open, but it's closed.
+It's read, adopted and exposed,
+But to add more ideas
+Without legal fears,
+A new one has to be composed.
+</code></pre>
+
+<p>The original definition reads as:</p>
+
+<blockquote>
+<p>A software artifact should be open for extension but closed for modification.</p>
+</blockquote>
+
+<p>As an example, we&rsquo;ll use a famous electronics company which has been producing a very successful model of a <code>VacuumCleaner</code> for many years. Its <code>VacuumCleanerBase</code> has a powerful and reliable <code>Engine</code>, all its components have been perfectly fit together and proved over time. The time though keeps going by and the governments come up with energy consumption regulations, so the mighty but fixed <code>1800 Watt</code> power characteristic is no longer an advantage. What does the company do? Invent a new model, spending lots of money for research, engineering, testing, etc.? Modify the internals of <code>VacuumCleanerBase</code> so that it is no longer well-fit and reliable? No, there&rsquo;s a better way. The old good <code>VacuumCleanerBase</code> can be extended using a simple <code>PowerInvertor</code> device that will allow a user to adjust the output wattage using a simple control knob or slider:</p>
+
+<p><img src="http://blog.kodigy.com/img/post/solid/ocp_example_1.svg" alt="Extended VacuumCleaner" /></p>
+
+<p>Of course, in order to support such an extension, <code>VacuumCleanerBase</code> should already provide all the necessary interfaces. This kind of extensibility is one of the requirements of OCP.</p>
+
+<p>Now, the company&rsquo;s Marketing department makes a research and finds out that there is a huge demand on <code>AntiAllergicVacuumCleaner</code> model from people having pets, rugs or living in dusty environment. Here is what the Engineering department thinks of it: easy! All they need to do is to design a <code>TurboBrush</code> for the rugs and replace standard filters with a high class <code>HEPAFilter</code>:</p>
+
+<p><img src="http://blog.kodigy.com/img/post/solid/ocp_example_2.svg" alt="Anti-allergic VacuumCleaner" /></p>
+
+<p>For an electronics company this approach saves millions of dollars on engineering, testing and modifying production lines and supply chains. In software engineering, it can save quite some human hours at least.</p>
+
+<p>Rephrasing the principle:</p>
+
+<p><em>A component should be so simple that it rarely needs to be modified, but it should be easily extensible by other components.</em></p>
+
+<h1 id="liskov-substitution-principle-lsp">Liskov Substitution Principle (LSP)</h1>
+
+<pre><code>A founder founded a foundation
+Of large software corporation.
+Foundation was so strong and hard,
+It found a founder's counterpart.
+</code></pre>
+
+<p>The original definition is:</p>
+
+<blockquote>
+<p>If for each object o1 of type S there is an object o2 of type T such that for all programs P defined in terms of T, the behavior of P is unchanged when o1 is substituted for o2 then S is a subtype of T.</p>
+</blockquote>
+
+<p>This definition is cryptographically scientific, but the easier the example we need. Let&rsquo;s pick a slightly nostalgic one, with phone chargers and data cables.</p>
+
+<p>Not so long ago, a hardware designer who was developing, say, a new Nokia or Sony Ericsson cell phone, would fit it with an A/C port, that a customer can plug a charger in. In the beginning, each model had its own type of charger. Then engineers (or was it marketing?) realized, that they can actually unify the chargers, so that they are <em>interchangeable</em> for all the cell phones produced by the company. Your Nokia is running flat but your colleague has a Nokia too? You can borrow their charger, what can be more convenient:</p>
+
+<p><img src="http://blog.kodigy.com/img/post/solid/lsp_example_1.svg" alt="Unified Nokia interfaces" /></p>
+
+<p>In this case your colleague&rsquo;s charger is the <em>substitute</em> of the charger that you left at home. But then the principle got further: before you used a separate charger port and data cable port, but then some smart people came to use the same micro-USB for charging the phone and sending the data in and out. Just mounting the port on a device is not enough, the engineers had to ensure that all the peers would follow the same protocol, i.e. use the same <em>interface</em>. An absolutely wonderful consequence of following the LSP principle further this way was the fact, that now lots of phones of different brands could use the same chargers and the same data exchange software:</p>
+
+<p><img src="http://blog.kodigy.com/img/post/solid/lsp_example_2.svg" alt="Unified micro-USB interfaces" /></p>
+
+<p>This diagram is simplified to encapsulate more components and implementation details, but what&rsquo;s important is that the combination of the following <em>interfaces</em>:</p>
+
+<ul>
+<li><em>micro-USB Port</em></li>
+<li><em>micro-USB Cable</em></li>
+<li><em>MTP Data transfer drivers</em></li>
+</ul>
+
+<p>makes it possible that we can interchange any phones, any cables and any computers that implement these interfaces and they will just work together.</p>
+
+<p>Were there exceptions? Yes, for instance Apple devices kept using proprietary chargers. And even nowadays some devices, despite using the common micro-USB or USB-C ports, require brand-specific software instead of using the common protocols, giving us a good example of LSP violation. With violation of LSP comes the limitation of possible use cases, extensibility and convenience.</p>
+
+<p>Back to software engineering theory, the principle can be rephrased as:</p>
+
+<p><em>Use interfaces to make the dependency components interchangeable.</em></p>
+
+<p><small><em>Note: the original definition doesn&rsquo;t say anything about interfaces. It sounds more like using parent classes instead of child classes. That is so C++. This article targets slightly different languages and encourages using interfaces and aggregation over inheritance.</em></small></p>
+
+<h2 id="interface-segregation-principle-isp">Interface Segregation Principle (ISP)</h2>
+
+<pre><code>Man proposed to a princess is no fool:
+He's given a horse and a kingdom to rule.
+But there's a dragon to slay,
+And an army to pay,
+While all he wants is a girl and a mule.
+</code></pre>
+
+<p>A quote from Robert Martin&rsquo;s book can serve as a definition:</p>
+
+<blockquote>
+<p>it is harmful to depend on modules that contain more than you need</p>
+</blockquote>
+
+<p>Although the name of this principle sounds somewhat chemistry, we can fall back to a simple example that you may have experienced in real life. Imagine that you just moved to a new home and you demand on broadband <code>Internet</code> access. There are several Internet Service Providers that can connect your apartment, but only one of them can do it right away while with the others you have to wait for several weeks.</p>
+
+<p>That provider though only offers ADSL <code>Internet</code> that comes with a <code>Landline</code> and a <code>MobileSIM</code> package, all paid on a monthly basis with a minimal contract of 2 years. You don&rsquo;t want to wait several weeks and decide that having a landline and a relatively cheap SIM is not such a bad thing. So, you sign the contract and start to depend on the following congregated interface:</p>
+
+<p><img src="http://blog.kodigy.com/img/post/solid/isp_example_1.svg" alt="Depending on a multi-purpose interface" /></p>
+
+<p><em>This diagram shows just a few of the functions that you start to depend on as a daily routine, provided from an unsegregated <s>interface</s> Internet provider.</em></p>
+
+<p>After the first month you come to a conclusion that even though the ADSL is more or less OK, the calls on that SIM are pricey and you don&rsquo;t need the landline at all. Altogether you&rsquo;ve signed to pay twice as much for the services that you don&rsquo;t need and there are way better deals on the market if you got a broadband and a SIM card separately:</p>
+
+<p><img src="http://blog.kodigy.com/img/post/solid/isp_example_2.svg" alt="Depending on almost segregated interfaces" /></p>
+
+<p>In the latter case if the ADSL line goes nuts, you can change it for a better provider, without having to change your mobile SIMs as well.</p>
+
+<p>So, what this principle recommends us is:</p>
+
+<p><em>Don&rsquo;t depend on things that you need and that you don&rsquo;t need altogether. It&rsquo;s better if they break separately rather than all at once.</em></p>
+
+<h2 id="dependency-inversion-principle-dip">Dependency Inversion Principle (DIP)</h2>
+
+<pre><code>There lived a tail who waged a dog.
+It could not stay like that for long.
+They went to lawyer to conclude
+Their independent neighborhood.
+And now there's nothing left to nag:
+They both have documents to wag.
+</code></pre>
+
+<p>As stated by Robert C. Martin:</p>
+
+<blockquote>
+<p>A. High-level modules should not depend on low-level modules. Both should depend on abstractions.</p>
+
+<p>B. Abstractions should not depend on details. Details should depend on abstractions.</p>
+</blockquote>
+
+<p>This principle is the most difficult one to explain and illustrate to somebody who hasn&rsquo;t spent countless hours building software. Dependency what? Inversion how? For sake of who?</p>
+
+<p>But thinking of it, this principle is widely involved in how we learn and interact with the outer world: we interact with concrete objects via abstract interfaces. And these interfaces serve as protocols, that allow the dependency flow to be the inverse of the control flow, at least in the critical parts.</p>
+
+<p>For example, say that you need a plumber to fix a leak. Alright, you know your friend George is good at things and probably can do it for you. Just ask George then. But what if George is not around or he doesn&rsquo;t know how to fix a leaking tap in particular? Then you need an abstraction: a Plumber. And you need another abstraction to get you that Plumber in first place: some Household Service or even just Classifieds (both are just Abstract Factories in this case).</p>
+
+<p>Let&rsquo;s zoom in and generalize this example a little bit. So, consider we have a <code>Customer</code> who relies on plumber <code>George</code> entirely:</p>
+
+<p><img src="http://blog.kodigy.com/img/post/solid/dip_example_1.svg" alt="A very concrete dependency" /></p>
+
+<p>It&rsquo;s good to know there&rsquo;s <code>George</code> to fix a leaky pipe. But what happens if <code>George</code> is not there when a <code>Customer</code> needs him? Or if the problem a <code>Customer</code> has later on requires skills or equipment <code>George</code> simply doesn&rsquo;t have. It&rsquo;s not so good for <code>George</code> either if the only way he gets customers is via direct reach. Thus, this direct dependency may be effective in short term but not flexible over time.</p>
+
+<p>With Dependency Inversion Principle applied, the diagram would look something like this:</p>
+
+<p><img src="http://blog.kodigy.com/img/post/solid/dip_example_2.svg" alt="DIP in action" /></p>
+
+<p>In this case, a customer called <code>Bill</code> implements an abstract interface <code>Customer</code> and has abstract knowledge on how to get help from a generic <code>HouseholdService</code>, e.g. when he needs a <code>Plumber</code>. The interface <code>Plumber</code> represents what a <code>Customer</code> thinks a plumber should do. All the rest is behind the scenes: a double curved line also known as architectural boundary. For example, there can be a handy website <code>FindAPlumberDotCom</code> that helped <code>Bill</code> to find a plumber <code>George</code> within seconds without any hassle.</p>
+
+<p>So, where is the inversion? When <code>Bill</code> has a leaky pipe, he still calls <code>George</code> to fix it in the end - this is the control flow. But <code>Bill</code> doesn&rsquo;t depend on <code>George</code>, he depends on an abstract interface that <code>George</code> also depends on. A dependency from <code>George</code> to <code>Plumber</code> interface is inverse to the control flow. This is why the principle is called Dependency Inversion.</p>
+
+<p>Back in Software Engineering world, DIP means <em>applying abstractions to implement achitectural boundaries and make the dependency flow in the direction stated by the principle: from concrete details to stable abstractions</em>.</p>
+
+                  
+   
+
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+    
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  <ul class="list-inline text-center">
+                    
+                    
+                    <li>
+                      <a href="https://twitter.com/sibiroff">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://github.com/trustmaster">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://www.facebook.com/trustmaster">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                  </ul>
+                  <p class="copyright text-muted">© Vladimir Sibirov. Code released under the MIT license.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script src="http://blog.kodigy.com//js/jquery.min.js"></script>
+
+    
+    <script src="http://blog.kodigy.com//js/bootstrap.min.js"></script>
+
+    
+    <script src="http://blog.kodigy.com//js/clean-blog.js"></script>
+
+    
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-92537342-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+</body>
+
+</html>
+

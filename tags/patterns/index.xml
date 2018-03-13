@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Patterns on A system brought to life</title>
+    <link>http://blog.kodigy.com/tags/patterns/</link>
+    <description>Recent content in Patterns on A system brought to life</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© Vladimir Sibirov. Code released under the MIT license.</copyright>
+    <lastBuildDate>Mon, 12 Mar 2018 22:33:45 +0100</lastBuildDate>
+    
+	<atom:link href="http://blog.kodigy.com/tags/patterns/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>SOLID design principles in short poems</title>
+      <link>http://blog.kodigy.com/post/solid_principles_in_short_poems/</link>
+      <pubDate>Mon, 12 Mar 2018 22:33:45 +0100</pubDate>
+      
+      <guid>http://blog.kodigy.com/post/solid_principles_in_short_poems/</guid>
+      <description>Software Design is hard. It is complicated, it takes years to learn (in a sense that you really know what you are doing and why, compared to just copying and pasting something that you read somewhere) and sometimes it is counter-intuitive.
+I started making these notes to better understand SOLID design principles myself while reading the &amp;ldquo;Clean Architecture&amp;rdquo; by Robert C. Martin. The book points to common misunderstandings of these principles, but the explanations given are far from being easily memorable.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -7,10 +7,31 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Vladimir Sibirov. Code released under the MIT license.</copyright>
-    <lastBuildDate>Wed, 26 Jul 2017 14:48:53 +0300</lastBuildDate>
+    <lastBuildDate>Mon, 12 Mar 2018 22:33:45 +0100</lastBuildDate>
     
 	<atom:link href="http://blog.kodigy.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>SOLID design principles in short poems</title>
+      <link>http://blog.kodigy.com/post/solid_principles_in_short_poems/</link>
+      <pubDate>Mon, 12 Mar 2018 22:33:45 +0100</pubDate>
+      
+      <guid>http://blog.kodigy.com/post/solid_principles_in_short_poems/</guid>
+      <description>Software Design is hard. It is complicated, it takes years to learn (in a sense that you really know what you are doing and why, compared to just copying and pasting something that you read somewhere) and sometimes it is counter-intuitive.
+I started making these notes to better understand SOLID design principles myself while reading the &amp;ldquo;Clean Architecture&amp;rdquo; by Robert C. Martin. The book points to common misunderstandings of these principles, but the explanations given are far from being easily memorable.</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>http://blog.kodigy.com/about/author/</link>
+      <pubDate>Mon, 12 Mar 2018 22:24:47 +0100</pubDate>
+      
+      <guid>http://blog.kodigy.com/about/author/</guid>
+      <description>About the author Hello world! My name is Vladimir and I&amp;rsquo;m a software engineer with a Master degree in Computer Science and background in Content Management Systems.
+Relevant topics My most recent experience covers these topics:
+ Building and maintaining backends with Node.js and NoFlo Practical use of Flow-based Programming in software architecture and implementation in Go and JavaScript Technical leadership in small teams and keeping agile projects on full sail Full-stack web application engineering (earlier with PHP/Laravel and AngularJS, etc.</description>
+    </item>
     
     <item>
       <title>TypeScript: JavaScript way to Go</title>
@@ -29,17 +50,6 @@ The main challenge was setting higher standards of development culture within th
       
       <guid>http://blog.kodigy.com/post/noflo_08_npm_shrinkwrap/</guid>
       <description>Using NPM Shrinkwrap to force NoFlo 0.8 Recently released 0.8 branch of NoFlo introduces several fundamental changes as well as a backwards compatibility layer for long-existing applications. However, the backwards compatibility layer is only capable of doing its job if all NPM dependencies in a project use noflo@0.8.*. Which means that if a project uses an old library that depends on something like noflo@0.5.22, the compatibility layer may work incorrectly.</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>http://blog.kodigy.com/about/author/</link>
-      <pubDate>Tue, 21 Feb 2017 22:24:47 +0100</pubDate>
-      
-      <guid>http://blog.kodigy.com/about/author/</guid>
-      <description>About the author Hello world! My name is Vladimir and I&amp;rsquo;m a software engineer with a Master degree in Computer Science and background in Content Management Systems.
-Relevant topics My most recent experience covers these topics:
- Building and maintaining backends with Node.js and NoFlo Practical use of Flow-based Programming in software architecture and implementation in Go and JavaScript Technical leadership in small teams and keeping agile projects on full sail Full-stack web application engineering (earlier with PHP/Laravel and AngularJS, etc.</description>
     </item>
     
     <item>

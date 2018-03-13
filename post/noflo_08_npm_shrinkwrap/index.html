@@ -121,13 +121,11 @@ Tags <a href="http://blog.kodigy.com/tags/noflo">noflo</a>, <a href="http://blog
 <li><code>npm shrinkwrap</code> to generate initial <code>npmshrinkwrap.json</code> file</li>
 <li>In <code>npmshrinkwrap.json</code> find all occurances of <code>&quot;noflo&quot;</code> and replace the contents with e.g.</li>
 </ol>
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">    <span style="color: #aa5500">&quot;noflo&quot;</span><span style="color: #FF0000; background-color: #FFAAAA">:</span> {
-      <span style="color: #1e90ff; font-weight: bold">&quot;version&quot;</span>: <span style="color: #aa5500">&quot;0.8.3&quot;</span>,
-      <span style="color: #1e90ff; font-weight: bold">&quot;from&quot;</span>: <span style="color: #aa5500">&quot;noflo@0.8.3&quot;</span>,
-      <span style="color: #1e90ff; font-weight: bold">&quot;resolved&quot;</span>: <span style="color: #aa5500">&quot;https://registry.npmjs.org/noflo/-/noflo-0.8.3.tgz&quot;</span>
-    }
-</pre></div>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">    <span style="color:#a50">&#34;noflo&#34;</span><span style="color:#f00;background-color:#faa">:</span> {
+      <span style="color:#1e90ff;font-weight:bold">&#34;version&#34;</span>: <span style="color:#a50">&#34;0.8.3&#34;</span>,
+      <span style="color:#1e90ff;font-weight:bold">&#34;from&#34;</span>: <span style="color:#a50">&#34;noflo@0.8.3&#34;</span>,
+      <span style="color:#1e90ff;font-weight:bold">&#34;resolved&#34;</span>: <span style="color:#a50">&#34;https://registry.npmjs.org/noflo/-/noflo-0.8.3.tgz&#34;</span>
+    }</code></pre></div>
 <ol>
 <li><code>npm install</code> again, which will use <code>npmshrinkwrap.json</code> instead of <code>package.json</code></li>
 </ol>

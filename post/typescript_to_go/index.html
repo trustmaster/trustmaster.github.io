@@ -184,26 +184,20 @@ Tags <a href="http://blog.kodigy.com/tags/js">js</a>, <a href="http://blog.kodig
 <h3 id="interface-for-a-domain-model">Interface for a domain model</h3>
 
 <p>First, let&rsquo;s agree that a <code>User</code> is any object that conforms with the following interface:</p>
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #0000aa">interface</span> User {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#00a">interface</span> User {
   key: string;
   email: string;
   fullName?: string;
   birthday?: number;
-}
-</pre></div>
-
+}</code></pre></div>
 <p>A downside of interfaces in TypeScript is that they only exist at compile time. Meanwhile it makes whole lot of sense to check the data against interfaces at run time. A proposed method to solve this is to provide a type guard per interface:</p>
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #0000aa">function</span> isUser(object: any): object is User {
-  <span style="color: #0000aa">return</span> (<span style="color: #aa5500">&#39;key&#39;</span> <span style="color: #0000aa">in</span> object &amp;&amp; <span style="color: #aa5500">&#39;email&#39;</span> <span style="color: #0000aa">in</span> object);
-}
-</pre></div>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#00a">function</span> isUser(object: any): object is User {
+  <span style="color:#00a">return</span> (<span style="color:#a50">&#39;key&#39;</span> <span style="color:#00a">in</span> object &amp;&amp; <span style="color:#a50">&#39;email&#39;</span> <span style="color:#00a">in</span> object);
+}</code></pre></div>
 <p>Type guards are used just as other functions:</p>
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #0000aa">if</span> (!isUser(user)) {
-  <span style="color: #0000aa">throw</span> <span style="color: #0000aa">new</span> <span style="color: #00aaaa">Error</span>(<span style="color: #aa5500">&#39;Invalid user object&#39;</span>);
-}
-</pre></div>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#00a">if</span> (!isUser(user)) {
+  <span style="color:#00a">throw</span> <span style="color:#00a">new</span> <span style="color:#0aa">Error</span>(<span style="color:#a50">&#39;Invalid user object&#39;</span>);
+}</code></pre></div>
 <p>Writing a type guard per interface is not at all convenient, so a better solution remains an open question for now.</p>
 
 <h3 id="interface-for-a-dependency">Interface for a dependency</h3>
@@ -211,8 +205,8 @@ Tags <a href="http://blog.kodigy.com/tags/js">js</a>, <a href="http://blog.kodig
 <p>Interfaces can be used effectively to abstract the way dependencies are used from their implementation.</p>
 
 <p>For instance, here are a couple of interfaces kindly provided by the <code>firebase</code> library itself:</p>
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #aaaaaa; font-style: italic">// Example extracts from firebase.d.ts, (c) Google</span>
-<span style="color: #0000aa">interface</span> Database {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#aaa;font-style:italic">// Example extracts from firebase.d.ts, (c) Google
+</span><span style="color:#aaa;font-style:italic"></span><span style="color:#00a">interface</span> Database {
   app: firebase.app.App;
   goOffline(): any;
   goOnline(): any;
@@ -220,25 +214,21 @@ Tags <a href="http://blog.kodigy.com/tags/js">js</a>, <a href="http://blog.kodig
   refFromURL(url: string): firebase.database.Reference;
 }
 
-<span style="color: #0000aa">interface</span> Reference <span style="color: #0000aa">extends</span> firebase.database.Query {
+<span style="color:#00a">interface</span> Reference <span style="color:#00a">extends</span> firebase.database.Query {
   child(path: string): firebase.database.Reference;
-  key: string|<span style="color: #0000aa">null</span>;
-  <span style="color: #aaaaaa; font-style: italic">// ... (snap) ...</span>
-  push(value?: any, onComplete?: (a: <span style="color: #00aaaa">Error</span>|<span style="color: #0000aa">null</span> ) =&gt; any): firebase.database.ThenableReference;
-  remove(onComplete?: (a: <span style="color: #00aaaa">Error</span> | <span style="color: #0000aa">null</span>) =&gt; any): firebase.Promise&lt;any&gt;;
+  key: string|<span style="color:#00a">null</span>;
+  <span style="color:#aaa;font-style:italic">// ... (snap) ...
+</span><span style="color:#aaa;font-style:italic"></span>  push(value?: any, onComplete?: (a: <span style="color:#0aa">Error</span>|<span style="color:#00a">null</span> ) =&gt; any): firebase.database.ThenableReference;
+  remove(onComplete?: (a: <span style="color:#0aa">Error</span> | <span style="color:#00a">null</span>) =&gt; any): firebase.<span style="color:#0aa">Promise</span>&lt;any&gt;;
   root: firebase.database.Reference;
-  set(value: any, onComplete?: (a: <span style="color: #00aaaa">Error</span>|<span style="color: #0000aa">null</span>) =&gt; any): firebase.Promise &lt;any&gt;;
-  <span style="color: #aaaaaa; font-style: italic">// ... (snap) ...</span>
-  update(values: <span style="color: #00aaaa">Object</span>, onComplete?: (a: <span style="color: #00aaaa">Error</span>|<span style="color: #0000aa">null</span>) =&gt; any): firebase.Promise &lt;any&gt;;
-}
-</pre></div>
-
+  set(value: any, onComplete?: (a: <span style="color:#0aa">Error</span>|<span style="color:#00a">null</span>) =&gt; any): firebase.<span style="color:#0aa">Promise</span> &lt;any&gt;;
+  <span style="color:#aaa;font-style:italic">// ... (snap) ...
+</span><span style="color:#aaa;font-style:italic"></span>  update(values: <span style="color:#0aa">Object</span>, onComplete?: (a: <span style="color:#0aa">Error</span>|<span style="color:#00a">null</span>) =&gt; any): firebase.<span style="color:#0aa">Promise</span> &lt;any&gt;;
+}</code></pre></div>
 <p>We can just import them in our project:</p>
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #0000aa">import</span> { database } from <span style="color: #aa5500">&#39;firebase&#39;</span>;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#00a">import</span> { database } from <span style="color:#a50">&#39;firebase&#39;</span>;
 
-<span style="color: #aaaaaa; font-style: italic">// Now we can type database.Database or database.Reference and get some nice code hints</span>
-</pre></div>
-
+<span style="color:#f00;background-color:#faa">// Now we can type database.Database or database.Reference and get some nice code hints</span></code></pre></div>
 <p>Firebase is a good example of an API that provides the reusable TypeScript interfaces out of the box (I could brag that <code>firebase</code> interfaces are not compatible with <code>firebase-admin</code> interfaces, but that&rsquo;s a different issue). Another option is obtaining <code>.d.ts</code> files from the <a href="http://definitelytyped.org/">DefinitelyTyped</a> project. Though, not all services and libraries come with definitions provided, so if your project relies on some 3rd party API that you want to be interchangeable and testable, you should consider implementing a minimal interface for it yourself. This is also the case if the definitions exist but are not up to date or contain tightly coupled code that depends on a certain way of use. So, I have to cry this out loud:</p>
 
 <p><em>Dear TypeScript library maintainers, please consider using <code>interface</code> instead of <code>class</code> to describe your API. In many cases it&rsquo;s just a matter of writing a few lines of code more, or even just replacing <code>class</code> with <code>interface</code>, but it makes coupling of client code more loose and your consumers won&rsquo;t have to maintain interfaces for your API themselves.</em></p>
@@ -246,121 +236,111 @@ Tags <a href="http://blog.kodigy.com/tags/js">js</a>, <a href="http://blog.kodig
 <h3 id="using-the-interfaces">Using the interfaces</h3>
 
 <p>Consuming interfaces is almost identical to using &ldquo;normal&rdquo; types. Here is our <code>addUser</code> function:</p>
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">async <span style="color: #0000aa">function</span> addUser(db: database.Database, user: User): Promise&lt;User&gt; {
-  <span style="color: #0000aa">if</span> (!user.email) {
-    <span style="color: #0000aa">throw</span> <span style="color: #0000aa">new</span> <span style="color: #00aaaa">Error</span>(<span style="color: #aa5500">&#39;User email is required&#39;</span>);
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#00a">async</span> <span style="color:#00a">function</span> addUser(db: database.Database, user: User): <span style="color:#0aa">Promise</span>&lt;User&gt; {
+  <span style="color:#00a">if</span> (!user.email) {
+    <span style="color:#00a">throw</span> <span style="color:#00a">new</span> <span style="color:#0aa">Error</span>(<span style="color:#a50">&#39;User email is required&#39;</span>);
   }
-  <span style="color: #0000aa">let</span> savedUser = user;
-  savedUser.key = db.ref(<span style="color: #aa5500">&#39;Users&#39;</span>).push(user);
-  <span style="color: #0000aa">return</span> db.ref(<span style="color: #aa5500">&#39;/Users&#39;</span>).set(savedUser);
-}
-</pre></div>
-
+  <span style="color:#00a">let</span> savedUser = user;
+  savedUser.key = db.ref(<span style="color:#a50">&#39;Users&#39;</span>).push(user);
+  <span style="color:#00a">return</span> db.ref(<span style="color:#a50">&#39;/Users&#39;</span>).set(savedUser);
+}</code></pre></div>
 <p>This is how we could call it passing real objects:</p>
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #0000aa">import</span> * as firebase from <span style="color: #aa5500">&#39;firebase&#39;</span>;
-<span style="color: #0000aa">import</span> { addUser, User } from <span style="color: #aa5500">&#39;./lib/user&#39;</span>;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#00a">import</span> * as firebase from <span style="color:#a50">&#39;firebase&#39;</span>;
+<span style="color:#00a">import</span> { addUser, User } from <span style="color:#a50">&#39;./lib/user&#39;</span>;
 
-<span style="color: #aaaaaa; font-style: italic">// Somewhere down the line</span>
-<span style="color: #0000aa">const</span> userInput = &lt;User&gt;{
+<span style="color:#aaa;font-style:italic">// Somewhere down the line
+</span><span style="color:#aaa;font-style:italic"></span><span style="color:#00a">const</span> userInput = &lt;User&gt;{
   email: input.email,
   fullName: input.fullName,
   birthday: input.birthday,
 };
 
-<span style="color: #0000aa">try</span> {
-  <span style="color: #0000aa">const</span> user = await addUser(firebase.database(), userInput);
+<span style="color:#00a">try</span> {
+  <span style="color:#00a">const</span> user = <span style="color:#00a">await</span> addUser(firebase.database(), userInput);
   sendResult(user);
-} <span style="color: #0000aa">catch</span> (err) {
+} <span style="color:#00a">catch</span> (err) {
   sendError(err);
-}
-</pre></div>
-
+}</code></pre></div>
 <p>Dealing with <code>User</code> is really trivial here, all you need to notice is how we pass <code>firebase.database()</code> as a dependency service.</p>
 
 <h4 id="alternative-ways-to-organize-containers">Alternative ways to organize containers</h4>
 
 <p>Passing everything as the arguments of a function may be inconvenient. In many cases dependency containers are passed as class <code>constructor</code> arguments, so that the containers are reused through the state of <code>this</code>. Example:</p>
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #0000aa">import</span> { database } from <span style="color: #aa5500">&#39;firebase&#39;</span>;
-<span style="color: #0000aa">import</span> { Bucket } from <span style="color: #aa5500">&#39;./lib/google-cloud-storage&#39;</span>; <span style="color: #aaaaaa; font-style: italic">// Custom service interface</span>
-
-<span style="color: #0000aa">class</span> UserStorage {
-  constructor(<span style="color: #0000aa">private</span> db: firebase.Database, <span style="color: #0000aa">private</span> bucket: Bucket) { }
-  async <span style="color: #0000aa">function</span> addUser(user: User) {
-    <span style="color: #aaaaaa; font-style: italic">// The implementation is very similar to a function written before</span>
-  }
-}
-</pre></div>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#00a">import</span> { database } from <span style="color:#a50">&#39;firebase&#39;</span>;
+<span style="color:#00a">import</span> { Bucket } from <span style="color:#a50">&#39;./lib/google-cloud-storage&#39;</span>; <span style="color:#aaa;font-style:italic">// Custom service interface
+</span><span style="color:#aaa;font-style:italic"></span>
+<span style="color:#00a">class</span> UserStorage {
+  constructor(<span style="color:#00a">private</span> db: firebase.Database, <span style="color:#00a">private</span> bucket: Bucket) { }
+  <span style="color:#00a">async</span> <span style="color:#00a">function</span> addUser(user: User) {
+    <span style="color:#aaa;font-style:italic">// The implementation is very similar to a function written before
+</span><span style="color:#aaa;font-style:italic"></span>  }
+}</code></pre></div>
 <p>In functional or dataflow programming dependencies are passed as function arguments or as combined objects (messages/IPs/etc.). In the latter case it makes sense to separate dependencies from actual input:</p>
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #0000aa">interface</span> Deps {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#00a">interface</span> Deps {
   db: firebase.Database,
   bucket: Bucket,
 }
 
-<span style="color: #aaaaaa; font-style: italic">// Factory function that returns an addUser implementation using the `deps`</span>
-<span style="color: #0000aa">function</span> makeAddUser(deps: Deps): (user: User) =&gt; Promise&lt;User&gt; {
-  <span style="color: #0000aa">return</span> (user: User): Promise&lt;User&gt; =&gt; {
-    <span style="color: #aaaaaa; font-style: italic">// Here we use `database` and `bucket` from `deps` to save `user`</span>
-    <span style="color: #aaaaaa; font-style: italic">// Let&#39;s write an example promise chain</span>
-    <span style="color: #0000aa">return</span> findUserFiles(deps, user)
+<span style="color:#aaa;font-style:italic">// Factory function that returns an addUser implementation using the `deps`
+</span><span style="color:#aaa;font-style:italic"></span><span style="color:#00a">function</span> makeAddUser(deps: Deps): (user: User) =&gt; <span style="color:#0aa">Promise</span>&lt;User&gt; {
+  <span style="color:#00a">return</span> (user: User): <span style="color:#0aa">Promise</span>&lt;User&gt; =&gt; {
+    <span style="color:#aaa;font-style:italic">// Here we use `database` and `bucket` from `deps` to save `user`
+</span><span style="color:#aaa;font-style:italic"></span>    <span style="color:#aaa;font-style:italic">// Let&#39;s write an example promise chain
+</span><span style="color:#aaa;font-style:italic"></span>    <span style="color:#00a">return</span> findUserFiles(deps, user)
       .then((files) =&gt; uploadFiles(deps, files))
       .then(() =&gt; saveUser(deps, user));
   }
 }
 
-<span style="color: #aaaaaa; font-style: italic">// Example usage</span>
-<span style="color: #0000aa">const</span> addUser = makeAddUser({ db: firebase.database(), bucket: gcsBucket });
+<span style="color:#aaa;font-style:italic">// Example usage
+</span><span style="color:#aaa;font-style:italic"></span><span style="color:#00a">const</span> addUser = makeAddUser({ db: firebase.database(), bucket: gcsBucket });
 addUser(userData)
 .then((user) =&gt; {
-  <span style="color: #aaaaaa; font-style: italic">// Success</span>
-})
-.<span style="color: #0000aa">catch</span>((err) =&gt; {
-  <span style="color: #aaaaaa; font-style: italic">// Error</span>
-});
-</pre></div>
-
+  <span style="color:#aaa;font-style:italic">// Success
+</span><span style="color:#aaa;font-style:italic"></span>})
+.<span style="color:#00a">catch</span>((err) =&gt; {
+  <span style="color:#aaa;font-style:italic">// Error
+</span><span style="color:#aaa;font-style:italic"></span>});</code></pre></div>
 <p>It&rsquo;s a matter of specific application design choice how to wrap the concept. Underneath it remains the same.</p>
 
 <h3 id="mocking-a-service">Mocking a service</h3>
 
 <p>Now we get closer to what this is all about. Let&rsquo;s write a mock for local Firebase testing using the <a href="htts://npmjs.com/package/firebase-server">FirebaseServer</a> package.</p>
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #0000aa">import</span> * as firebase from <span style="color: #aa5500">&#39;firebase&#39;</span>;
-<span style="color: #0000aa">import</span> * as FirebaseServer from <span style="color: #aa5500">&#39;firebase-server&#39;</span>;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#00a">import</span> * as firebase from <span style="color:#a50">&#39;firebase&#39;</span>;
+<span style="color:#00a">import</span> * as FirebaseServer from <span style="color:#a50">&#39;firebase-server&#39;</span>;
 
-<span style="color: #0000aa">export</span> <span style="color: #0000aa">default</span> <span style="color: #0000aa">class</span> FirebaseMock {
-  <span style="color: #0000aa">private</span> app;
-  <span style="color: #0000aa">private</span> server;
-  constructor(<span style="color: #0000aa">private</span> port = <span style="color: #009999">5151</span>) {
-    <span style="color: #0000aa">this</span>.server = <span style="color: #0000aa">new</span> FirebaseServer(<span style="color: #0000aa">this</span>.port, <span style="color: #aa5500">&#39;test-app-local.firebaseio.com&#39;</span>);
-    <span style="color: #0000aa">this</span>.app = firebase.initializeApp({
-      apiKey: <span style="color: #aa5500">&#39;fake-key&#39;</span>,
-      databaseURL: <span style="color: #FF0000; background-color: #FFAAAA">`</span>ws:<span style="color: #aaaaaa; font-style: italic">//test-app-local.firebaseio.com:${this.port}`,</span>
+<span style="color:#00a">export</span> <span style="color:#00a">default</span> <span style="color:#00a">class</span> FirebaseMock {
+  <span style="color:#00a">private</span> app;
+  <span style="color:#00a">private</span> server;
+  constructor(<span style="color:#00a">private</span> port = <span style="color:#099">5151</span>) {
+    <span style="color:#00a">this</span>.server = <span style="color:#00a">new</span> FirebaseServer(<span style="color:#00a">this</span>.port, <span style="color:#a50">&#39;test-app-local.firebaseio.com&#39;</span>);
+    <span style="color:#00a">this</span>.app = firebase.initializeApp({
+      apiKey: <span style="color:#a50">&#39;fake-key&#39;</span>,
+      databaseURL: <span style="color:#a50">`ws://test-app-local.firebaseio.com:</span><span style="color:#a50">${</span><span style="color:#00a">this</span>.port<span style="color:#a50">}</span><span style="color:#a50">`</span>,
     });
   }
   database(): firebase.database.Database {
-    <span style="color: #0000aa">return</span> firebase.database(<span style="color: #0000aa">this</span>.app);
+    <span style="color:#00a">return</span> firebase.database(<span style="color:#00a">this</span>.app);
   }
   stop(callback) {
-    firebase.app().<span style="color: #0000aa">delete</span>();
-    <span style="color: #0000aa">this</span>.server.close(callback);
+    firebase.app().<span style="color:#00a">delete</span>();
+    <span style="color:#00a">this</span>.server.close(callback);
   }
-}
-</pre></div>
-
+}</code></pre></div>
 <p>Mocking Firebase with <code>firebase-server</code> is as easy as that. In other cases you might actually need to implement some mocking methods that mimick the interface.</p>
 
 <h3 id="testing">Testing</h3>
 
 <p>This is bread and butter of Dependency Injection. Let&rsquo;s write a Mocha/Chai.js test for our function:</p>
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #0000aa">import</span> { database } from <span style="color: #aa5500">&#39;firebase&#39;</span>;
-<span style="color: #0000aa">import</span> { addUser, User } from <span style="color: #aa5500">&#39;./lib/user&#39;</span>;
-<span style="color: #0000aa">import</span> FirebaseMock from <span style="color: #aa5500">&#39;./mocks/firebase&#39;</span>;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#00a">import</span> { database } from <span style="color:#a50">&#39;firebase&#39;</span>;
+<span style="color:#00a">import</span> { addUser, User } from <span style="color:#a50">&#39;./lib/user&#39;</span>;
+<span style="color:#00a">import</span> FirebaseMock from <span style="color:#a50">&#39;./mocks/firebase&#39;</span>;
 
-describe(<span style="color: #aa5500">&#39;addUser()&#39;</span>, () =&gt; {
-  <span style="color: #0000aa">let</span> firebase: FirebaseMock;
-  <span style="color: #0000aa">let</span> db: firebase.Database;
+describe(<span style="color:#a50">&#39;addUser()&#39;</span>, () =&gt; {
+  <span style="color:#00a">let</span> firebase: FirebaseMock;
+  <span style="color:#00a">let</span> db: firebase.Database;
   before((done) =&gt; {
-    firebase = <span style="color: #0000aa">new</span> FirebaseMock();
+    firebase = <span style="color:#00a">new</span> FirebaseMock();
     db = firebase.database();
     done();
   });
@@ -368,54 +348,48 @@ describe(<span style="color: #aa5500">&#39;addUser()&#39;</span>, () =&gt; {
     firebase.stop(done);
   });
 
-  it(<span style="color: #aa5500">&#39;adds a user&#39;</span>, async () =&gt; {
-    <span style="color: #0000aa">const</span> user = &lt;User&gt;{
-      email: <span style="color: #aa5500">&#39;john@example.com&#39;</span>,
-      fullName: <span style="color: #aa5500">&#39;John Appleseed&#39;</span>
+  it(<span style="color:#a50">&#39;adds a user&#39;</span>, <span style="color:#00a">async</span> () =&gt; {
+    <span style="color:#00a">const</span> user = &lt;User&gt;{
+      email: <span style="color:#a50">&#39;john@example.com&#39;</span>,
+      fullName: <span style="color:#a50">&#39;John Appleseed&#39;</span>
     };
-    <span style="color: #0000aa">const</span> savedUser = await addUser(db, user);
-    expect(savedUser.key).to.be.a(<span style="color: #aa5500">&#39;string&#39;</span>);
+    <span style="color:#00a">const</span> savedUser = <span style="color:#00a">await</span> addUser(db, user);
+    expect(savedUser.key).to.be.a(<span style="color:#a50">&#39;string&#39;</span>);
     expect(savedUser.email).to.equal(user.email);
     expect(savedUser.fullName).to.equal(user.fullName);
   });
 
-  it(<span style="color: #aa5500">&#39;discards non-user objects&#39;</span>, async() =&gt; {
-    <span style="color: #0000aa">const</span> user = &lt;User&gt;{};
-    <span style="color: #0000aa">const</span> didThrow = <span style="color: #0000aa">false</span>;
-    <span style="color: #0000aa">try</span> {
-      await addUser(db, user);
-    } <span style="color: #0000aa">catch</span> (e) {
-      expect(e).to.be.an(<span style="color: #aa5500">&#39;error&#39;</span>);
-      didThrow = <span style="color: #0000aa">true</span>;
-    } <span style="color: #0000aa">finally</span> {
-      expect(didThrow).to.be.<span style="color: #0000aa">true</span>;
+  it(<span style="color:#a50">&#39;discards non-user objects&#39;</span>, <span style="color:#00a">async</span>() =&gt; {
+    <span style="color:#00a">const</span> user = &lt;User&gt;{};
+    <span style="color:#00a">const</span> didThrow = <span style="color:#00a">false</span>;
+    <span style="color:#00a">try</span> {
+      <span style="color:#00a">await</span> addUser(db, user);
+    } <span style="color:#00a">catch</span> (e) {
+      expect(e).to.be.an(<span style="color:#a50">&#39;error&#39;</span>);
+      didThrow = <span style="color:#00a">true</span>;
+    } <span style="color:#00a">finally</span> {
+      expect(didThrow).to.be.<span style="color:#00a">true</span>;
     }
   });
-});
-</pre></div>
-
+});</code></pre></div>
 <p>If we omit the testing boilerplate, there is nothing here that would be different from the normal consumer code, meanwhile a mock is being used. All we have to do is to pass the mock object to the code being tested instead of a real service.</p>
 
 <h2 id="bottom-line">Bottom line</h2>
 
 <p>There are many topics which I haven&rsquo;t covered in this article. For example, <em>Union types</em> which you can combine with <em>strict null checks</em> to make the use of <code>null</code> as a &ldquo;third state&rdquo; explicit:</p>
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">type OrderRecord <span style="color: #0000aa">interface</span> {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">type OrderRecord <span style="color:#00a">interface</span> {
   id: number;
   user_id: number;
-  comment: string|<span style="color: #0000aa">null</span>;
-}
-</pre></div>
-
+  comment: string|<span style="color:#00a">null</span>;
+}</code></pre></div>
 <p>Also <em>Union types</em> are useful for the <em>return value or error</em> pattern:</p>
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #0000aa">function</span> getItem(id: number): Item|<span style="color: #00aaaa">Error</span> {
-  <span style="color: #0000aa">if</span> (somethingWentWrong()) {
-    <span style="color: #0000aa">return</span> <span style="color: #0000aa">new</span> <span style="color: #00aaaa">Error</span>(<span style="color: #aa5500">&#39;Oops&#39;</span>);
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#00a">function</span> getItem(id: number): Item|<span style="color:#0aa">Error</span> {
+  <span style="color:#00a">if</span> (somethingWentWrong()) {
+    <span style="color:#00a">return</span> <span style="color:#00a">new</span> <span style="color:#0aa">Error</span>(<span style="color:#a50">&#39;Oops&#39;</span>);
   }
-  <span style="color: #0000aa">const</span> item = loadItemFromSomewhere(id);
-  <span style="color: #0000aa">return</span> item;
-}
-</pre></div>
-
+  <span style="color:#00a">const</span> item = loadItemFromSomewhere(id);
+  <span style="color:#00a">return</span> item;
+}</code></pre></div>
 <p>But the main thought is this: it&rsquo;s not about how many language features are used in your projects, it&rsquo;s about how the most essential onces can be applied to achieve your team&rsquo;s goals.</p>
 
                   
