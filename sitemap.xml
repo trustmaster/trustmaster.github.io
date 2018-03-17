@@ -84,13 +84,13 @@
   </url>
   
   <url>
-    <loc>http://blog.kodigy.com/categories/development/</loc>
+    <loc>http://blog.kodigy.com/tags/development/</loc>
     <lastmod>2017-07-26T14:48:53+03:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://blog.kodigy.com/tags/development/</loc>
+    <loc>http://blog.kodigy.com/categories/development/</loc>
     <lastmod>2017-07-26T14:48:53+03:00</lastmod>
     <priority>0</priority>
   </url>
@@ -114,13 +114,13 @@
   </url>
   
   <url>
-    <loc>http://blog.kodigy.com/categories/noflo/</loc>
+    <loc>http://blog.kodigy.com/tags/noflo/</loc>
     <lastmod>2017-03-13T18:25:04+03:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://blog.kodigy.com/tags/noflo/</loc>
+    <loc>http://blog.kodigy.com/categories/noflo/</loc>
     <lastmod>2017-03-13T18:25:04+03:00</lastmod>
     <priority>0</priority>
   </url>
