@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="A system brought to life">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="http://blog.kodigy.com//img/post/google-keep-todo/bg.jpg">
+    <meta property="twitter:image" content="http://blog.kodigy.com//img/post/google-keep-todo/bg.jpg" />
+    
+
+    
+    <meta name="title" content="Google Keep framework for TODO and Goal tracking" />
+    <meta property="og:title" content="Google Keep framework for TODO and Goal tracking" />
+    <meta property="twitter:title" content="Google Keep framework for TODO and Goal tracking" />
+    
+
+    
+    <meta name="description" content="How I use Google Keep for getting things done and tracking long-term goals, in addition to note taking. Plus collecting statistics and automating routine.">
+    <meta property="og:description" content="How I use Google Keep for getting things done and tracking long-term goals, in addition to note taking. Plus collecting statistics and automating routine." />
+    <meta property="twitter:description" content="How I use Google Keep for getting things done and tracking long-term goals, in addition to note taking. Plus collecting statistics and automating routine." />
+    
+
+    
+    
+    <meta property="twitter:card" content="How I use Google Keep for getting things done and tracking long-term goals, in addition to note taking. Plus collecting statistics and automating routine." />
+    
+    
+    
+
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="http://blog.kodigy.com/img/favicon.ico">
+
+    <title>Google Keep framework for TODO and Goal tracking-</title>
+
+    <link rel="canonical" href="http://blog.kodigy.com/post/google-keep-todo-goal-tracking/">
+
+    <link rel="stylesheet" href="http://blog.kodigy.com/css/iDisqus.min.css" />
+
+    
+    <link rel="stylesheet" href="http://blog.kodigy.com/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="http://blog.kodigy.com/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="http://blog.kodigy.com/css/zanshang.css">
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
+        type="text/css">
+
+    
+    <link rel="stylesheet" href="http://blog.kodigy.com/css/custom.css">
+
+    
+    
+    <script src="http://blog.kodigy.com/js/jquery.min.js"></script>
+
+    
+    <script src="http://blog.kodigy.com/js/bootstrap.min.js"></script>
+
+    
+    <script src="http://blog.kodigy.com/js/hux-blog.min.js"></script>
+
+    
+    
+
+</head>
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://blog.kodigy.com/">A system brought to life</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    
+                    
+                    <li>
+                        <a href="http://blog.kodigy.com/categories/development">development</a>
+                    </li>
+                    
+                    <li>
+                        <a href="http://blog.kodigy.com/categories/flow-based-programming">flow-based-programming</a>
+                    </li>
+                    
+                    <li>
+                        <a href="http://blog.kodigy.com/categories/productivity">productivity</a>
+                    </li>
+                    
+                    
+
+                    
+                    <li><a href="http://blog.kodigy.com/about/author/">About</a></li>
+                    
+
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e) {
+        if ($navbar.className.indexOf('in') > 0) {
+            
+            $navbar.className = " ";
+            
+            setTimeout(function () {
+                
+                if ($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            }, 400)
+        } else {
+            
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/post/google-keep-todo/bg.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                    </div>
+                    <h1>Google Keep framework for TODO and Goal tracking</h1>
+                    <h2 class="subheading">How I use Google Keep for getting things done and tracking long-term goals, in addition to note taking. Plus collecting statistics and automating routine.</h2>
+                    <span class="meta">
+                        
+                        A 14 minute read.
+                        
+                        Published on
+                        January 5, 2021
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <div class="table-of-contents">
+                    <header>
+                        <h2>Contents</h2>
+                    </header>
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#why-google-keep">Why Google Keep?</a></li>
+    <li><a href="#todo-framework-for-google-keep">TODO framework for Google Keep</a>
+      <ul>
+        <li><a href="#categorization">Categorization</a></li>
+        <li><a href="#dates-and-time-spans">Dates and time spans</a></li>
+        <li><a href="#items-and-tracking">Items and tracking</a></li>
+        <li><a href="#cloning-lists-for-reuse">Cloning lists for reuse</a></li>
+        <li><a href="#try-it-out">Try it out</a></li>
+      </ul>
+    </li>
+    <li><a href="#statistics-over-time">Statistics over time</a>
+      <ul>
+        <li><a href="#collecting-statistics">Collecting statistics</a></li>
+        <li><a href="#visualizing-results">Visualizing results</a></li>
+      </ul>
+    </li>
+    <li><a href="#planning-routine-tasks-and-habit-building">Planning routine tasks and habit building</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+                </div>
+                
+                <p>Keeping track of tasks helps in many ways. Remember the milk - check. Get things done - check. Build healthy habits - check. Get an overview of your progress - check. Control your life - well, that&rsquo;s arguably possible. Feel more of contentment and accomplishment - check!</p>
+<p>In this article I&rsquo;m going to share the framework I&rsquo;ve been using for organizing my tasks over the last few years. I don&rsquo;t insist you should use this framework or this specific application, but maybe it will give you some inspiration. Or maybe you can share a couple of inspirational tips with me.</p>
+<p>After describing the framework itself, there are a couple of sections on how I use Google Keep API to collect statistics and apply a data driven approach to progress tracking. And the same API can be used to automate routine operations, such as adding repetitive lists.</p>
+<h2 id="why-google-keep">Why Google Keep?</h2>
+<p>I&rsquo;ve been using Google Keep for note taking and structuring my personal information since 2014. Over the last couple of years I&rsquo;ve also been putting my TODO lists there. If you&rsquo;re not a Google Keep user, or want to have an idea of how a Google Keep board looks like, here is a preview:</p>
+
+<link rel="stylesheet" href="http://blog.kodigy.com/css/hugo-easy-gallery.css" />
+<div class="img-container">
+<div class="box" style="max-width:80%">
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="http://blog.kodigy.com/img/post/google-keep-todo/google-keep.png" alt="Google Keep interface"/>
+    </div>
+    <a href="http://blog.kodigy.com/img/post/google-keep-todo/google-keep.png" itemprop="contentUrl"></a>
+      <figcaption align="center">
+          <p>Google Keep interface on desktop</p>
+      </figcaption>
+  </figure>
+</div>
+</div>
+
+<p>Every now and then I keep looking around and thinking of a dedicated task tracker app like Todoist, or latest and greatest all-in-one knowledge base like Notion. But every time I go back to Google Keep for 3 simple reasons:</p>
+<ul>
+<li>It is part of Google infrastructure that I&rsquo;m using. Meaning that it&rsquo;s free, works on all platforms, and my data is not going to vanish if this new startup goes bankrupt.</li>
+<li>My commitment bias, because I have already built the habit of using it, and I don&rsquo;t want to bother migrating my data to somewhere else.</li>
+<li>I just love Google Keep&rsquo;s minimalist material design! It&rsquo;s so simple and natural to use. Just like if you write on colored sticky notes, and somebody carefully organizes them for you.</li>
+</ul>
+<p>It&rsquo;s not perfect however, and there are a couple of issues that kept me searching for alternatives. The never ending human curiosity and strive for better aside, here is something I miss in Google Keep a lot: statistics of completing tasks by category and period of time. This feature however is hard to find in other task tracking software.</p>
+<p>So, after trying out a couple new TODO apps again, going back to Keep and longing for tracking my goal statistics, I asked myself: <em>how hard can it be to add statistics to Google Keep?</em></p>
+<p>It turned out that there is an unofficial API that allows to do that and it&rsquo;s not that hard to use. But first let&rsquo;s look at the way I organize my task lists in Google Keep.</p>
+<h2 id="todo-framework-for-google-keep">TODO framework for Google Keep</h2>
+<p>Google Keep has notes and lists. I use notes for my&hellip; ehem&hellip; notes, and lists for my TODOs. I create a lot of lists for different categories and periods of time. To worry less about cluttering, I just archive the lists and notes which are not relevant anymore, and later on I can easily find them using Search function - something Google has always been great at.</p>
+<p>Let&rsquo;s look at a typical TODO list:</p>
+
+
+<div class="img-container">
+<div class="box" style="max-width:50%">
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="http://blog.kodigy.com/img/post/google-keep-todo/todo.png" alt="Google Keep TODO example"/>
+    </div>
+    <a href="http://blog.kodigy.com/img/post/google-keep-todo/todo.png" itemprop="contentUrl"></a>
+      <figcaption align="center">
+          <p>TODO structure in Google Keep</p>
+      </figcaption>
+  </figure>
+</div>
+</div>
+
+<p>You can see the following key elements on the image:</p>
+<ul>
+<li><strong>Category</strong> - a primary identifier that represent a certain type of tasks. Example categories I use: <code>Personal</code>, <code>Work</code>, <code>Household</code>.</li>
+<li><strong>Color code</strong> - each category is associated with a specific color, so it is easier to tell cards belonging to one category from the other visually.</li>
+<li><strong>Date</strong> - each list corresponds to a specific period of time. It can be a day, a week, a month, or a year.</li>
+<li><strong>Items</strong> - the TODO tasks themselves.</li>
+<li><strong>Labels</strong> - labels make it easier to find lists of certain category with just a single click on the label in the menu. Typically similar to categories.</li>
+</ul>
+<p>These building blocks combined with a couple of techniques can turn the note-taking app Google Keep into a powerful task tracking system. These techniques are explained in more detail below.</p>
+<h3 id="categorization">Categorization</h3>
+<p>I split all my TODO lists into <strong>categories</strong> to track them separately, e.g. <code>Personal</code>, <code>Work</code>, <code>Household</code>. You may want to use more specific ones like <code>Studies</code>, <code>Housekeeping</code>, etc. You can even track progress on specific projects, each project being a category e.g. <code>Project Apollo</code>. I use very few very generic categories which represent specific spheres or types of activity. It helps me find balance to keep the lists trackable without getting lost into detail.</p>
+<p>Assigning a <strong>color code</strong> to each category makes it easier to find a list of certain type in a pile of notes on Google Keep board. This technique also motivates me to balance lists in different categories so that a single color doesn&rsquo;t dominate my Keep board. Think of enforcing work-life balance this way. Some example associations that I use: <code>Personal: green</code>, <code>Work: dark blue</code>, <code>Household: grey</code>, <code>Projects: light blue</code>.</p>
+<p>The last element that I use for categorization is <strong>labels</strong>. It is completely optional, but I find it easier to find the notes and lists over time if I assign certain labels to them. All labels are shown in the navigation panel in Keep, and can be used as one-click filters. Most of the time my labels are the same as categories, but you can build advanced search system with them, given that multiple labels can be assigned to the same note.</p>
+<h3 id="dates-and-time-spans">Dates and time spans</h3>
+<p>Adding dates to the task lists is an essential part to track your tasks regularly and consistently. It also enables you to create cumulative reports and track goals over longer time spans.</p>
+<p>For me the granularity of the lists depends on a category, because I don&rsquo;t have the same amount of tasks and planning horizon for each of them. For example, my <code>Work</code> lists are <strong>weekly</strong>. I plan work tasks for the whole week and keep adding them or marking the done ones as complete as the week goes by. So, I use <a href="https://en.wikipedia.org/wiki/ISO_week_date">ISO week</a> numbers as date stamps for these lists, e.g. <code>2020-W52</code>. <code>2020</code> is the year number. I highly recommend to add the year part if you plan to use the tool more more than one year, my initial mistake was to omit it. <code>W52</code> is the ISO identifier of a week number 52 of the year.</p>
+<p>While the <code>Work</code> lists are weekly, my <code>Personal</code> tasks are <strong>daily</strong> and way more granular. I find it useful for routine tracking, habit building, and mindfulness techniques. I prefer to use the ISO date format for dates: <code>2020-12-30</code>. If you&rsquo;re not so much into technical formats, you can use something more traditional in your country, e.g. <code>30/12/2020</code>, <code>30.12.2020</code>, <code>30 Dec 2020</code>.</p>
+<p>Another way to use case for lists in Google Keep is putting your longer term goals to a visible place on the board. Such goal lists can also have date identifiers. It is more reasonable to use <strong>monthly</strong> lists (e.g. <code>2020-M12</code>, <code>December 2020</code>, etc.), or <strong>yearly</strong> lists (<code>2020</code>) for yearly goals. If your long-term goals depend on progress of short-term task lists, you can use Google Keep data to build reports and visualize trends. More on that in the <a href="#statistics-over-time">Statistics over time</a> section.</p>
+<h3 id="items-and-tracking">Items and tracking</h3>
+<p>You can create task list items and nest sub items within items in Google Keep like this:</p>
+<ul>
+<li>Buy groceries
+<ul>
+<li>Milk</li>
+<li>Bread</li>
+</ul>
+</li>
+<li>Walk the dog</li>
+</ul>
+<p>Or you can use prefixes to indicate that certain tasks belong to the same group or project, e.g.:</p>
+<ul>
+<li>[Piano] Practice C-major chord</li>
+<li>[Home] Hang the curtain</li>
+<li>[Piano] Play the Nutcracker</li>
+</ul>
+<p>I prefer the lists to be just flat and don&rsquo;t use nesting or prefixes. So, my TODO items are just simple imperatives like:</p>
+<ul>
+<li>Buy groceries</li>
+<li>Walk the dog</li>
+<li>Practice C-major chord</li>
+</ul>
+<p>If I feel like there is a strong need for a prefix or nesting after some time, that&rsquo;s a good sign that a new category is needed.</p>
+<p>Once an item is done, it is checked as complete. Once the whole list is complete, or the time span is not relevant anymore (e.g. it&rsquo;s already the week after), I archive the whole list. For example, at the end of each week I review the lists for that week, draw conclusions and archive them. All archived notes are not cluttering your main board anymore, but are still perfectly accessible via Search and Labels. This is a feature I couldn&rsquo;t find in many popular TODO apps.</p>
+<h3 id="cloning-lists-for-reuse">Cloning lists for reuse</h3>
+<p>Let&rsquo;s consider a couple of common situations when you need to copy some of the items from the previous TODO, or create exactly the same list to complete the same items again.</p>
+<p>The first situation often occurs when I finish my work week, but there are some tasks that I haven&rsquo;t completed and want to carry over to the next week. This can be done rather easily with the context menu which opens when you click the three dots (<code>...</code>) icon in the bottom right corner of a Google Keep note. 
+
+<div class="img-container">
+<div class="box" style="max-width:25%">
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="http://blog.kodigy.com/img/post/google-keep-todo/context-menu.png" alt="Note context menu"/>
+    </div>
+    <a href="http://blog.kodigy.com/img/post/google-keep-todo/context-menu.png" itemprop="contentUrl"></a>
+  </figure>
+</div>
+</div>
+ The actions you need to do in this case are:</p>
+<ol>
+<li><em>&hellip; -&gt; Make a copy</em></li>
+<li>In the newly created card click <em>&hellip; -&gt; Delete checked items</em></li>
+<li>Archive the old card and edit the new one (e.g. change the date)</li>
+</ol>
+<p>The second situation occurs when working with repetitive daily tasks, such as routine or habit building. To re-create the same TODO list but for the next day:</p>
+<ol>
+<li><em>&hellip; -&gt; Make a copy</em></li>
+<li>In the new card click <em>&hellip; -&gt; Uncheck all items</em></li>
+<li>Archive the old card and update the date in the new one</li>
+</ol>
+<p>Another, a more programmer, way to automate this job is described in <a href="#planning-routine-tasks-and-habit-building">Planning routine tasks and habit building</a>.</p>
+<h3 id="try-it-out">Try it out</h3>
+<p>That&rsquo;s the whole framework. If you have a Google account, I encourage you to try it out at this point and see if it fits your needs. Or feel free to steal some of these ideas for TODOs in your favorite app.</p>
+<p>If you already use Google Keep for your TODOs, and if you are a numbers/data/control freak, read on to find out how you can add statistics component on top of Google Keep.</p>
+<h2 id="statistics-over-time">Statistics over time</h2>
+<p>Unfortunately Google Keep doesn&rsquo;t provide any statistics out of the box. But we can leverage its unofficial API to export the data and use common tools to process and visualize it.</p>
+<p>I&rsquo;ve written a simple Python script called <a href="https://github.com/trustmaster/gkeeptodo">GKeepTODO</a> to extract statistics from Google Keep task lists. This tool can aggregate data for certain periods of time (e.g. monthly), calculate overall completion rates, and export result as CSV files. Then you can feed the CSV data into your favorite spreadsheet or chart tool, e.g. Google Docs.</p>
+<p>With Python 3 installed on your machine, follow the <a href="https://github.com/trustmaster/gkeeptodo#installation">installation instructions</a> and other docs to get started. In this article I will show a simple use case.</p>
+<p>As I&rsquo;m writing this post at the end of the year, it&rsquo;s the right time to see how the year went. I want to see, what % of my tasks I completed over the year. Let&rsquo;s look at my <code>Work</code> statistics together, using the <code>gkeeptodo</code> script.</p>
+<h3 id="collecting-statistics">Collecting statistics</h3>
+<p>First, I edit the config file <code>gkeeptodo.ini</code> to make sure I&rsquo;m going to export the correct metric:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#66d9ef">[metric: Work]</span>
+<span style="color:#a6e22e">keyword</span><span style="color:#f92672">=</span><span style="color:#e6db74">Work</span>
+<span style="color:#a6e22e">modes</span><span style="color:#f92672">=</span><span style="color:#e6db74">monthly, total</span>
+</code></pre></div><p>This configuration for metric called &ldquo;Work&rdquo; means: &ldquo;search for task lists prefixed with keyword <code>Work</code>, write a report aggregated by month, and also an overall report&rdquo;.</p>
+<p>Then, given that the pre-requisites are installed and the configuration file is located in current directory, I run the tool like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./gkeeptodo.py stats -f 2020-01-01 -t 2020-12-31
+</code></pre></div><p>You can read the command as: &ldquo;give me stats from <code>2020-01-01</code> to <code>2020-12-31</code>&rdquo;. The from (<code>-f</code>) and to (<code>-t</code>) arguments are optional. If omitted, the tool includes data for all time. It prints something like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> % ./gkeeptodo.py stats -f 2020-01-01 -t 2020-12-31          
+Loading access token from keyring
+Authorization, this may take a <span style="color:#66d9ef">while</span>...
+Collecting metrics
+--------------------------------
+Keyword: Work
+Statistics in <span style="color:#e6db74">&#34;total&#34;</span> mode
+Statistics in <span style="color:#e6db74">&#34;monthly&#34;</span> mode
+--------------------------------
+</code></pre></div><p>It generated CSV files: <code>Work_monthly_20201225115355.csv</code>, <code>Work_total_20201225115355.csv</code>.</p>
+<p>The <code>total</code> statistics are very short and straightforward. After opening the file I see something like this:</p>
+<table>
+<thead>
+<tr>
+<th>Index</th>
+<th>Checked</th>
+<th>Unchecked</th>
+<th>Total</th>
+<th>Completion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>total</td>
+<td>425</td>
+<td>123</td>
+<td>548</td>
+<td>0.7755474452554745</td>
+</tr>
+</tbody>
+</table>
+<p>Woohoo! I completed 78% of my work TODOs in 2020! That&rsquo;s a really good progress, as in 2019 it was at around 63%. I could get these numbers for 2019 quickly on the screen without writing the files with this command:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./gkeeptodo.py stats -f 2019-01-01 -t 2019-12-31 -d -v
+Loading access token from keyring
+Authorization, this may take a <span style="color:#66d9ef">while</span>...
+Collecting metrics
+--------------------------------
+Keyword: Work
+Statistics in <span style="color:#e6db74">&#34;total&#34;</span> mode
+Point <span style="color:#e6db74">&#34;total&#34;</span>: <span style="color:#ae81ff">445</span> checked, <span style="color:#ae81ff">259</span> unchecked, <span style="color:#ae81ff">704</span> total, completion 63%
+----
+</code></pre></div><p>The <code>-v</code> option means &ldquo;verbose&rdquo; and the <code>-d</code> one means &ldquo;dry&rdquo; or &ldquo;don&rsquo;t write files&rdquo;.</p>
+<blockquote>
+<p><strong>Sidenote</strong>: the above numbers are real. You may read them as &ldquo;this guy fucked up 40% of his work tasks last year, they probably fired him&rdquo;. This is not correct. I keep track of all the things that <strong>potentially should</strong> be done, not only the ones that <strong>absolutely must</strong> be done. If you are familiar with the Eisenhower matrix, those statistics are for all 4 quadrants.</p>
+<p>I put the important stuff on the top of the lists and try to complete them first, while less important tasks stay at the bottom and often get rejected in favor of more important ones. Given this, I consider 75% to be a good target for an average completion rate. 100% completion would mean that my TODO lists are too rigid and don&rsquo;t include any minor things which stay untracked and invisible.</p>
+</blockquote>
+<h3 id="visualizing-results">Visualizing results</h3>
+<p>CSV data is cool for Python and robots, but we are humans and we prefer visual information. Let&rsquo;s import the <em>monthly</em> file in Google Sheets and visualize it in a chart that shows month by month completion rate with an average. Here is a step-by-step instruction how to do it.</p>
+<p>First, open Google Docs, create a new Google Sheets document. Go to menu <em>File -&gt; Import</em> and upload the CSV file. Imported data looks somewhat like this:</p>
+
+
+<div class="img-container">
+<div class="box" style="max-width:50%">
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="http://blog.kodigy.com/img/post/google-keep-todo/google-sheet-imported.png" alt="Google Sheet after Import"/>
+    </div>
+    <a href="http://blog.kodigy.com/img/post/google-keep-todo/google-sheet-imported.png" itemprop="contentUrl"></a>
+      <figcaption align="center">
+          <p>Google Sheet after Import</p>
+      </figcaption>
+  </figure>
+</div>
+</div>
+
+<p>The &ldquo;Completion&rdquo; is not very human-friendly. You can change the display format to percent by selecting column <code>C</code> and using menu <em>Format -&gt; Number -&gt; Percent</em>.</p>
+<p>We will need the average numbers to draw an average on the chart, so let&rsquo;s add it in column <code>F</code>. Just use the <code>=AVERAGE(E2:E12)</code> formula and apply it to each value in the column <code>F</code>.</p>
+<p>To visualize this data on a chart, select <em>Insert -&gt; Chart</em>. By default it creates the &ldquo;Checked vs. Index&rdquo; chart. Let&rsquo;s change it to visualize &ldquo;Completion vs. Index&rdquo; with an average. In the chart setup:</p>
+<ul>
+<li>choose <code>Combo chart</code> as the <em>Chart type</em></li>
+<li>change <em>Data range</em> to <code>A1:F12</code></li>
+<li>then change <em>Series</em> to <code>Completion</code></li>
+<li>add another series with <code>Average</code></li>
+</ul>
+<p>The result looks somewhat like this:</p>
+
+
+<div class="img-container">
+<div class="box" style="max-width:50%">
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="http://blog.kodigy.com/img/post/google-keep-todo/google-sheet-chart.png" alt="Google Sheet with a chart"/>
+    </div>
+    <a href="http://blog.kodigy.com/img/post/google-keep-todo/google-sheet-chart.png" itemprop="contentUrl"></a>
+      <figcaption align="center">
+          <p>Completion vs. Index with average value</p>
+      </figcaption>
+  </figure>
+</div>
+</div>
+
+<p>The output format of this Python script is universal enough, so you can use any document suite or data tool to play with it. At this point, only completion statistics is collected. I also have ideas about adding frequency analysis to check how often a specific task appears in the TODOs and to rank the tasks by frequency. But I don&rsquo;t have a real use case for this feature, so if you really want it, file a feature request <a href="https://github.com/trustmaster/gkeeptodo">on GitHub</a>, or (even better) open a Pull Request.</p>
+<h2 id="planning-routine-tasks-and-habit-building">Planning routine tasks and habit building</h2>
+<p>Habit building is a big thing nowadays. The books on it are extremely popular: &ldquo;The Power of Habit&rdquo;, &ldquo;Atomic Habits&rdquo;, etc. You can call it a habit revolution. Everyone wants to build healthy habits and transform their life by doing small routine steps every day.</p>
+<p>With my TODOs already in Google Keep, I wanted to start tracking daily habit-building routines in the same app for quite a while. What was stopping me is the routine part of the routine: having to add the same tasks every day manually.</p>
+<p>The built-in way to do it via Google Keep interface is already described in <a href="#cloning-lists-for-reuse">Cloning lists for reuse</a> above. Here is a more geeky way based on scripts and templates.</p>
+<p>Recently I added a planner tool to <code>gkeeptodo</code> which can schedule task lists for a given date range from a template. So, I just created a template in the config file like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#66d9ef">[template: Habits]</span>
+<span style="color:#a6e22e">title</span><span style="color:#f92672">=</span><span style="color:#e6db74">Habits {date}</span>
+<span style="color:#a6e22e">mode</span><span style="color:#f92672">=</span><span style="color:#e6db74">daily</span>
+<span style="color:#a6e22e">items</span><span style="color:#f92672">=</span><span style="color:#e6db74">Shower, Meditate, Walk outside, Workout, Practice piano</span>
+<span style="color:#a6e22e">labels</span><span style="color:#f92672">=</span><span style="color:#e6db74">personal</span>
+<span style="color:#a6e22e">color</span><span style="color:#f92672">=</span><span style="color:#e6db74">green</span>
+</code></pre></div><p>Then I use the tool to generate task lists for the next few days, e.g.:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./gkeeptodo.py plan -f 2021-01-01 -t 2021-01-07
+</code></pre></div><p>The above command added 7 task lists to my Google Keep looking like this:</p>
+
+
+<div class="img-container">
+<div class="box" style="max-width:25%">
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="http://blog.kodigy.com/img/post/google-keep-todo/todo-generated.png" alt="Generated task list"/>
+    </div>
+    <a href="http://blog.kodigy.com/img/post/google-keep-todo/todo-generated.png" itemprop="contentUrl"></a>
+      <figcaption align="center">
+          <p>Generated task list</p>
+      </figcaption>
+  </figure>
+</div>
+</div>
+
+<p>The only thing that is different between the generated tasks is date. After adding the task lists can be edited and rearranged as needed. After all generated task lists have been used and archived, I add the next bunch of task lists with the same tool. In the meantime I can easily adjust the template for the next batch.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Google Keep is a very simple yet powerful application. It is a bit rigid in terms of features and automation of routine tasks. But with a bit of creativity it can be fitted for your very own needs.</p>
+<p>Maybe after reading this article you made a conclusion that it is no fit for you. Even better! Same approach applies to any other tool, so you can explore how to adapt it to <em>your</em> actual needs to get your tasks organized.</p>
+<p>As a common wisdom says: <em>the best tool is the tool that you know</em>.</p>
+
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="http://blog.kodigy.com/post/solid_principles_in_short_poems/" data-toggle="tooltip" data-placement="top"
+                            title="SOLID design principles in short poems">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="http://blog.kodigy.com/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        <a href="http://blog.kodigy.com/%20/tags/development" title="development">
+                            development
+                        </a>
+                        
+                        
+                        
+                        <a href="http://blog.kodigy.com/%20/tags/fbp" title="fbp">
+                            fbp
+                        </a>
+                        
+                        
+                        
+                        <a href="http://blog.kodigy.com/%20/tags/noflo" title="noflo">
+                            noflo
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <li>
+                        <a href='' rel="alternate"
+                            type="application/rss+xml" title="A system brought to life">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+
+                    
+                    <li>
+                        <a href="https://twitter.com/sibiroff">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+
+                    
+
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/trustmaster">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/sibirov">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Vladimir Sibirov 2021
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a
+                        href="https://zhaohuabing.com">Huabing</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+        var d = document, t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+        s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if ($('#tag_cloud').length !== 0) {
+        async("/js/jquery.tagcloud.js", function () {
+            $.fn.tagcloud.defaults = {
+                
+                color: { start: '#bbbbee', end: '#0085a1' },
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function () {
+        var $nav = document.querySelector("nav");
+        if ($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-92537342-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+</body>
+
+</html>

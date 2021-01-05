@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Vladimir Sibirov. Code released under the MIT license.</copyright>
-    <lastBuildDate>Mon, 12 Mar 2018 22:33:45 +0100</lastBuildDate><atom:link href="http://blog.kodigy.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 05 Jan 2021 19:40:39 +0100</lastBuildDate><atom:link href="http://blog.kodigy.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Google Keep framework for TODO and Goal tracking</title>
+      <link>http://blog.kodigy.com/post/google-keep-todo-goal-tracking/</link>
+      <pubDate>Tue, 05 Jan 2021 19:40:39 +0100</pubDate>
+      
+      <guid>http://blog.kodigy.com/post/google-keep-todo-goal-tracking/</guid>
+      <description>Keeping track of tasks helps in many ways. Remember the milk - check. Get things done - check. Build healthy habits - check. Get an overview of your progress - check. Control your life - well, that&amp;rsquo;s arguably possible. Feel more of contentment and accomplishment - check!
+In this article I&amp;rsquo;m going to share the framework I&amp;rsquo;ve been using for organizing my tasks over the last few years. I don&amp;rsquo;t insist you should use this framework or this specific application, but maybe it will give you some inspiration.</description>
+    </item>
+    
     <item>
       <title>SOLID design principles in short poems</title>
       <link>http://blog.kodigy.com/post/solid_principles_in_short_poems/</link>
