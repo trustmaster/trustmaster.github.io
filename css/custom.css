@@ -1,0 +1,23 @@
+.table-of-contents {
+  background-color: #e7e7db;
+  border-radius: 1em;
+  padding: 2px 32px 2px 32px;
+  margin-top: 10px;
+}
+
+.table-of-contents h2 {
+    font-size: 24px;
+    padding-bottom: 6px;
+}
+
+.table-of-contents a {
+    font-size: 18px;
+}
+
+.img-container {
+  width: 100%;
+}
+
+.box {
+  margin: 0 auto;
+}

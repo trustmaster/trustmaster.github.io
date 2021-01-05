@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Development on A system brought to life</title>
@@ -7,10 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Vladimir Sibirov. Code released under the MIT license.</copyright>
-    <lastBuildDate>Wed, 26 Jul 2017 14:48:53 +0300</lastBuildDate>
-    
-	<atom:link href="http://blog.kodigy.com/categories/development/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Mon, 12 Mar 2018 22:33:45 +0100</lastBuildDate><atom:link href="http://blog.kodigy.com/categories/development/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SOLID design principles in short poems</title>
+      <link>http://blog.kodigy.com/post/solid_principles_in_short_poems/</link>
+      <pubDate>Mon, 12 Mar 2018 22:33:45 +0100</pubDate>
+      
+      <guid>http://blog.kodigy.com/post/solid_principles_in_short_poems/</guid>
+      <description>Software Design is hard. It is complicated, it takes years to learn (in a sense that you really know what you are doing and why, compared to just copying and pasting something that you read somewhere) and sometimes it is counter-intuitive.
+I started making these notes to better understand SOLID design principles myself while reading the &amp;ldquo;Clean Architecture&amp;rdquo; by Robert C. Martin. The book points to common misunderstandings of these principles, but the explanations given are far from being easily memorable.</description>
+    </item>
     
     <item>
       <title>TypeScript: JavaScript way to Go</title>
@@ -18,7 +24,7 @@
       <pubDate>Wed, 26 Jul 2017 14:48:53 +0300</pubDate>
       
       <guid>http://blog.kodigy.com/post/typescript_to_go/</guid>
-      <description>TypeScript: JavaScript way to Go My journey at The Grid was over and I had 3 months before the start of a new contract, so I took an opportunity to fill a position of an interim CTO at Dater.com, a new dating app that is going to change the industry by moving from &amp;ldquo;post &amp;amp; search&amp;rdquo; approach to online &amp;amp; offline game-alike activity.
+      <description>My journey at The Grid was over and I had 3 months before the start of a new contract, so I took an opportunity to fill a position of an interim CTO at Dater.com, a new dating app that is going to change the industry by moving from &amp;ldquo;post &amp;amp; search&amp;rdquo; approach to online &amp;amp; offline game-alike activity.
 The main challenge was setting higher standards of development culture within the team and facilitating the development cycle.</description>
     </item>
     

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on A system brought to life</title>
@@ -7,13 +7,9 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Vladimir Sibirov. Code released under the MIT license.</copyright>
-    <lastBuildDate>Mon, 12 Mar 2018 22:33:45 +0100</lastBuildDate>
-    
-	<atom:link href="http://blog.kodigy.com/tags/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 12 Mar 2018 22:33:45 +0100</lastBuildDate><atom:link href="http://blog.kodigy.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Architecture</title>
+      <title>architecture</title>
       <link>http://blog.kodigy.com/tags/architecture/</link>
       <pubDate>Mon, 12 Mar 2018 22:33:45 +0100</pubDate>
       
@@ -22,25 +18,7 @@
     </item>
     
     <item>
-      <title>Dataflow</title>
-      <link>http://blog.kodigy.com/tags/dataflow/</link>
-      <pubDate>Sun, 03 Jun 2012 15:56:29 +0100</pubDate>
-      
-      <guid>http://blog.kodigy.com/tags/dataflow/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Design</title>
-      <link>http://blog.kodigy.com/tags/design/</link>
-      <pubDate>Mon, 12 Mar 2018 22:33:45 +0100</pubDate>
-      
-      <guid>http://blog.kodigy.com/tags/design/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Development</title>
+      <title>development</title>
       <link>http://blog.kodigy.com/tags/development/</link>
       <pubDate>Wed, 26 Jul 2017 14:48:53 +0300</pubDate>
       
@@ -49,7 +27,7 @@
     </item>
     
     <item>
-      <title>Fbp</title>
+      <title>fbp</title>
       <link>http://blog.kodigy.com/tags/fbp/</link>
       <pubDate>Mon, 13 Mar 2017 18:25:04 +0300</pubDate>
       
@@ -58,38 +36,11 @@
     </item>
     
     <item>
-      <title>Js</title>
-      <link>http://blog.kodigy.com/tags/js/</link>
-      <pubDate>Wed, 26 Jul 2017 14:48:53 +0300</pubDate>
-      
-      <guid>http://blog.kodigy.com/tags/js/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Noflo</title>
+      <title>noflo</title>
       <link>http://blog.kodigy.com/tags/noflo/</link>
       <pubDate>Mon, 13 Mar 2017 18:25:04 +0300</pubDate>
       
       <guid>http://blog.kodigy.com/tags/noflo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Patterns</title>
-      <link>http://blog.kodigy.com/tags/patterns/</link>
-      <pubDate>Mon, 12 Mar 2018 22:33:45 +0100</pubDate>
-      
-      <guid>http://blog.kodigy.com/tags/patterns/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Typescript</title>
-      <link>http://blog.kodigy.com/tags/typescript/</link>
-      <pubDate>Wed, 26 Jul 2017 14:48:53 +0300</pubDate>
-      
-      <guid>http://blog.kodigy.com/tags/typescript/</guid>
       <description></description>
     </item>
     

@@ -1,17 +1,13 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Architecture on A system brought to life</title>
+    <title>architecture on A system brought to life</title>
     <link>http://blog.kodigy.com/tags/architecture/</link>
-    <description>Recent content in Architecture on A system brought to life</description>
+    <description>Recent content in architecture on A system brought to life</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Vladimir Sibirov. Code released under the MIT license.</copyright>
-    <lastBuildDate>Mon, 12 Mar 2018 22:33:45 +0100</lastBuildDate>
-    
-	<atom:link href="http://blog.kodigy.com/tags/architecture/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 12 Mar 2018 22:33:45 +0100</lastBuildDate><atom:link href="http://blog.kodigy.com/tags/architecture/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SOLID design principles in short poems</title>
       <link>http://blog.kodigy.com/post/solid_principles_in_short_poems/</link>
