@@ -10,8 +10,8 @@
     <meta property="og:type" content="article">
 
     
-    <meta property="og:image" content="http://blog.kodigy.com//img/post-bg.jpg">
-    <meta property="twitter:image" content="http://blog.kodigy.com//img/post-bg.jpg" />
+    <meta property="og:image" content="https://blog.kodigy.com//img/post-bg.jpg">
+    <meta property="twitter:image" content="https://blog.kodigy.com//img/post-bg.jpg" />
     
 
     
@@ -34,39 +34,39 @@
     
 
     <meta name="keyword" content="">
-    <link rel="shortcut icon" href="http://blog.kodigy.com/img/favicon.ico">
+    <link rel="shortcut icon" href="https://blog.kodigy.com/img/favicon.ico">
 
     <title>SOLID design principles in short poems-</title>
 
-    <link rel="canonical" href="http://blog.kodigy.com/post/solid_principles_in_short_poems/">
+    <link rel="canonical" href="https://blog.kodigy.com/post/solid_principles_in_short_poems/">
 
-    <link rel="stylesheet" href="http://blog.kodigy.com/css/iDisqus.min.css" />
-
-    
-    <link rel="stylesheet" href="http://blog.kodigy.com/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://blog.kodigy.com/css/iDisqus.min.css" />
 
     
-    <link rel="stylesheet" href="http://blog.kodigy.com/css/hux-blog.min.css">
+    <link rel="stylesheet" href="https://blog.kodigy.com/css/bootstrap.min.css">
 
     
-    <link rel="stylesheet" href="http://blog.kodigy.com/css/zanshang.css">
+    <link rel="stylesheet" href="https://blog.kodigy.com/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="https://blog.kodigy.com/css/zanshang.css">
 
     
     <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
         type="text/css">
 
     
-    <link rel="stylesheet" href="http://blog.kodigy.com/css/custom.css">
+    <link rel="stylesheet" href="https://blog.kodigy.com/css/custom.css">
 
     
     
-    <script src="http://blog.kodigy.com/js/jquery.min.js"></script>
+    <script src="https://blog.kodigy.com/js/jquery.min.js"></script>
 
     
-    <script src="http://blog.kodigy.com/js/bootstrap.min.js"></script>
+    <script src="https://blog.kodigy.com/js/bootstrap.min.js"></script>
 
     
-    <script src="http://blog.kodigy.com/js/hux-blog.min.js"></script>
+    <script src="https://blog.kodigy.com/js/hux-blog.min.js"></script>
 
     
     
@@ -83,7 +83,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="http://blog.kodigy.com/">A system brought to life</a>
+            <a class="navbar-brand" href="https://blog.kodigy.com/">A system brought to life</a>
         </div>
 
         
@@ -95,21 +95,21 @@
                     
                     
                     <li>
-                        <a href="http://blog.kodigy.com/categories/development">development</a>
+                        <a href="https://blog.kodigy.com/categories/development">development</a>
                     </li>
                     
                     <li>
-                        <a href="http://blog.kodigy.com/categories/flow-based-programming">flow-based-programming</a>
+                        <a href="https://blog.kodigy.com/categories/flow-based-programming">flow-based-programming</a>
                     </li>
                     
                     <li>
-                        <a href="http://blog.kodigy.com/categories/productivity">productivity</a>
+                        <a href="https://blog.kodigy.com/categories/productivity">productivity</a>
                     </li>
                     
                     
 
                     
-                    <li><a href="http://blog.kodigy.com/about/author/">About</a></li>
+                    <li><a href="https://blog.kodigy.com/about/author/">About</a></li>
                     
 
                     
@@ -163,7 +163,7 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="http://blog.kodigy.com/%20/tags/architecture" title="architecture">
+                        <a class="tag" href="https://blog.kodigy.com/%20/tags/architecture" title="architecture">
                             architecture
                         </a>
                         
@@ -228,18 +228,18 @@ The stew is promptly rearranged.
 </blockquote>
 <p>The difference is easy to illustrate with an example. Consider a software model of a small <code>DigitalAgency</code>. It has 3 departments: <code>FinanceDepartment</code>, <code>DesignDepartment</code> and <code>TechDepartment</code>. And there is one <code>Printer</code> that serves all the needs in this small company: Finance employees print their reports, graphical Designers print previews of their work, and the Tech geeks print their online bookings, xkcd comics and what not:</p>
 <p>
-  <img src="http://blog.kodigy.com/img/post/solid/srp_example.svg" alt="Example class diagram">
+  <img src="https://blog.kodigy.com/img/post/solid/srp_example.svg" alt="Example class diagram">
 
 </p>
 <p>So far so good: the <code>Printer</code> has only one method <code>print()</code> which does something relatively simple (i.e. just prints whatever it&rsquo;s sent). But there are three actors depending on it (no matter if they inherit it, call it directly or call it via shared <code>interface</code>). Thus, it violates SRP. Indeed, let&rsquo;s say that the <code>DesignDepartment</code> is doing well in graphical design and now they need a much better <code>Printer</code> to print full-color A0-sized posters on glossy paper. What do you do? Add another method <code>printA0()</code> or make the <code>print()</code> method print full-color A0s by default? <code>TechDepartment</code> is amused by the idea of using that printer to make wall-sized comics! But <code>FinanceDepartment</code> is angry, because the geeks would be wasting the ink, the time of everybody waiting in the printer queue, and of course company $$$s. Thus, the obvious solution is to have not 1 but 3 different Printers, each one fitted for the needs its actor:</p>
 <p>
-  <img src="http://blog.kodigy.com/img/post/solid/srp_example_2.svg" alt="SRP in action">
+  <img src="https://blog.kodigy.com/img/post/solid/srp_example_2.svg" alt="SRP in action">
 
 </p>
 <p>That brings a temptation of explaining SRP as &ldquo;Each class should have only one class dependent on it&rdquo;, but in reality this would mean tons of merely duplicated code:</p>
 <p>To deduplicate our effort we could make a reasonable violation to the SRP principle. For example, <code>FinanceDepartment</code> and <code>TechDepartment</code> could still use printers of the same cheap model, while <code>DesignDepartment</code> would be using its shiny <code>GraphicPrinter</code>:</p>
 <p>
-  <img src="http://blog.kodigy.com/img/post/solid/srp_example_3.svg" alt="Optimized printer diagram">
+  <img src="https://blog.kodigy.com/img/post/solid/srp_example_3.svg" alt="Optimized printer diagram">
 
 </p>
 <p>In simple words, the SRP principle can be rephrased as:</p>
@@ -256,13 +256,13 @@ A new one has to be composed.
 </blockquote>
 <p>As an example, we&rsquo;ll use a famous electronics company which has been producing a very successful model of a <code>VacuumCleaner</code> for many years. Its <code>VacuumCleanerBase</code> has a powerful and reliable <code>Engine</code>, all its components have been perfectly fit together and proved over time. The time though keeps going by and the governments come up with energy consumption regulations, so the mighty but fixed <code>1800 Watt</code> power characteristic is no longer an advantage. What does the company do? Invent a new model, spending lots of money for research, engineering, testing, etc.? Modify the internals of <code>VacuumCleanerBase</code> so that it is no longer well-fit and reliable? No, there&rsquo;s a better way. The old good <code>VacuumCleanerBase</code> can be extended using a simple <code>PowerInvertor</code> device that will allow a user to adjust the output wattage using a simple control knob or slider:</p>
 <p>
-  <img src="http://blog.kodigy.com/img/post/solid/ocp_example_1.svg" alt="Extended VacuumCleaner">
+  <img src="https://blog.kodigy.com/img/post/solid/ocp_example_1.svg" alt="Extended VacuumCleaner">
 
 </p>
 <p>Of course, in order to support such an extension, <code>VacuumCleanerBase</code> should already provide all the necessary interfaces. This kind of extensibility is one of the requirements of OCP.</p>
 <p>Now, the company&rsquo;s Marketing department makes a research and finds out that there is a huge demand on <code>AntiAllergicVacuumCleaner</code> model from people having pets, rugs or living in dusty environment. Here is what the Engineering department thinks of it: easy! All they need to do is to design a <code>TurboBrush</code> for the rugs and replace standard filters with a high class <code>HEPAFilter</code>:</p>
 <p>
-  <img src="http://blog.kodigy.com/img/post/solid/ocp_example_2.svg" alt="Anti-allergic VacuumCleaner">
+  <img src="https://blog.kodigy.com/img/post/solid/ocp_example_2.svg" alt="Anti-allergic VacuumCleaner">
 
 </p>
 <p>For an electronics company this approach saves millions of dollars on engineering, testing and modifying production lines and supply chains. In software engineering, it can save quite some human hours at least.</p>
@@ -280,12 +280,12 @@ It found a founder's counterpart.
 <p>This definition is cryptographically scientific, but the easier the example we need. Let&rsquo;s pick a slightly nostalgic one, with phone chargers and data cables.</p>
 <p>Not so long ago, a hardware designer who was developing, say, a new Nokia or Sony Ericsson cell phone, would fit it with an A/C port, that a customer can plug a charger in. In the beginning, each model had its own type of charger. Then engineers (or was it marketing?) realized, that they can actually unify the chargers, so that they are <em>interchangeable</em> for all the cell phones produced by the company. Your Nokia is running flat but your colleague has a Nokia too? You can borrow their charger, what can be more convenient:</p>
 <p>
-  <img src="http://blog.kodigy.com/img/post/solid/lsp_example_1.svg" alt="Unified Nokia interfaces">
+  <img src="https://blog.kodigy.com/img/post/solid/lsp_example_1.svg" alt="Unified Nokia interfaces">
 
 </p>
 <p>In this case your colleague&rsquo;s charger is the <em>substitute</em> of the charger that you left at home. But then the principle got further: before you used a separate charger port and data cable port, but then some smart people came to use the same micro-USB for charging the phone and sending the data in and out. Just mounting the port on a device is not enough, the engineers had to ensure that all the peers would follow the same protocol, i.e. use the same <em>interface</em>. An absolutely wonderful consequence of following the LSP principle further this way was the fact, that now lots of phones of different brands could use the same chargers and the same data exchange software:</p>
 <p>
-  <img src="http://blog.kodigy.com/img/post/solid/lsp_example_2.svg" alt="Unified micro-USB interfaces">
+  <img src="https://blog.kodigy.com/img/post/solid/lsp_example_2.svg" alt="Unified micro-USB interfaces">
 
 </p>
 <p>This diagram is simplified to encapsulate more components and implementation details, but what&rsquo;s important is that the combination of the following <em>interfaces</em>:</p>
@@ -312,13 +312,13 @@ While all he wants is a girl and a mule.
 <p>Although the name of this principle sounds somewhat chemistry, we can fall back to a simple example that you may have experienced in real life. Imagine that you just moved to a new home and you demand on broadband <code>Internet</code> access. There are several Internet Service Providers that can connect your apartment, but only one of them can do it right away while with the others you have to wait for several weeks.</p>
 <p>That provider though only offers ADSL <code>Internet</code> that comes with a <code>Landline</code> and a <code>MobileSIM</code> package, all paid on a monthly basis with a minimal contract of 2 years. You don&rsquo;t want to wait several weeks and decide that having a landline and a relatively cheap SIM is not such a bad thing. So, you sign the contract and start to depend on the following congregated interface:</p>
 <p>
-  <img src="http://blog.kodigy.com/img/post/solid/isp_example_1.svg" alt="Depending on a multi-purpose interface">
+  <img src="https://blog.kodigy.com/img/post/solid/isp_example_1.svg" alt="Depending on a multi-purpose interface">
 
 </p>
 <p><em>This diagram shows just a few of the functions that you start to depend on as a daily routine, provided from an unsegregated <!-- raw HTML omitted -->interface<!-- raw HTML omitted --> Internet provider.</em></p>
 <p>After the first month you come to a conclusion that even though the ADSL is more or less OK, the calls on that SIM are pricey and you don&rsquo;t need the landline at all. Altogether you&rsquo;ve signed to pay twice as much for the services that you don&rsquo;t need and there are way better deals on the market if you got a broadband and a SIM card separately:</p>
 <p>
-  <img src="http://blog.kodigy.com/img/post/solid/isp_example_2.svg" alt="Depending on almost segregated interfaces">
+  <img src="https://blog.kodigy.com/img/post/solid/isp_example_2.svg" alt="Depending on almost segregated interfaces">
 
 </p>
 <p>In the latter case if the ADSL line goes nuts, you can change it for a better provider, without having to change your mobile SIMs as well.</p>
@@ -343,13 +343,13 @@ They both have documents to wag.
 <p>For example, say that you need a plumber to fix a leak. Alright, you know your friend George is good at things and probably can do it for you. Just ask George then. But what if George is not around or he doesn&rsquo;t know how to fix a leaking tap in particular? Then you need an abstraction: a Plumber. And you need another abstraction to get you that Plumber in first place: some Household Service or even just Classifieds (both are just Abstract Factories in this case).</p>
 <p>Let&rsquo;s zoom in and generalize this example a little bit. So, consider we have a <code>Customer</code> who relies on plumber <code>George</code> entirely:</p>
 <p>
-  <img src="http://blog.kodigy.com/img/post/solid/dip_example_1.svg" alt="A very concrete dependency">
+  <img src="https://blog.kodigy.com/img/post/solid/dip_example_1.svg" alt="A very concrete dependency">
 
 </p>
 <p>It&rsquo;s good to know there&rsquo;s <code>George</code> to fix a leaky pipe. But what happens if <code>George</code> is not there when a <code>Customer</code> needs him? Or if the problem a <code>Customer</code> has later on requires skills or equipment <code>George</code> simply doesn&rsquo;t have. It&rsquo;s not so good for <code>George</code> either if the only way he gets customers is via direct reach. Thus, this direct dependency may be effective in short term but not flexible over time.</p>
 <p>With Dependency Inversion Principle applied, the diagram would look something like this:</p>
 <p>
-  <img src="http://blog.kodigy.com/img/post/solid/dip_example_2.svg" alt="DIP in action">
+  <img src="https://blog.kodigy.com/img/post/solid/dip_example_2.svg" alt="DIP in action">
 
 </p>
 <p>In this case, a customer called <code>Bill</code> implements an abstract interface <code>Customer</code> and has abstract knowledge on how to get help from a generic <code>HouseholdService</code>, e.g. when he needs a <code>Plumber</code>. The interface <code>Plumber</code> represents what a <code>Customer</code> thinks a plumber should do. All the rest is behind the scenes: a double curved line also known as architectural boundary. For example, there can be a handy website <code>FindAPlumberDotCom</code> that helped <code>Bill</code> to find a plumber <code>George</code> within seconds without any hassle.</p>
@@ -363,14 +363,14 @@ They both have documents to wag.
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="http://blog.kodigy.com/post/typescript_to_go/" data-toggle="tooltip" data-placement="top"
+                        <a href="https://blog.kodigy.com/post/typescript_to_go/" data-toggle="tooltip" data-placement="top"
                             title="TypeScript: JavaScript way to Go">&larr;
                             Previous Post</a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="http://blog.kodigy.com/post/google-keep-todo-goal-tracking/" data-toggle="tooltip" data-placement="top"
+                        <a href="https://blog.kodigy.com/post/google-keep-todo-goal-tracking/" data-toggle="tooltip" data-placement="top"
                             title="Google Keep framework for TODO and Goal tracking">Next
                             Post &rarr;</a>
                     </li>
@@ -393,26 +393,26 @@ They both have documents to wag.
                 
                 <section>
                     <hr class="hidden-sm hidden-xs">
-                    <h5><a href="http://blog.kodigy.com/tags/">FEATURED TAGS</a></h5>
+                    <h5><a href="https://blog.kodigy.com/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                         
                         
                         
                         
                         
-                        <a href="http://blog.kodigy.com/%20/tags/development" title="development">
+                        <a href="https://blog.kodigy.com/%20/tags/development" title="development">
                             development
                         </a>
                         
                         
                         
-                        <a href="http://blog.kodigy.com/%20/tags/fbp" title="fbp">
+                        <a href="https://blog.kodigy.com/%20/tags/fbp" title="fbp">
                             fbp
                         </a>
                         
                         
                         
-                        <a href="http://blog.kodigy.com/%20/tags/noflo" title="noflo">
+                        <a href="https://blog.kodigy.com/%20/tags/noflo" title="noflo">
                             noflo
                         </a>
                         

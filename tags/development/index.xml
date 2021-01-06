@@ -2,47 +2,47 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>development on A system brought to life</title>
-    <link>http://blog.kodigy.com/tags/development/</link>
+    <link>https://blog.kodigy.com/tags/development/</link>
     <description>Recent content in development on A system brought to life</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Vladimir Sibirov. Code released under the MIT license.</copyright>
-    <lastBuildDate>Wed, 26 Jul 2017 14:48:53 +0300</lastBuildDate><atom:link href="http://blog.kodigy.com/tags/development/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 26 Jul 2017 14:48:53 +0300</lastBuildDate><atom:link href="https://blog.kodigy.com/tags/development/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>TypeScript: JavaScript way to Go</title>
-      <link>http://blog.kodigy.com/post/typescript_to_go/</link>
+      <link>https://blog.kodigy.com/post/typescript_to_go/</link>
       <pubDate>Wed, 26 Jul 2017 14:48:53 +0300</pubDate>
       
-      <guid>http://blog.kodigy.com/post/typescript_to_go/</guid>
+      <guid>https://blog.kodigy.com/post/typescript_to_go/</guid>
       <description>My journey at The Grid was over and I had 3 months before the start of a new contract, so I took an opportunity to fill a position of an interim CTO at Dater.com, a new dating app that is going to change the industry by moving from &amp;ldquo;post &amp;amp; search&amp;rdquo; approach to online &amp;amp; offline game-alike activity.
 The main challenge was setting higher standards of development culture within the team and facilitating the development cycle.</description>
     </item>
     
     <item>
       <title>Forcing a specific NoFlo version for all dependencies</title>
-      <link>http://blog.kodigy.com/post/noflo_08_npm_shrinkwrap/</link>
+      <link>https://blog.kodigy.com/post/noflo_08_npm_shrinkwrap/</link>
       <pubDate>Mon, 13 Mar 2017 18:25:04 +0300</pubDate>
       
-      <guid>http://blog.kodigy.com/post/noflo_08_npm_shrinkwrap/</guid>
+      <guid>https://blog.kodigy.com/post/noflo_08_npm_shrinkwrap/</guid>
       <description>Using NPM Shrinkwrap to force NoFlo 0.8 Recently released 0.8 branch of NoFlo introduces several fundamental changes as well as a backwards compatibility layer for long-existing applications. However, the backwards compatibility layer is only capable of doing its job if all NPM dependencies in a project use noflo@0.8.*. Which means that if a project uses an old library that depends on something like noflo@0.5.22, the compatibility layer may work incorrectly.</description>
     </item>
     
     <item>
       <title>Development efficiency challenges in NoFlo</title>
-      <link>http://blog.kodigy.com/post/noflo_development_efficiency/</link>
+      <link>https://blog.kodigy.com/post/noflo_development_efficiency/</link>
       <pubDate>Mon, 07 Nov 2016 17:39:26 +0100</pubDate>
       
-      <guid>http://blog.kodigy.com/post/noflo_development_efficiency/</guid>
+      <guid>https://blog.kodigy.com/post/noflo_development_efficiency/</guid>
       <description>Development efficiency challenges in NoFlo Programming with NoFlo is getting more and more smooth with every release. However, if maintaining a NoFlo application is your day-to-day job you may notice some inconveniences.
 Defining new components is slow Every time you add a new component you have to define a pretty massive hash map of its ports, their data types and preferably at least descriptions. This is cool as it encourages you to declare as many details as possible but it’s not very friendly to rapid prototyping where you want just to list the ports and get your hands on the code and add details later.</description>
     </item>
     
     <item>
       <title>On NoFlo database applications</title>
-      <link>http://blog.kodigy.com/post/on_noflo_db_apps/</link>
+      <link>https://blog.kodigy.com/post/on_noflo_db_apps/</link>
       <pubDate>Wed, 27 Jul 2016 14:25:04 +0100</pubDate>
       
-      <guid>http://blog.kodigy.com/post/on_noflo_db_apps/</guid>
+      <guid>https://blog.kodigy.com/post/on_noflo_db_apps/</guid>
       <description>On NoFlo Database Applications Thinking over common parts of database applications&amp;hellip;
  … I came to some conclusions below
 Common application architecture Steps common to all route graphs  The only processing step that is often present and easy to decompose is Validate (fig. I and II).  String of pearls or Pipeline or Request backbone  Request flow should be serial, it simplifies synchronization and understanding of the flow. Each bone in the spine of the graph or step on the pipeline can process some data in parallel.</description>
@@ -50,10 +50,10 @@ Common application architecture Steps common to all route graphs  The only proce
     
     <item>
       <title>Running web services as NoFlo graphs</title>
-      <link>http://blog.kodigy.com/post/noflo_webservices/</link>
+      <link>https://blog.kodigy.com/post/noflo_webservices/</link>
       <pubDate>Fri, 23 Jan 2015 14:38:41 +0100</pubDate>
       
-      <guid>http://blog.kodigy.com/post/noflo_webservices/</guid>
+      <guid>https://blog.kodigy.com/post/noflo_webservices/</guid>
       <description>Getting All Things NoFlo This article describes things which are yet TODO to get the entire server architecture running on NoFlo (and in Flowhub), problems related to them and potential solutions.
  Request Isolation By default there is no isolation between IPs belonging to different user requests in NoFlo networks.
 Solution 1 (current): a new Network instance per request Express does its job conventionally, while request handlers instantiate NoFlo networks on demand.</description>

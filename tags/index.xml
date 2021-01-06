@@ -2,45 +2,45 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on A system brought to life</title>
-    <link>http://blog.kodigy.com/tags/</link>
+    <link>https://blog.kodigy.com/tags/</link>
     <description>Recent content in Tags on A system brought to life</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Vladimir Sibirov. Code released under the MIT license.</copyright>
-    <lastBuildDate>Mon, 12 Mar 2018 22:33:45 +0100</lastBuildDate><atom:link href="http://blog.kodigy.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 12 Mar 2018 22:33:45 +0100</lastBuildDate><atom:link href="https://blog.kodigy.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>architecture</title>
-      <link>http://blog.kodigy.com/tags/architecture/</link>
+      <link>https://blog.kodigy.com/tags/architecture/</link>
       <pubDate>Mon, 12 Mar 2018 22:33:45 +0100</pubDate>
       
-      <guid>http://blog.kodigy.com/tags/architecture/</guid>
+      <guid>https://blog.kodigy.com/tags/architecture/</guid>
       <description></description>
     </item>
     
     <item>
       <title>development</title>
-      <link>http://blog.kodigy.com/tags/development/</link>
+      <link>https://blog.kodigy.com/tags/development/</link>
       <pubDate>Wed, 26 Jul 2017 14:48:53 +0300</pubDate>
       
-      <guid>http://blog.kodigy.com/tags/development/</guid>
+      <guid>https://blog.kodigy.com/tags/development/</guid>
       <description></description>
     </item>
     
     <item>
       <title>fbp</title>
-      <link>http://blog.kodigy.com/tags/fbp/</link>
+      <link>https://blog.kodigy.com/tags/fbp/</link>
       <pubDate>Mon, 13 Mar 2017 18:25:04 +0300</pubDate>
       
-      <guid>http://blog.kodigy.com/tags/fbp/</guid>
+      <guid>https://blog.kodigy.com/tags/fbp/</guid>
       <description></description>
     </item>
     
     <item>
       <title>noflo</title>
-      <link>http://blog.kodigy.com/tags/noflo/</link>
+      <link>https://blog.kodigy.com/tags/noflo/</link>
       <pubDate>Mon, 13 Mar 2017 18:25:04 +0300</pubDate>
       
-      <guid>http://blog.kodigy.com/tags/noflo/</guid>
+      <guid>https://blog.kodigy.com/tags/noflo/</guid>
       <description></description>
     </item>
     
