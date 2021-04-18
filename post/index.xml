@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Vladimir Sibirov. Code released under the MIT license.</copyright>
-    <lastBuildDate>Tue, 05 Jan 2021 19:40:39 +0100</lastBuildDate><atom:link href="https://blog.kodigy.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 18 Apr 2021 17:29:14 +0200</lastBuildDate><atom:link href="https://blog.kodigy.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Project Tech Leads</title>
+      <link>https://blog.kodigy.com/post/project-tech-leads/</link>
+      <pubDate>Sun, 18 Apr 2021 17:29:14 +0200</pubDate>
+      
+      <guid>https://blog.kodigy.com/post/project-tech-leads/</guid>
+      <description>Any Engineer in the team can lead a project. Any project should have a technical lead.
+ This article is a part of Engineering Manager&amp;rsquo;s Runbook. Please visit the project on GitHub for more content about Engineering Management, star the repository to support the project, or start watching it for updates.
+ Infographics  Motivation Typically in many teams an Engineering Manager is responsible, among other things, for collecting technical requirements for initiatives, making high level technical decisions, documenting solutions, setting up communication within the team and with external stakeholders, addressing risks, etc.</description>
+    </item>
+    
     <item>
       <title>Google Keep framework for TODO and Goal tracking</title>
       <link>https://blog.kodigy.com/post/google-keep-todo-goal-tracking/</link>
