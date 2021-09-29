@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Management on A system brought to life</title>
-    <link>https://blog.kodigy.com/categories/management/</link>
-    <description>Recent content in Management on A system brought to life</description>
+    <title>management on A system brought to life</title>
+    <link>https://blog.kodigy.com/tags/management/</link>
+    <description>Recent content in management on A system brought to life</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Vladimir Sibirov. Code released under the MIT license.</copyright>
-    <lastBuildDate>Wed, 29 Sep 2021 18:29:14 +0200</lastBuildDate><atom:link href="https://blog.kodigy.com/categories/management/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 29 Sep 2021 18:29:14 +0200</lastBuildDate><atom:link href="https://blog.kodigy.com/tags/management/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Natural Weekly Rhythm</title>
       <link>https://blog.kodigy.com/post/natural-weekly-rhythm/</link>
