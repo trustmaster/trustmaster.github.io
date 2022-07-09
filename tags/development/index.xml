@@ -44,8 +44,8 @@ Defining new components is slow Every time you add a new component you have to d
       
       <guid>https://blog.kodigy.com/post/on_noflo_db_apps/</guid>
       <description>On NoFlo Database Applications Thinking over common parts of database applications&amp;hellip;
- … I came to some conclusions below
-Common application architecture Steps common to all route graphs  The only processing step that is often present and easy to decompose is Validate (fig. I and II).  String of pearls or Pipeline or Request backbone  Request flow should be serial, it simplifies synchronization and understanding of the flow. Each bone in the spine of the graph or step on the pipeline can process some data in parallel.</description>
+… I came to some conclusions below
+Common application architecture Steps common to all route graphs The only processing step that is often present and easy to decompose is Validate (fig. I and II). String of pearls or Pipeline or Request backbone Request flow should be serial, it simplifies synchronization and understanding of the flow. Each bone in the spine of the graph or step on the pipeline can process some data in parallel.</description>
     </item>
     
     <item>
@@ -55,7 +55,7 @@ Common application architecture Steps common to all route graphs  The only proce
       
       <guid>https://blog.kodigy.com/post/noflo_webservices/</guid>
       <description>Getting All Things NoFlo This article describes things which are yet TODO to get the entire server architecture running on NoFlo (and in Flowhub), problems related to them and potential solutions.
- Request Isolation By default there is no isolation between IPs belonging to different user requests in NoFlo networks.
+Request Isolation By default there is no isolation between IPs belonging to different user requests in NoFlo networks.
 Solution 1 (current): a new Network instance per request Express does its job conventionally, while request handlers instantiate NoFlo networks on demand.</description>
     </item>
     

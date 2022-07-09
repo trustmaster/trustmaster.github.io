@@ -358,23 +358,23 @@
 <p>As I&rsquo;m writing this post at the end of the year, it&rsquo;s the right time to see how the year went. I want to see, what % of my tasks I completed over the year. Let&rsquo;s look at my <code>Work</code> statistics together, using the <code>gkeeptodo</code> script.</p>
 <h3 id="collecting-statistics">Collecting statistics</h3>
 <p>First, I edit the config file <code>gkeeptodo.ini</code> to make sure I&rsquo;m going to export the correct metric:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#66d9ef">[metric: Work]</span>
-<span style="color:#a6e22e">keyword</span><span style="color:#f92672">=</span><span style="color:#e6db74">Work</span>
-<span style="color:#a6e22e">modes</span><span style="color:#f92672">=</span><span style="color:#e6db74">monthly, total</span>
-</code></pre></div><p>This configuration for metric called &ldquo;Work&rdquo; means: &ldquo;search for task lists prefixed with keyword <code>Work</code>, write a report aggregated by month, and also an overall report&rdquo;.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#66d9ef">[metric: Work]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">keyword</span><span style="color:#f92672">=</span><span style="color:#e6db74">Work</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">modes</span><span style="color:#f92672">=</span><span style="color:#e6db74">monthly, total</span>
+</span></span></code></pre></div><p>This configuration for metric called &ldquo;Work&rdquo; means: &ldquo;search for task lists prefixed with keyword <code>Work</code>, write a report aggregated by month, and also an overall report&rdquo;.</p>
 <p>Then, given that the pre-requisites are installed and the configuration file is located in current directory, I run the tool like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./gkeeptodo.py stats -f 2020-01-01 -t 2020-12-31
-</code></pre></div><p>You can read the command as: &ldquo;give me stats from <code>2020-01-01</code> to <code>2020-12-31</code>&rdquo;. The from (<code>-f</code>) and to (<code>-t</code>) arguments are optional. If omitted, the tool includes data for all time. It prints something like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> % ./gkeeptodo.py stats -f 2020-01-01 -t 2020-12-31          
-Loading access token from keyring
-Authorization, this may take a <span style="color:#66d9ef">while</span>...
-Collecting metrics
---------------------------------
-Keyword: Work
-Statistics in <span style="color:#e6db74">&#34;total&#34;</span> mode
-Statistics in <span style="color:#e6db74">&#34;monthly&#34;</span> mode
---------------------------------
-</code></pre></div><p>It generated CSV files: <code>Work_monthly_20201225115355.csv</code>, <code>Work_total_20201225115355.csv</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gkeeptodo.py stats -f 2020-01-01 -t 2020-12-31
+</span></span></code></pre></div><p>You can read the command as: &ldquo;give me stats from <code>2020-01-01</code> to <code>2020-12-31</code>&rdquo;. The from (<code>-f</code>) and to (<code>-t</code>) arguments are optional. If omitted, the tool includes data for all time. It prints something like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> % ./gkeeptodo.py stats -f 2020-01-01 -t 2020-12-31          
+</span></span><span style="display:flex;"><span>Loading access token from keyring
+</span></span><span style="display:flex;"><span>Authorization, this may take a <span style="color:#66d9ef">while</span>...
+</span></span><span style="display:flex;"><span>Collecting metrics
+</span></span><span style="display:flex;"><span>--------------------------------
+</span></span><span style="display:flex;"><span>Keyword: Work
+</span></span><span style="display:flex;"><span>Statistics in <span style="color:#e6db74">&#34;total&#34;</span> mode
+</span></span><span style="display:flex;"><span>Statistics in <span style="color:#e6db74">&#34;monthly&#34;</span> mode
+</span></span><span style="display:flex;"><span>--------------------------------
+</span></span></code></pre></div><p>It generated CSV files: <code>Work_monthly_20201225115355.csv</code>, <code>Work_total_20201225115355.csv</code>.</p>
 <p>The <code>total</code> statistics are very short and straightforward. After opening the file I see something like this:</p>
 <table>
 <thead>
@@ -397,16 +397,16 @@ Statistics in <span style="color:#e6db74">&#34;monthly&#34;</span> mode
 </tbody>
 </table>
 <p>Woohoo! I completed 78% of my work TODOs in 2020! That&rsquo;s a really good progress, as in 2019 it was at around 63%. I could get these numbers for 2019 quickly on the screen without writing the files with this command:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./gkeeptodo.py stats -f 2019-01-01 -t 2019-12-31 -d -v
-Loading access token from keyring
-Authorization, this may take a <span style="color:#66d9ef">while</span>...
-Collecting metrics
---------------------------------
-Keyword: Work
-Statistics in <span style="color:#e6db74">&#34;total&#34;</span> mode
-Point <span style="color:#e6db74">&#34;total&#34;</span>: <span style="color:#ae81ff">445</span> checked, <span style="color:#ae81ff">259</span> unchecked, <span style="color:#ae81ff">704</span> total, completion 63%
-----
-</code></pre></div><p>The <code>-v</code> option means &ldquo;verbose&rdquo; and the <code>-d</code> one means &ldquo;dry&rdquo; or &ldquo;don&rsquo;t write files&rdquo;.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gkeeptodo.py stats -f 2019-01-01 -t 2019-12-31 -d -v
+</span></span><span style="display:flex;"><span>Loading access token from keyring
+</span></span><span style="display:flex;"><span>Authorization, this may take a <span style="color:#66d9ef">while</span>...
+</span></span><span style="display:flex;"><span>Collecting metrics
+</span></span><span style="display:flex;"><span>--------------------------------
+</span></span><span style="display:flex;"><span>Keyword: Work
+</span></span><span style="display:flex;"><span>Statistics in <span style="color:#e6db74">&#34;total&#34;</span> mode
+</span></span><span style="display:flex;"><span>Point <span style="color:#e6db74">&#34;total&#34;</span>: <span style="color:#ae81ff">445</span> checked, <span style="color:#ae81ff">259</span> unchecked, <span style="color:#ae81ff">704</span> total, completion 63%
+</span></span><span style="display:flex;"><span>----
+</span></span></code></pre></div><p>The <code>-v</code> option means &ldquo;verbose&rdquo; and the <code>-d</code> one means &ldquo;dry&rdquo; or &ldquo;don&rsquo;t write files&rdquo;.</p>
 <blockquote>
 <p><strong>Sidenote</strong>: the above numbers are real. You may read them as &ldquo;this guy fucked up 40% of his work tasks last year, they probably fired him&rdquo;. This is not correct. I keep track of all the things that <strong>potentially should</strong> be done, not only the ones that <strong>absolutely must</strong> be done. If you are familiar with the Eisenhower matrix, those statistics are for all 4 quadrants.</p>
 <p>I put the important stuff on the top of the lists and try to complete them first, while less important tasks stay at the bottom and often get rejected in favor of more important ones. Given this, I consider 75% to be a good target for an average completion rate. 100% completion would mean that my TODO lists are too rigid and don&rsquo;t include any minor things which stay untracked and invisible.</p>
@@ -462,15 +462,15 @@ Point <span style="color:#e6db74">&#34;total&#34;</span>: <span style="color:#ae
 <p>With my TODOs already in Google Keep, I wanted to start tracking daily habit-building routines in the same app for quite a while. What was stopping me is the routine part of the routine: having to add the same tasks every day manually.</p>
 <p>The built-in way to do it via Google Keep interface is already described in <a href="#cloning-lists-for-reuse">Cloning lists for reuse</a> above. Here is a more geeky way based on scripts and templates.</p>
 <p>Recently I added a planner tool to <code>gkeeptodo</code> which can schedule task lists for a given date range from a template. So, I just created a template in the config file like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#66d9ef">[template: Habits]</span>
-<span style="color:#a6e22e">title</span><span style="color:#f92672">=</span><span style="color:#e6db74">Habits {date}</span>
-<span style="color:#a6e22e">mode</span><span style="color:#f92672">=</span><span style="color:#e6db74">daily</span>
-<span style="color:#a6e22e">items</span><span style="color:#f92672">=</span><span style="color:#e6db74">Shower, Meditate, Walk outside, Workout, Practice piano</span>
-<span style="color:#a6e22e">labels</span><span style="color:#f92672">=</span><span style="color:#e6db74">personal</span>
-<span style="color:#a6e22e">color</span><span style="color:#f92672">=</span><span style="color:#e6db74">green</span>
-</code></pre></div><p>Then I use the tool to generate task lists for the next few days, e.g.:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./gkeeptodo.py plan -f 2021-01-01 -t 2021-01-07
-</code></pre></div><p>The above command added 7 task lists to my Google Keep looking like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#66d9ef">[template: Habits]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">title</span><span style="color:#f92672">=</span><span style="color:#e6db74">Habits {date}</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">mode</span><span style="color:#f92672">=</span><span style="color:#e6db74">daily</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">items</span><span style="color:#f92672">=</span><span style="color:#e6db74">Shower, Meditate, Walk outside, Workout, Practice piano</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">labels</span><span style="color:#f92672">=</span><span style="color:#e6db74">personal</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">color</span><span style="color:#f92672">=</span><span style="color:#e6db74">green</span>
+</span></span></code></pre></div><p>Then I use the tool to generate task lists for the next few days, e.g.:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gkeeptodo.py plan -f 2021-01-01 -t 2021-01-07
+</span></span></code></pre></div><p>The above command added 7 task lists to my Google Keep looking like this:</p>
 
 
 <div class="img-container">
@@ -645,7 +645,7 @@ Point <span style="color:#e6db74">&#34;total&#34;</span>: <span style="color:#ae
                     
                 </ul>
                 <p class="copyright text-muted">
-                    Copyright &copy; Vladimir Sibirov 2021
+                    Copyright &copy; Vladimir Sibirov 2022
                     <br>
                     <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a
                         href="https://zhaohuabing.com">Huabing</a>

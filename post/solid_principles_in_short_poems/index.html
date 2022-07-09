@@ -224,9 +224,9 @@
 <p>I started making these notes to better understand SOLID design principles myself while reading the <a href="https://www.amazon.com/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164">&ldquo;Clean Architecture&rdquo; by Robert C. Martin</a>. The book points to common misunderstandings of these principles, but the explanations given are far from being easily memorable.</p>
 <p>To make Software Design a bit more entertaining, I decided to write a short funny poem for each of the five SOLID principles, complemented with examples from real life that ideally even non-engineers can understand.</p>
 <h2 id="solid-responsibility-principle-srp">Solid Responsibility Principle (SRP)</h2>
-<pre><code>A servant serves a single stew
+<pre tabindex="0"><code>A servant serves a single stew
 To eaten be by only you.
-Whenever master's mind is changed,
+Whenever master&#39;s mind is changed,
 The stew is promptly rearranged.
 </code></pre><p>This principle is usually (mis)understood as <em>&ldquo;A class should only do one thing&rdquo;</em> or even <em>&ldquo;A class should only have one public method&rdquo;</em>. But the actual definition is:</p>
 <blockquote>
@@ -251,8 +251,8 @@ The stew is promptly rearranged.
 <p>In simple words, the SRP principle can be rephrased as:</p>
 <p><em>A component reports to only one boss.</em></p>
 <h2 id="open-closed-principle-ocp">Open-Closed Principle (OCP)</h2>
-<pre><code>The book is open, but it's closed.
-It's read, adopted and exposed,
+<pre tabindex="0"><code>The book is open, but it&#39;s closed.
+It&#39;s read, adopted and exposed,
 But to add more ideas
 Without legal fears,
 A new one has to be composed.
@@ -275,10 +275,10 @@ A new one has to be composed.
 <p>Rephrasing the principle:</p>
 <p><em>A component should be so simple that it rarely needs to be modified, but it should be easily extensible by other components.</em></p>
 <h2 id="liskov-substitution-principle-lsp">Liskov Substitution Principle (LSP)</h2>
-<pre><code>A founder founded a foundation
+<pre tabindex="0"><code>A founder founded a foundation
 Of large software corporation.
 Foundation was so strong and hard,
-It found a founder's counterpart.
+It found a founder&#39;s counterpart.
 </code></pre><p>The original definition is:</p>
 <blockquote>
 <p>If for each object o1 of type S there is an object o2 of type T such that for all programs P defined in terms of T, the behavior of P is unchanged when o1 is substituted for o2 then S is a subtype of T.</p>
@@ -306,9 +306,9 @@ It found a founder's counterpart.
 <p><em>Use interfaces to make the dependency components interchangeable.</em></p>
 <p><!-- raw HTML omitted --><em>Note: the original definition doesn&rsquo;t say anything about interfaces. It sounds more like using parent classes instead of child classes. That is so C++. This article targets slightly different languages and encourages using interfaces and aggregation over inheritance.</em><!-- raw HTML omitted --></p>
 <h2 id="interface-segregation-principle-isp">Interface Segregation Principle (ISP)</h2>
-<pre><code>Man proposed to a princess is no fool:
-He's given a horse and a kingdom to rule.
-But there's a dragon to slay,
+<pre tabindex="0"><code>Man proposed to a princess is no fool:
+He&#39;s given a horse and a kingdom to rule.
+But there&#39;s a dragon to slay,
 And an army to pay,
 While all he wants is a girl and a mule.
 </code></pre><p>A quote from Robert Martin&rsquo;s book can serve as a definition:</p>
@@ -331,11 +331,11 @@ While all he wants is a girl and a mule.
 <p>So, what this principle recommends us is:</p>
 <p><em>Don&rsquo;t depend on things that you need and that you don&rsquo;t need altogether. It&rsquo;s better if they break separately rather than all at once.</em></p>
 <h2 id="dependency-inversion-principle-dip">Dependency Inversion Principle (DIP)</h2>
-<pre><code>There lived a tail who waged a dog.
+<pre tabindex="0"><code>There lived a tail who waged a dog.
 It could not stay like that for long.
 They went to lawyer to conclude
 Their independent neighborhood.
-And now there's nothing left to nag:
+And now there&#39;s nothing left to nag:
 They both have documents to wag.
 </code></pre><p>As stated by Robert C. Martin:</p>
 <blockquote>
@@ -514,7 +514,7 @@ They both have documents to wag.
                     
                 </ul>
                 <p class="copyright text-muted">
-                    Copyright &copy; Vladimir Sibirov 2021
+                    Copyright &copy; Vladimir Sibirov 2022
                     <br>
                     <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a
                         href="https://zhaohuabing.com">Huabing</a>

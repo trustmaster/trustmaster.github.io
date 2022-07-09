@@ -284,199 +284,199 @@
 <p>Let&rsquo;s implement a function that persists a <code>User</code> record in <a href="https://firebase.google.com/">FireBase</a>.</p>
 <h3 id="interface-for-a-domain-model">Interface for a domain model</h3>
 <p>First, let&rsquo;s agree that a <code>User</code> is any object that conforms with the following interface:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">User</span> {
-  <span style="color:#a6e22e">key</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span>;
-  <span style="color:#a6e22e">email</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span>;
-  <span style="color:#a6e22e">fullName</span><span style="color:#f92672">?:</span> <span style="color:#a6e22e">string</span>;
-  <span style="color:#a6e22e">birthday</span><span style="color:#f92672">?:</span> <span style="color:#a6e22e">number</span>;
-}
-</code></pre></div><p>A downside of interfaces in TypeScript is that they only exist at compile time. Meanwhile it makes whole lot of sense to check the data against interfaces at run time. A proposed method to solve this is to provide a type guard per interface:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">isUser</span>(<span style="color:#a6e22e">object</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">object</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">User</span> {
-  <span style="color:#66d9ef">return</span> (<span style="color:#e6db74">&#39;key&#39;</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">object</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#e6db74">&#39;email&#39;</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">object</span>);
-}
-</code></pre></div><p>Type guards are used just as other functions:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">isUser</span>(<span style="color:#a6e22e">user</span>)) {
-  <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Invalid user object&#39;</span>);
-}
-</code></pre></div><p>Writing a type guard per interface is not at all convenient, so a better solution remains an open question for now.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">User</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">key</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">email</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">fullName</span><span style="color:#f92672">?:</span> <span style="color:#a6e22e">string</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">birthday</span><span style="color:#f92672">?:</span> <span style="color:#a6e22e">number</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>A downside of interfaces in TypeScript is that they only exist at compile time. Meanwhile it makes whole lot of sense to check the data against interfaces at run time. A proposed method to solve this is to provide a type guard per interface:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">isUser</span>(<span style="color:#a6e22e">object</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">object</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">User</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (<span style="color:#e6db74">&#39;key&#39;</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">object</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#e6db74">&#39;email&#39;</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">object</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Type guards are used just as other functions:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">isUser</span>(<span style="color:#a6e22e">user</span>)) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Invalid user object&#39;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Writing a type guard per interface is not at all convenient, so a better solution remains an open question for now.</p>
 <h3 id="interface-for-a-dependency">Interface for a dependency</h3>
 <p>Interfaces can be used effectively to abstract the way dependencies are used from their implementation.</p>
 <p>For instance, here are a couple of interfaces kindly provided by the <code>firebase</code> library itself:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// Example extracts from firebase.d.ts, (c) Google
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Database</span> {
-  <span style="color:#a6e22e">app</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">App</span>;
-  <span style="color:#a6e22e">goOffline</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span>;
-  <span style="color:#a6e22e">goOnline</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span>;
-  <span style="color:#a6e22e">ref</span>(<span style="color:#a6e22e">path</span><span style="color:#f92672">?:</span> <span style="color:#a6e22e">string</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">database</span>.<span style="color:#a6e22e">Reference</span>;
-  <span style="color:#a6e22e">refFromURL</span>(<span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">database</span>.<span style="color:#a6e22e">Reference</span>;
-}
-
-<span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Reference</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">database</span>.<span style="color:#a6e22e">Query</span> {
-  <span style="color:#a6e22e">child</span>(<span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">database</span>.<span style="color:#a6e22e">Reference</span>;
-  <span style="color:#a6e22e">key</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span><span style="color:#f92672">|</span><span style="color:#66d9ef">null</span>;
-  <span style="color:#75715e">// ... (snap) ...
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">value</span><span style="color:#f92672">?:</span> <span style="color:#a6e22e">any</span>, <span style="color:#a6e22e">onComplete</span><span style="color:#f92672">?:</span> (<span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> Error<span style="color:#f92672">|</span><span style="color:#66d9ef">null</span> ) =&gt; <span style="color:#a6e22e">any</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">database</span>.<span style="color:#a6e22e">ThenableReference</span>;
-  <span style="color:#a6e22e">remove</span>(<span style="color:#a6e22e">onComplete</span><span style="color:#f92672">?:</span> (<span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> Error <span style="color:#f92672">|</span> <span style="color:#66d9ef">null</span>) =&gt; <span style="color:#a6e22e">any</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">firebase</span>.Promise<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">any</span><span style="color:#f92672">&gt;</span>;
-  <span style="color:#a6e22e">root</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">database</span>.<span style="color:#a6e22e">Reference</span>;
-  <span style="color:#a6e22e">set</span>(<span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span>, <span style="color:#a6e22e">onComplete</span><span style="color:#f92672">?:</span> (<span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> Error<span style="color:#f92672">|</span><span style="color:#66d9ef">null</span>) =&gt; <span style="color:#a6e22e">any</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">firebase</span>.Promise <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">any</span><span style="color:#f92672">&gt;</span>;
-  <span style="color:#75715e">// ... (snap) ...
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">update</span>(<span style="color:#a6e22e">values</span><span style="color:#f92672">:</span> Object, <span style="color:#a6e22e">onComplete</span><span style="color:#f92672">?:</span> (<span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> Error<span style="color:#f92672">|</span><span style="color:#66d9ef">null</span>) =&gt; <span style="color:#a6e22e">any</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">firebase</span>.Promise <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">any</span><span style="color:#f92672">&gt;</span>;
-}
-</code></pre></div><p>We can just import them in our project:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">database</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;firebase&#39;</span>;
-
-<span style="color:#75715e">// Now we can type database.Database or database.Reference and get some nice code hints
-</span></code></pre></div><p>Firebase is a good example of an API that provides the reusable TypeScript interfaces out of the box (I could brag that <code>firebase</code> interfaces are not compatible with <code>firebase-admin</code> interfaces, but that&rsquo;s a different issue). Another option is obtaining <code>.d.ts</code> files from the <a href="http://definitelytyped.org/">DefinitelyTyped</a> project. Though, not all services and libraries come with definitions provided, so if your project relies on some 3rd party API that you want to be interchangeable and testable, you should consider implementing a minimal interface for it yourself. This is also the case if the definitions exist but are not up to date or contain tightly coupled code that depends on a certain way of use. So, I have to cry this out loud:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// Example extracts from firebase.d.ts, (c) Google
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Database</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">app</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">App</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">goOffline</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">goOnline</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ref</span>(<span style="color:#a6e22e">path</span><span style="color:#f92672">?:</span> <span style="color:#a6e22e">string</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">database</span>.<span style="color:#a6e22e">Reference</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">refFromURL</span>(<span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">database</span>.<span style="color:#a6e22e">Reference</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Reference</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">database</span>.<span style="color:#a6e22e">Query</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">child</span>(<span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">database</span>.<span style="color:#a6e22e">Reference</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">key</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span><span style="color:#f92672">|</span><span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// ... (snap) ...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">value</span><span style="color:#f92672">?:</span> <span style="color:#a6e22e">any</span>, <span style="color:#a6e22e">onComplete</span><span style="color:#f92672">?:</span> (<span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> Error<span style="color:#f92672">|</span><span style="color:#66d9ef">null</span> ) =&gt; <span style="color:#a6e22e">any</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">database</span>.<span style="color:#a6e22e">ThenableReference</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">remove</span>(<span style="color:#a6e22e">onComplete</span><span style="color:#f92672">?:</span> (<span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> Error <span style="color:#f92672">|</span> <span style="color:#66d9ef">null</span>) =&gt; <span style="color:#a6e22e">any</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">firebase</span>.Promise<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">any</span><span style="color:#f92672">&gt;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">root</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">database</span>.<span style="color:#a6e22e">Reference</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">set</span>(<span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span>, <span style="color:#a6e22e">onComplete</span><span style="color:#f92672">?:</span> (<span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> Error<span style="color:#f92672">|</span><span style="color:#66d9ef">null</span>) =&gt; <span style="color:#a6e22e">any</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">firebase</span>.Promise <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">any</span><span style="color:#f92672">&gt;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// ... (snap) ...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">update</span>(<span style="color:#a6e22e">values</span><span style="color:#f92672">:</span> Object, <span style="color:#a6e22e">onComplete</span><span style="color:#f92672">?:</span> (<span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> Error<span style="color:#f92672">|</span><span style="color:#66d9ef">null</span>) =&gt; <span style="color:#a6e22e">any</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">firebase</span>.Promise <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">any</span><span style="color:#f92672">&gt;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>We can just import them in our project:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">database</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;firebase&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Now we can type database.Database or database.Reference and get some nice code hints
+</span></span></span></code></pre></div><p>Firebase is a good example of an API that provides the reusable TypeScript interfaces out of the box (I could brag that <code>firebase</code> interfaces are not compatible with <code>firebase-admin</code> interfaces, but that&rsquo;s a different issue). Another option is obtaining <code>.d.ts</code> files from the <a href="http://definitelytyped.org/">DefinitelyTyped</a> project. Though, not all services and libraries come with definitions provided, so if your project relies on some 3rd party API that you want to be interchangeable and testable, you should consider implementing a minimal interface for it yourself. This is also the case if the definitions exist but are not up to date or contain tightly coupled code that depends on a certain way of use. So, I have to cry this out loud:</p>
 <p><em>Dear TypeScript library maintainers, please consider using <code>interface</code> instead of <code>class</code> to describe your API. In many cases it&rsquo;s just a matter of writing a few lines of code more, or even just replacing <code>class</code> with <code>interface</code>, but it makes coupling of client code more loose and your consumers won&rsquo;t have to maintain interfaces for your API themselves.</em></p>
 <h3 id="using-the-interfaces">Using the interfaces</h3>
 <p>Consuming interfaces is almost identical to using &ldquo;normal&rdquo; types. Here is our <code>addUser</code> function:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">addUser</span>(<span style="color:#a6e22e">db</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">database</span>.<span style="color:#a6e22e">Database</span>, <span style="color:#a6e22e">user</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">User</span>)<span style="color:#f92672">:</span> Promise<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">User</span><span style="color:#f92672">&gt;</span> {
-  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">email</span>) {
-    <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;User email is required&#39;</span>);
-  }
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">savedUser</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">user</span>;
-  <span style="color:#a6e22e">savedUser</span>.<span style="color:#a6e22e">key</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">ref</span>(<span style="color:#e6db74">&#39;Users&#39;</span>).<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">user</span>);
-  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">ref</span>(<span style="color:#e6db74">&#39;/Users&#39;</span>).<span style="color:#a6e22e">set</span>(<span style="color:#a6e22e">savedUser</span>);
-}
-</code></pre></div><p>This is how we could call it passing real objects:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">import</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">as</span> <span style="color:#a6e22e">firebase</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;firebase&#39;</span>;
-<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">addUser</span>, <span style="color:#a6e22e">User</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./lib/user&#39;</span>;
-
-<span style="color:#75715e">// Somewhere down the line
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">userInput</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">User</span><span style="color:#f92672">&gt;</span>{
-  <span style="color:#a6e22e">email</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">email</span>,
-  <span style="color:#a6e22e">fullName</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">fullName</span>,
-  <span style="color:#a6e22e">birthday</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">birthday</span>,
-};
-
-<span style="color:#66d9ef">try</span> {
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">addUser</span>(<span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">database</span>(), <span style="color:#a6e22e">userInput</span>);
-  <span style="color:#a6e22e">sendResult</span>(<span style="color:#a6e22e">user</span>);
-} <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">err</span>) {
-  <span style="color:#a6e22e">sendError</span>(<span style="color:#a6e22e">err</span>);
-}
-</code></pre></div><p>Dealing with <code>User</code> is really trivial here, all you need to notice is how we pass <code>firebase.database()</code> as a dependency service.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">addUser</span>(<span style="color:#a6e22e">db</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">database</span>.<span style="color:#a6e22e">Database</span>, <span style="color:#a6e22e">user</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">User</span>)<span style="color:#f92672">:</span> Promise<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">User</span><span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">email</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;User email is required&#39;</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">savedUser</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">user</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">savedUser</span>.<span style="color:#a6e22e">key</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">ref</span>(<span style="color:#e6db74">&#39;Users&#39;</span>).<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">user</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">ref</span>(<span style="color:#e6db74">&#39;/Users&#39;</span>).<span style="color:#a6e22e">set</span>(<span style="color:#a6e22e">savedUser</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This is how we could call it passing real objects:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">as</span> <span style="color:#a6e22e">firebase</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;firebase&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">addUser</span>, <span style="color:#a6e22e">User</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./lib/user&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Somewhere down the line
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">userInput</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">User</span><span style="color:#f92672">&gt;</span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">email</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">email</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">fullName</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">fullName</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">birthday</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">birthday</span>,
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">addUser</span>(<span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">database</span>(), <span style="color:#a6e22e">userInput</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">sendResult</span>(<span style="color:#a6e22e">user</span>);
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">err</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">sendError</span>(<span style="color:#a6e22e">err</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Dealing with <code>User</code> is really trivial here, all you need to notice is how we pass <code>firebase.database()</code> as a dependency service.</p>
 <h4 id="alternative-ways-to-organize-containers">Alternative ways to organize containers</h4>
 <p>Passing everything as the arguments of a function may be inconvenient. In many cases dependency containers are passed as class <code>constructor</code> arguments, so that the containers are reused through the state of <code>this</code>. Example:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">database</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;firebase&#39;</span>;
-<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Bucket</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./lib/google-cloud-storage&#39;</span>; <span style="color:#75715e">// Custom service interface
-</span><span style="color:#75715e"></span>
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserStorage</span> {
-  <span style="color:#a6e22e">constructor</span>(<span style="color:#66d9ef">private</span> <span style="color:#a6e22e">db</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">Database</span>, <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">bucket</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Bucket</span>) { }
-  <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">addUser</span>(<span style="color:#a6e22e">user</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">User</span>) {
-    <span style="color:#75715e">// The implementation is very similar to a function written before
-</span><span style="color:#75715e"></span>  }
-}
-</code></pre></div><p>In functional or dataflow programming dependencies are passed as function arguments or as combined objects (messages/IPs/etc.). In the latter case it makes sense to separate dependencies from actual input:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Deps</span> {
-  <span style="color:#a6e22e">db</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">Database</span>,
-  <span style="color:#a6e22e">bucket</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Bucket</span>,
-}
-
-<span style="color:#75715e">// Factory function that returns an addUser implementation using the `deps`
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">makeAddUser</span>(<span style="color:#a6e22e">deps</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Deps</span>)<span style="color:#f92672">:</span> (<span style="color:#a6e22e">user</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">User</span>) =&gt; Promise<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">User</span><span style="color:#f92672">&gt;</span> {
-  <span style="color:#66d9ef">return</span> (<span style="color:#a6e22e">user</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">User</span>)<span style="color:#f92672">:</span> Promise<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">User</span><span style="color:#f92672">&gt;</span> =&gt; {
-    <span style="color:#75715e">// Here we use `database` and `bucket` from `deps` to save `user`
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">// Let&#39;s write an example promise chain
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">findUserFiles</span>(<span style="color:#a6e22e">deps</span>, <span style="color:#a6e22e">user</span>)
-      .<span style="color:#a6e22e">then</span>((<span style="color:#a6e22e">files</span>) =&gt; <span style="color:#a6e22e">uploadFiles</span>(<span style="color:#a6e22e">deps</span>, <span style="color:#a6e22e">files</span>))
-      .<span style="color:#a6e22e">then</span>(() =&gt; <span style="color:#a6e22e">saveUser</span>(<span style="color:#a6e22e">deps</span>, <span style="color:#a6e22e">user</span>));
-  }
-}
-
-<span style="color:#75715e">// Example usage
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">addUser</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">makeAddUser</span>({ <span style="color:#a6e22e">db</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">database</span>(), <span style="color:#a6e22e">bucket</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">gcsBucket</span> });
-<span style="color:#a6e22e">addUser</span>(<span style="color:#a6e22e">userData</span>)
-.<span style="color:#a6e22e">then</span>((<span style="color:#a6e22e">user</span>) =&gt; {
-  <span style="color:#75715e">// Success
-</span><span style="color:#75715e"></span>})
-.<span style="color:#66d9ef">catch</span>((<span style="color:#a6e22e">err</span>) =&gt; {
-  <span style="color:#75715e">// Error
-</span><span style="color:#75715e"></span>});
-</code></pre></div><p>It&rsquo;s a matter of specific application design choice how to wrap the concept. Underneath it remains the same.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">database</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;firebase&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Bucket</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./lib/google-cloud-storage&#39;</span>; <span style="color:#75715e">// Custom service interface
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserStorage</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">constructor</span>(<span style="color:#66d9ef">private</span> <span style="color:#a6e22e">db</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">Database</span>, <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">bucket</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Bucket</span>) { }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">addUser</span>(<span style="color:#a6e22e">user</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">User</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// The implementation is very similar to a function written before
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>In functional or dataflow programming dependencies are passed as function arguments or as combined objects (messages/IPs/etc.). In the latter case it makes sense to separate dependencies from actual input:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Deps</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">db</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">Database</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">bucket</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Bucket</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Factory function that returns an addUser implementation using the `deps`
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">makeAddUser</span>(<span style="color:#a6e22e">deps</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Deps</span>)<span style="color:#f92672">:</span> (<span style="color:#a6e22e">user</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">User</span>) =&gt; Promise<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">User</span><span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (<span style="color:#a6e22e">user</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">User</span>)<span style="color:#f92672">:</span> Promise<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">User</span><span style="color:#f92672">&gt;</span> =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Here we use `database` and `bucket` from `deps` to save `user`
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// Let&#39;s write an example promise chain
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">findUserFiles</span>(<span style="color:#a6e22e">deps</span>, <span style="color:#a6e22e">user</span>)
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">then</span>((<span style="color:#a6e22e">files</span>) =&gt; <span style="color:#a6e22e">uploadFiles</span>(<span style="color:#a6e22e">deps</span>, <span style="color:#a6e22e">files</span>))
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">then</span>(() =&gt; <span style="color:#a6e22e">saveUser</span>(<span style="color:#a6e22e">deps</span>, <span style="color:#a6e22e">user</span>));
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Example usage
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">addUser</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">makeAddUser</span>({ <span style="color:#a6e22e">db</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">database</span>(), <span style="color:#a6e22e">bucket</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">gcsBucket</span> });
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">addUser</span>(<span style="color:#a6e22e">userData</span>)
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">then</span>((<span style="color:#a6e22e">user</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Success
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>})
+</span></span><span style="display:flex;"><span>.<span style="color:#66d9ef">catch</span>((<span style="color:#a6e22e">err</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Error
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>});
+</span></span></code></pre></div><p>It&rsquo;s a matter of specific application design choice how to wrap the concept. Underneath it remains the same.</p>
 <h3 id="mocking-a-service">Mocking a service</h3>
 <p>Now we get closer to what this is all about. Let&rsquo;s write a mock for local Firebase testing using the <a href="htts://npmjs.com/package/firebase-server">FirebaseServer</a> package.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">import</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">as</span> <span style="color:#a6e22e">firebase</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;firebase&#39;</span>;
-<span style="color:#66d9ef">import</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">as</span> <span style="color:#a6e22e">FirebaseServer</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;firebase-server&#39;</span>;
-
-<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FirebaseMock</span> {
-  <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">app</span>;
-  <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">server</span>;
-  <span style="color:#a6e22e">constructor</span>(<span style="color:#66d9ef">private</span> <span style="color:#a6e22e">port</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5151</span>) {
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">server</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">FirebaseServer</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">port</span>, <span style="color:#e6db74">&#39;test-app-local.firebaseio.com&#39;</span>);
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">initializeApp</span>({
-      <span style="color:#a6e22e">apiKey</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;fake-key&#39;</span>,
-      <span style="color:#a6e22e">databaseURL</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`ws://test-app-local.firebaseio.com:</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">port</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>,
-    });
-  }
-  <span style="color:#a6e22e">database</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">database</span>.<span style="color:#a6e22e">Database</span> {
-    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">database</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">app</span>);
-  }
-  <span style="color:#a6e22e">stop</span>(<span style="color:#a6e22e">callback</span>) {
-    <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">app</span>().<span style="color:#66d9ef">delete</span>();
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">server</span>.<span style="color:#a6e22e">close</span>(<span style="color:#a6e22e">callback</span>);
-  }
-}
-</code></pre></div><p>Mocking Firebase with <code>firebase-server</code> is as easy as that. In other cases you might actually need to implement some mocking methods that mimick the interface.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">as</span> <span style="color:#a6e22e">firebase</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;firebase&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">as</span> <span style="color:#a6e22e">FirebaseServer</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;firebase-server&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FirebaseMock</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">app</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">server</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">constructor</span>(<span style="color:#66d9ef">private</span> <span style="color:#a6e22e">port</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5151</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">server</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">FirebaseServer</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">port</span>, <span style="color:#e6db74">&#39;test-app-local.firebaseio.com&#39;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">initializeApp</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">apiKey</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;fake-key&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">databaseURL</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`ws://test-app-local.firebaseio.com:</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">port</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>,
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">database</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">database</span>.<span style="color:#a6e22e">Database</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">database</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">app</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">stop</span>(<span style="color:#a6e22e">callback</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">app</span>().<span style="color:#66d9ef">delete</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">server</span>.<span style="color:#a6e22e">close</span>(<span style="color:#a6e22e">callback</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Mocking Firebase with <code>firebase-server</code> is as easy as that. In other cases you might actually need to implement some mocking methods that mimick the interface.</p>
 <h3 id="testing">Testing</h3>
 <p>This is bread and butter of Dependency Injection. Let&rsquo;s write a Mocha/Chai.js test for our function:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">database</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;firebase&#39;</span>;
-<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">addUser</span>, <span style="color:#a6e22e">User</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./lib/user&#39;</span>;
-<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">FirebaseMock</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./mocks/firebase&#39;</span>;
-
-<span style="color:#a6e22e">describe</span>(<span style="color:#e6db74">&#39;addUser()&#39;</span>, () =&gt; {
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">firebase</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">FirebaseMock</span>;
-  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">db</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">Database</span>;
-  <span style="color:#a6e22e">before</span>((<span style="color:#a6e22e">done</span>) =&gt; {
-    <span style="color:#a6e22e">firebase</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">FirebaseMock</span>();
-    <span style="color:#a6e22e">db</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">database</span>();
-    <span style="color:#a6e22e">done</span>();
-  });
-  <span style="color:#a6e22e">after</span>((<span style="color:#a6e22e">done</span>) =&gt; {
-    <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">stop</span>(<span style="color:#a6e22e">done</span>);
-  });
-
-  <span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#39;adds a user&#39;</span>, <span style="color:#66d9ef">async</span> () =&gt; {
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">User</span><span style="color:#f92672">&gt;</span>{
-      <span style="color:#a6e22e">email</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;john@example.com&#39;</span>,
-      <span style="color:#a6e22e">fullName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;John Appleseed&#39;</span>
-    };
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">savedUser</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">addUser</span>(<span style="color:#a6e22e">db</span>, <span style="color:#a6e22e">user</span>);
-    <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">savedUser</span>.<span style="color:#a6e22e">key</span>).<span style="color:#a6e22e">to</span>.<span style="color:#a6e22e">be</span>.<span style="color:#a6e22e">a</span>(<span style="color:#e6db74">&#39;string&#39;</span>);
-    <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">savedUser</span>.<span style="color:#a6e22e">email</span>).<span style="color:#a6e22e">to</span>.<span style="color:#a6e22e">equal</span>(<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">email</span>);
-    <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">savedUser</span>.<span style="color:#a6e22e">fullName</span>).<span style="color:#a6e22e">to</span>.<span style="color:#a6e22e">equal</span>(<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">fullName</span>);
-  });
-
-  <span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#39;discards non-user objects&#39;</span>, <span style="color:#66d9ef">async</span>() =&gt; {
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">User</span><span style="color:#f92672">&gt;</span>{};
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">didThrow</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
-    <span style="color:#66d9ef">try</span> {
-      <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">addUser</span>(<span style="color:#a6e22e">db</span>, <span style="color:#a6e22e">user</span>);
-    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">e</span>) {
-      <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">e</span>).<span style="color:#a6e22e">to</span>.<span style="color:#a6e22e">be</span>.<span style="color:#a6e22e">an</span>(<span style="color:#e6db74">&#39;error&#39;</span>);
-      <span style="color:#a6e22e">didThrow</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
-    } <span style="color:#66d9ef">finally</span> {
-      <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">didThrow</span>).<span style="color:#a6e22e">to</span>.<span style="color:#a6e22e">be</span>.<span style="color:#66d9ef">true</span>;
-    }
-  });
-});
-</code></pre></div><p>If we omit the testing boilerplate, there is nothing here that would be different from the normal consumer code, meanwhile a mock is being used. All we have to do is to pass the mock object to the code being tested instead of a real service.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">database</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;firebase&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">addUser</span>, <span style="color:#a6e22e">User</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./lib/user&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">FirebaseMock</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./mocks/firebase&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">describe</span>(<span style="color:#e6db74">&#39;addUser()&#39;</span>, () =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">firebase</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">FirebaseMock</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">db</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">Database</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">before</span>((<span style="color:#a6e22e">done</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">firebase</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">FirebaseMock</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">db</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">database</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">done</span>();
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">after</span>((<span style="color:#a6e22e">done</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">firebase</span>.<span style="color:#a6e22e">stop</span>(<span style="color:#a6e22e">done</span>);
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#39;adds a user&#39;</span>, <span style="color:#66d9ef">async</span> () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">User</span><span style="color:#f92672">&gt;</span>{
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">email</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;john@example.com&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">fullName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;John Appleseed&#39;</span>
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">savedUser</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">addUser</span>(<span style="color:#a6e22e">db</span>, <span style="color:#a6e22e">user</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">savedUser</span>.<span style="color:#a6e22e">key</span>).<span style="color:#a6e22e">to</span>.<span style="color:#a6e22e">be</span>.<span style="color:#a6e22e">a</span>(<span style="color:#e6db74">&#39;string&#39;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">savedUser</span>.<span style="color:#a6e22e">email</span>).<span style="color:#a6e22e">to</span>.<span style="color:#a6e22e">equal</span>(<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">email</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">savedUser</span>.<span style="color:#a6e22e">fullName</span>).<span style="color:#a6e22e">to</span>.<span style="color:#a6e22e">equal</span>(<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">fullName</span>);
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#39;discards non-user objects&#39;</span>, <span style="color:#66d9ef">async</span>() =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">User</span><span style="color:#f92672">&gt;</span>{};
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">didThrow</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">addUser</span>(<span style="color:#a6e22e">db</span>, <span style="color:#a6e22e">user</span>);
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">e</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">e</span>).<span style="color:#a6e22e">to</span>.<span style="color:#a6e22e">be</span>.<span style="color:#a6e22e">an</span>(<span style="color:#e6db74">&#39;error&#39;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">didThrow</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">finally</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">didThrow</span>).<span style="color:#a6e22e">to</span>.<span style="color:#a6e22e">be</span>.<span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>If we omit the testing boilerplate, there is nothing here that would be different from the normal consumer code, meanwhile a mock is being used. All we have to do is to pass the mock object to the code being tested instead of a real service.</p>
 <h2 id="bottom-line">Bottom line</h2>
 <p>There are many topics which I haven&rsquo;t covered in this article. For example, <em>Union types</em> which you can combine with <em>strict null checks</em> to make the use of <code>null</code> as a &ldquo;third state&rdquo; explicit:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">type</span> <span style="color:#a6e22e">OrderRecord</span> <span style="color:#66d9ef">interface</span> {
-  <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>;
-  <span style="color:#a6e22e">user_id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>;
-  <span style="color:#a6e22e">comment</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span><span style="color:#f92672">|</span><span style="color:#66d9ef">null</span>;
-}
-</code></pre></div><p>Also <em>Union types</em> are useful for the <em>return value or error</em> pattern:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getItem</span>(<span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Item</span><span style="color:#f92672">|</span>Error {
-  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">somethingWentWrong</span>()) {
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Oops&#39;</span>);
-  }
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">item</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">loadItemFromSomewhere</span>(<span style="color:#a6e22e">id</span>);
-  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">item</span>;
-}
-</code></pre></div><p>But the main thought is this: it&rsquo;s not about how many language features are used in your projects, it&rsquo;s about how the most essential onces can be applied to achieve your team&rsquo;s goals.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">type</span> <span style="color:#a6e22e">OrderRecord</span> <span style="color:#66d9ef">interface</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">user_id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">comment</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span><span style="color:#f92672">|</span><span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Also <em>Union types</em> are useful for the <em>return value or error</em> pattern:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getItem</span>(<span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">Item</span><span style="color:#f92672">|</span>Error {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">somethingWentWrong</span>()) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Oops&#39;</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">item</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">loadItemFromSomewhere</span>(<span style="color:#a6e22e">id</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">item</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>But the main thought is this: it&rsquo;s not about how many language features are used in your projects, it&rsquo;s about how the most essential onces can be applied to achieve your team&rsquo;s goals.</p>
 
 
                 
@@ -630,7 +630,7 @@
                     
                 </ul>
                 <p class="copyright text-muted">
-                    Copyright &copy; Vladimir Sibirov 2021
+                    Copyright &copy; Vladimir Sibirov 2022
                     <br>
                     <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a
                         href="https://zhaohuabing.com">Huabing</a>

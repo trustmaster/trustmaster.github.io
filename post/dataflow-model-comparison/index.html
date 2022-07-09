@@ -229,7 +229,7 @@
 <h2 id="mathematical-model-of-choice">Mathematical model of choice</h2>
 <p>Comparison criteria and analysis methods should be chosen before performing actual analysis.</p>
 <p>We will solve the task of parallel computation model evaluation as a multiple criteria choice. In order to do this, a set of particular criteria is outlined and for each of them a mapping to the real numbers set is defined:</p>
-<pre><code>k(x):i(x)→R(1)
+<pre tabindex="0"><code>k(x):i(x)→R(1)
 </code></pre><p>where <code>x</code> - is alternative choice (model);
 <code>i(x)</code> - is a particular factor value;
 <code>R</code> - is the set of real numbers;
@@ -243,14 +243,14 @@
 <li><code>yi≤yj</code> -  non-strict preference relation. Value <code>yj</code> is more preferable or equivalent to <code>yi</code>.</li>
 </ol>
 <p>Then <code>k</code>&lsquo;th criterion numeric evaluation function (1) can be written as the following recursive formula:</p>
-<pre><code>k(yi)=0,∀j:yi≤yjk(yj)+P,yj&lt;yik(yj)+Q,yj≪yi(2)
+<pre tabindex="0"><code>k(yi)=0,∀j:yi≤yjk(yj)+P,yj&lt;yik(yj)+Q,yj≪yi(2)
 </code></pre><p>Here <code>P</code> and <code>Q</code> — are constant weights set by a decision-maker which determine the extent of difference between particular choices. The most trivial example is <code>P=1, Q=2</code>.</p>
 <p>For multi-criteria decision making we will use a simple <em>weighted sum model</em> (WSM).  We will use <em>linear convolution method</em> to get a scalar quality estimate <code>Y</code> of a model <code>x</code> because the importance of each of the particular criteria is defined by a decision maker. Then generalized quality factor looks like:</p>
-<pre><code>Y(x)=∑i=1Kαi⋅i(x)→max(3)
+<pre tabindex="0"><code>Y(x)=∑i=1Kαi⋅i(x)→max(3)
 </code></pre><p>where <code>αi&gt;0</code>  is the <code>i</code>&lsquo;th criterion significance (weight) defined by a decision maker. If a normalized estimate is being calculated, the following limitation takes place:</p>
-<pre><code>∑i=1Kαi=1
+<pre tabindex="0"><code>∑i=1Kαi=1
 </code></pre><p>We will group particular criteria into several semantic groups. Then we can calculate values for denormalized factors for each group and then sum up all particular sums to get the generalized factor as shown in formula (4):</p>
-<pre><code>Y(x)=∑m=1Mβm⋅Ym(x)(4)
+<pre tabindex="0"><code>Y(x)=∑m=1Mβm⋅Ym(x)(4)
 </code></pre><p>where <code>M</code> — is the quantity of semantic groups of criteria;
 <code>βm&gt;0</code> - significance (weight) of the <code>m</code>&lsquo;th group.</p>
 <h2 id="particular-model-evaluation-factors">Particular model evaluation factors</h2>
@@ -613,7 +613,7 @@
                     
                 </ul>
                 <p class="copyright text-muted">
-                    Copyright &copy; Vladimir Sibirov 2021
+                    Copyright &copy; Vladimir Sibirov 2022
                     <br>
                     <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a
                         href="https://zhaohuabing.com">Huabing</a>
