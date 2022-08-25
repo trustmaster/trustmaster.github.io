@@ -51,14 +51,14 @@ I started making these notes to better understand SOLID design principles myself
     </item>
     
     <item>
-      <title>About</title>
+      <title>About the author</title>
       <link>https://blog.kodigy.com/about/author/</link>
       <pubDate>Mon, 12 Mar 2018 22:24:47 +0100</pubDate>
       
       <guid>https://blog.kodigy.com/about/author/</guid>
-      <description>About the author Hello world! My name is Vladimir and I&amp;rsquo;m a software engineer with a Master degree in Computer Science and background in Content Management Systems.
-Relevant topics My most recent experience covers these topics:
-Building and maintaining backends with Node.js and NoFlo Practical use of Flow-based Programming in software architecture and implementation in Go and JavaScript Technical leadership in small teams and keeping agile projects on full sail Full-stack web application engineering (earlier with PHP/Laravel and AngularJS, etc.</description>
+      <description>Hello world! My name is Vladimir, an Engineering Manager, Software Engineer, and a slow and lazy writer. I have Master degree in Computer Science and background in Content Management Systems, Web Development Agencies, and Product Engineering from small start-ups to large global scale-ups.
+Interests Currently I write mostly about:
+Managing Software Engineering teams Architecture and Systems Design Coaching and productivity You can find some of my older posts on this site about:</description>
     </item>
     
     <item>
