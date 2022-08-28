@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Vladimir Sibirov. Code released under the MIT license.</copyright>
-    <lastBuildDate>Wed, 29 Sep 2021 18:29:14 +0200</lastBuildDate><atom:link href="https://blog.kodigy.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 Aug 2022 17:30:12 +0200</lastBuildDate><atom:link href="https://blog.kodigy.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The state of Flow-based Programming</title>
+      <link>https://blog.kodigy.com/post/state-of-flow-based-programming/</link>
+      <pubDate>Sun, 28 Aug 2022 17:30:12 +0200</pubDate>
+      
+      <guid>https://blog.kodigy.com/post/state-of-flow-based-programming/</guid>
+      <description>In memory of J. Paul Morrison. May he rest in peace, and his work continue to live.
+I started this article in 2018 as a collection of observations and ideas that I wanted to share with the Flow-based Programming community. It didn&amp;rsquo;t go beyond a quick draft that never got published. During the next 4 years I barely thought about Flow-based Programming. My focus was on figuring out how software is built in large companies.</description>
+    </item>
+    
     <item>
       <title>Natural Weekly Rhythm</title>
       <link>https://blog.kodigy.com/post/natural-weekly-rhythm/</link>

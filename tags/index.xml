@@ -7,7 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Vladimir Sibirov. Code released under the MIT license.</copyright>
-    <lastBuildDate>Wed, 29 Sep 2021 18:29:14 +0200</lastBuildDate><atom:link href="https://blog.kodigy.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 Aug 2022 17:30:12 +0200</lastBuildDate><atom:link href="https://blog.kodigy.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>architecture</title>
+      <link>https://blog.kodigy.com/tags/architecture/</link>
+      <pubDate>Sun, 28 Aug 2022 17:30:12 +0200</pubDate>
+      
+      <guid>https://blog.kodigy.com/tags/architecture/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fbp</title>
+      <link>https://blog.kodigy.com/tags/fbp/</link>
+      <pubDate>Sun, 28 Aug 2022 17:30:12 +0200</pubDate>
+      
+      <guid>https://blog.kodigy.com/tags/fbp/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>management</title>
       <link>https://blog.kodigy.com/tags/management/</link>
@@ -36,29 +54,11 @@
     </item>
     
     <item>
-      <title>architecture</title>
-      <link>https://blog.kodigy.com/tags/architecture/</link>
-      <pubDate>Mon, 12 Mar 2018 22:33:45 +0100</pubDate>
-      
-      <guid>https://blog.kodigy.com/tags/architecture/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>development</title>
       <link>https://blog.kodigy.com/tags/development/</link>
       <pubDate>Wed, 26 Jul 2017 14:48:53 +0300</pubDate>
       
       <guid>https://blog.kodigy.com/tags/development/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>fbp</title>
-      <link>https://blog.kodigy.com/tags/fbp/</link>
-      <pubDate>Mon, 13 Mar 2017 18:25:04 +0300</pubDate>
-      
-      <guid>https://blog.kodigy.com/tags/fbp/</guid>
       <description></description>
     </item>
     
