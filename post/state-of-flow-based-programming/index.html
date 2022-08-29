@@ -182,7 +182,7 @@
                     <h2 class="subheading">Where Flow-based Programming stands after 50 years since its introduction. What problems it solves today. And what problems it can solve tomorrow for broader Software Engineering industry</h2>
                     <span class="meta">
                         
-                        A 29 minute read.
+                        A 30 minute read.
                         
                         Published on
                         August 28, 2022
@@ -285,6 +285,22 @@
 <p>Processes run the code which is defined in <em>Components</em>. Think of Components as of Classes in OOP, and of Processes as of Objects being concrete instances of that Component. Similar to processes in your operating system, each Process in an FBP program is executed concurrently and independently of other Processes. Depending on a runtime, concurrency can be implemented with threads, system processes, coroutines, etc.</p>
 <p>Data flows through connections from one process to the other. A connection may have a buffer and act as a queue, giving the receiver some time to consume all the messages. Or it can be a blocking connection, meaning that a sender has to wait for the receiver to consume the message. Some implementations (e.g. classical JavaFBP) use this sort of back pressure as a very important concept that allows for easier synchronization of and control of application&rsquo;s throughput.</p>
 <p>What are those boxes with orange and green arrows on the left and right of the graph? Those are its input and output ports. Because a graph is also a component and can be connected to the outer world by the means of its input and output ports. E.g. sending an initial config to the input port could be an entry point to your application.</p>
+<p>There is also a textual Domain-specific language (DSL) for Flow-based Programming (FBP) which is actively used to save diagrams on disk or create diagrams when visual tools are not available or convenient. Below is an example of an <code>.fbp</code> diagram of an application that reads lines from a file, filters them by some criteria, and prints matching lines in console:</p>
+<pre tabindex="0"><code class="language-fbp" data-lang="fbp">INPORT=ReadFile.NAME:IN        # Input port
+OUTPORT=DisplayLines.OUT:OUT   # Output port
+
+ReadFile(io/ReadLine) -&gt; Filter(app/StartsWith) ACC -&gt; DisplayLines(cli/Printer)  # Main flow
+Filter REJ -&gt; IN Reject(Drop) # Using custom port names
+</code></pre><p>Here are the main building blocks of an <code>.fbp</code> file:</p>
+<ul>
+<li><code>INPORT=</code> starts a declaration of an input port. It maps the port <code>NAME</code> of the <code>ReadFile</code> process to the port <code>IN</code> of the graph itself.</li>
+<li><code>OUTPORT=</code> is a declaration of an output port of the graph. In this case the port <code>OUT</code> of the <code>DisplayLines</code> is mapped to the <code>OUT</code> of the graph.</li>
+<li><code>ReadFile(io/ReadLine)</code> says that a process <code>ReadFile</code> is an instance of <code>io/ReadLine</code> component. If you don&rsquo;t see port names before or after the process default port names (<code>IN</code> and <code>OUT</code>) are assumed.</li>
+<li>Line #4 defines the entire main flow of the graph in one go. It instantiates the processes and connects them into a single pipeline using default port names. <code>ACC</code> is one of the output ports of <code>Filter</code> which means &ldquo;accepted&rdquo;.</li>
+<li><code>Filter REJ</code> uses a process that is already defined, no need to specify component in parenthesis. <code>REJ</code> stands for output port named <code>REJ</code> (&ldquo;rejected&rdquo;).</li>
+<li>Line #5 defines the flow that drops rejected packets.</li>
+</ul>
+<p>You can find a visual representation of this graph in the <a href="#the-strive-for-a-convenient-ide">Strive for convenient IDE</a> section.</p>
 <p>Each node on the graph can actually be a graph itself, also known as a <em>Subgraph</em>. A subgraph looks just like any other graph, and there is no limit in how many levels deep your application can be. This nesting concept of Flow-based Programming is very powerful, because it helps keeping perceived complexity at a moderate level. Here is an example of how it could work for an application that receives data via some external interface, runs some business logic, and exposes the result via a message broker:</p>
 <ul>
 <li><em>Application.fbp</em> would be your top level graph which contains a super high level outline of your application&rsquo;s structure. At this level you see what the application does roughly and what subsystems it consists of, but all of them are subgraphs defined in their own diagrams.
